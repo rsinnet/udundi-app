@@ -1,6 +1,5 @@
 <?php
-
-//initilize the page
+  //initilize the page
 require_once("inc/init.php");
 
 //require UI configuration (nav, ribbon, etc.)

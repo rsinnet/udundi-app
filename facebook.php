@@ -1,5 +1,6 @@
 <?php
-  //initilize the page
+  
+  // Initilize the page. Authentication and session management.
   require_once("inc/init.php");
   
   //require UI configuration (nav, ribbon, etc.)
