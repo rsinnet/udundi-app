@@ -90,7 +90,7 @@ include("inc/nav.php");
 							<!-- widget content -->
 							<div class="widget-body no-padding">
 
-								<div id="saleschart" class="chart"></div>
+								<div id="oldsaleschart" class="chart"></div>
 
 							</div>
 							<!-- end widget content -->
