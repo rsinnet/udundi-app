@@ -19,7 +19,7 @@ ChartPanel.prototype.html = function()
     headerElem = $('<header/>')
 	.append($('<span/>').addClass('widget-icon')
 		.append($('<i/>').addClass('fa fa-bar-chart-o')))
-	.append($('<h2/>').text(data['fullName']));
+	.append($('<h2/>').text(this.data['fullName']));
     
     chartElem = $('<div/>')
 	.append($('<div/>').addClass('jarviswidget-editbox'))
