@@ -50,14 +50,14 @@ include("inc/nav.php");
 		<section id="widget-grid" class="">
 
 			<!-- row -->
-			<div class="row">
+			<div class="row" id="charts_container">
                     
                     <!-- Need to use JS to add these. -->
 				<!-- NEW WIDGET START -->
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 					<!-- Widget ID (each widget will need unique ID)-->
-					<div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false">
+					<div class="jarviswidget" id="wid-id-3" data-widget-editbutton="false">
 						<!-- widget options:
 						usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
@@ -132,6 +132,7 @@ include("inc/nav.php");
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.orderBar.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.pie.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.tooltip.js"></script>
+<script src="js/chart-manager.js"></script>
 
 <script type="text/javascript">
 	// PAGE RELATED SCRIPTS
@@ -155,6 +156,11 @@ include("inc/nav.php");
 
 		// DO NOT REMOVE : GLOBAL FUNCTIONS!
 		pageSetUp();
+
+                // Load all charts from configuration data.
+                cp = new ChartPanel('wid-id-4');
+                cp.add();
+
 
 		/* sales chart */
 
