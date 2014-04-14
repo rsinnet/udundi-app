@@ -27,7 +27,7 @@ ChartPanel.prototype.html = function()
 
     headerElem.append(chartElem);
     divElem.append(headerElem);
-    articleElem(divElem);
+    articleElem.append(divElem);
 
     return articleElem;
 }
