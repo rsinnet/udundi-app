@@ -16,8 +16,8 @@ ChartPanel.prototype.html = function()
     articleElem = $('<article/>', {class: "col-xs-12 col-sm-12 col-md-12 col-lg-12"});
     divElem = $('<div data-widget-editbutton="false"></div>').attr({id: this.id});
     headerElem = $('<header/>')
-	.append($('<span/>', {class: 'widget-icon'})
-		.append($('<i/>', {class: 'fa fa-bar-chart-o'})))
+	.append($('<span/>').addClass('widget-icon')
+		.append('<i/>', {class: 'fa fa-bar-chart-o'}))
 	.append($('<h2/>').text('Page Likes'));
     
     chartElem = $('<div/>')
