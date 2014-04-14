@@ -1,9 +1,9 @@
 // Define a global variable which holds the charts information.
 window.charts = {};
 
-function ChartPanel(id)
+function ChartPanel()
 {
-    this.id = id;
+    this.id = makeId();
 }
 
 ChartPanel.prototype.toString = function()
