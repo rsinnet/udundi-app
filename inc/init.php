@@ -28,7 +28,7 @@ $con = udundi_sql_connect();
 $result = $con->query("SELECT email FROM users ORDER BY id ASC");
 
 while ($row = $result->fetch_array())
-    $udundi_user_email = $row['name'];
+    $udundi_user_email = $row['email'];
 $result->close();
 
 // If it is, load up those permissions.
