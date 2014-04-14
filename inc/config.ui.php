@@ -28,12 +28,12 @@ $page_nav = array(
 	),
 	"facebook" => array(
 		"title" => "Facebook",
-		"url" => APP_URL."/facebook",
+		"url" => APP_URL."/facebook.php",
 		"icon" => "fa-facebook"
 	),
 	"twitter" => array(
 		"title" => "Twitter",
-		"url" => APP_URL."/twitter",
+		"url" => APP_URL."/twitter.php",
 		"icon" => "fa-twitter"
 	),
 );
