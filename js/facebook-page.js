@@ -25,6 +25,10 @@ $(document).ready(function() {
     cp = new ChartPanel('wid-id-4');
     cp.add();
 
+    $.getScript('js/smartwidgets/jarvis.widget.js', function() {
+	alert('hey');
+    });
+
     // DO NOT REMOVE : GLOBAL FUNCTIONS!
     pageSetUp();
 
