@@ -18,7 +18,7 @@ ChartPanel.prototype.html = function()
     headerElem = $('<header/>')
 	.append($('<span/>', {class: 'widget-icon'})
 		.append($('<i/>', {class: 'fa fa-bar-chart-o'})))
-	.append($('<h2/>').text(Page Likes));
+	.append($('<h2/>').text('Page Likes'));
     
     chartElem = $('<div/>')
 	.append($('<div/>', {class: 'jarviswidget-editbox'}))
