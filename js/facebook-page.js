@@ -20,19 +20,7 @@ $(document).ready(function() {
     // DO NOT REMOVE : GLOBAL FUNCTIONS!
     pageSetUp();
 
-    var elem = $('
-	<div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-	  <header>
-	    <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
-	    <h2>Sales Graph</h2>	    
-	  </header>
-	  
-	  <div>
-	    <div class="jarviswidget-editbox">
-	    </div>
-	    <div class="widget-body no-padding">
-	    </div>
-</div>');
+    var elem = $('<div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false"><header><span class="widget-icon"><i class="fa fa-bar-chart-o"></i></span><h2>Sales Graph</h2></header><div><div class="jarviswidget-editbox"></div><div class="widget-body no-padding"></div></div>');
 
     $('#charts_container').append(elem);
 
