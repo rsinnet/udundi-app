@@ -14,6 +14,11 @@ if (!isset($__INCLUDE_UTILITIES_PHP))
         }
         return $con;
     }
+
+    function redirect_to_login()
+    {
+        header( 'Location: http://www.iamphilosopher.com/udundi/app/login.php');
+    }
 }
 $__INCLUDE_UTILITIES_PHP = 1;
 
@@ -43,12 +48,15 @@ if (isset($_COOKIE['id']))
         // If it is NOT, clear out the cookie and redirect the user to the login page.
         unset($_COOKIE['id']);
         setcookie('id', '', time() - 3600);
+
+        redirect_to_login();
     }
     $result->close();
 }
 else
 {
     // No cookie, need to authenticate. Redirect to login probably.    
+    redirect_to_login();
 }
 
 //if (session_id() == '')
