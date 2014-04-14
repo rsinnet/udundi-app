@@ -33,7 +33,6 @@
   <?php
     //configure ribbon (breadcrumbs) array("name"=>"url"), leave url empty if no url
     //$breadcrumbs["New Crumb"] => "http://url.com"
-      $breadcrumbs["Graphs"] = "";
     include("inc/ribbon.php");
   ?>
   
