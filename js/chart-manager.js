@@ -28,8 +28,9 @@ ChartPanel.prototype.html = function()
     divElem.append(headerElem).append(chartElem);
     articleElem.append(divElem);
 
-    return articleElem;
     console.log(articleElem);
+
+    return articleElem;
 }
 
 ChartPanel.prototype.add = function()
@@ -62,9 +63,9 @@ function makeId()
 function addChartPanel(chartData)
 {
     // Generate a unique string for each panel.
-    var currentId = makeId();
-    cp = new ChartPanel(currentId);
-    cp.add();
-    charts[currentId] = cp;
-    var myLine = new Chart(document.getElementById(cp.canvasId()).getContext('2d')).Line(chartData);
+    //var currentId = makeId();
+    //cp = new ChartPanel(currentId);
+    //cp.add();
+    //charts[currentId] = cp;
+    //var myLine = new Chart(document.getElementById(cp.canvasId()).getContext('2d')).Line(chartData);
 }
