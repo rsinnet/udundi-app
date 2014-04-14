@@ -23,13 +23,14 @@ ChartPanel.prototype.html = function()
     chartElem = $('<div/>')
 	.append($('<div/>').addClass('jarviswidget-editbox'))
 	.append($('<div/>').addClass('widget-body no-padding')
-		.append($('<div/>').attr({id: 'saleschart', class: 'chart'})));
+		.append($('<div/>').attr({id: 'saleschart'}).addClass('chart')));
 
     headerElem.append(chartElem);
     divElem.append(headerElem);
     articleElem.append(divElem);
 
     return articleElem;
+    console.log(articleElem);
 }
 
 ChartPanel.prototype.add = function()
