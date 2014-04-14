@@ -17,13 +17,13 @@ ChartPanel.prototype.html = function()
     divElem = $('<div data-widget-editbutton="false"></div>').attr({id: this.id});
     headerElem = $('<header/>')
 	.append($('<span/>').addClass('widget-icon')
-		.append('<i/>', {class: 'fa fa-bar-chart-o'}))
+		.append($('<i/>').addClass('fa fa-bar-chart-o')))
 	.append($('<h2/>').text('Page Likes'));
     
     chartElem = $('<div/>')
-	.append($('<div/>', {class: 'jarviswidget-editbox'}))
-	.append($('<div/>', {class: 'widget-body no-padding'})
-		.append($('<div/>', {id: 'saleschart', class: 'chart'})));
+	.append($('<div/>').addClass('jarviswidget-editbox'))
+	.append($('<div/>').addClass('widget-body no-padding')
+		.append($('<div/>').attr({id: 'saleschart', class: 'chart'})));
 
     headerElem.append(chartElem);
     divElem.append(headerElem);
