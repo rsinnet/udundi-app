@@ -17,7 +17,7 @@ if (!isset($__INCLUDE_UTILITIES_PHP))
 
     function redirect_to_login()
     {
-        if (!isset($_SERVER['REQUEST_URI']))
+        if (basename($_SERVER['REQUEST_URI']) != "login.php")
             header( 'Location: http://www.iamphilosopher.com/udundi/app/login.php');
     }
 }
