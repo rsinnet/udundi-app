@@ -17,7 +17,8 @@ if (!isset($__INCLUDE_UTILITIES_PHP))
 
     function redirect_to_login()
     {
-        header( 'Location: http://www.iamphilosopher.com/udundi/app/login.php');
+        if (!isset($is_login_page))
+            header( 'Location: http://www.iamphilosopher.com/udundi/app/login.php');
     }
 }
 $__INCLUDE_UTILITIES_PHP = 1;

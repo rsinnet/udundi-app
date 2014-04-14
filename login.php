@@ -1,4 +1,5 @@
 <?php
+$is_login_page = true;
   //initilize the page
 require_once("inc/init.php");
 
