@@ -27,7 +27,6 @@ $(document).ready(function() {
 	    cp.add();
 	    $.getScript('js/smartwidgets/jarvis.widget.js', function() {
 
-		setupPage()
 		// DO NOT REMOVE : GLOBAL FUNCTIONS!
 		pageSetUp();
 
