@@ -4,6 +4,11 @@
 	    "fullName": "Page Impressions",
 	    "name": "page_impressions",
 	    "description": "The total number of impressions seen of any content associated with your Page"
+	},
+	{
+	    "fullName": "",
+	    "name": "page_impressions_unique",
+	    "description": "The number of people who have seen any content associated with your Page"
 	}
     ]	
 }
