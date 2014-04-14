@@ -18,22 +18,38 @@ if (!isset($__INCLUDE_UTILITIES_PHP))
 $__INCLUDE_UTILITIES_PHP = 1;
 
 
-// Authentication and session management
+// Session management
+// Authentication is done elsewhere.
 
 // Check users cookie for a persistent session identifier.
-$session_id = $_COOKIE['session_id'];
+if (isset($_COOKIE['id']))
+{
+    // If they have a session, see if it's in the database still.
+    $con = udundi_sql_connect();
+    $result = $con->query("SELECT u.id, u.email FROM sessions AS s ".
+                          "INNER JOIN users AS u ON u.id = s.userid "
+                          "WHERE s.id=\"".$_COOKIE['id']."\" ");
+    
+    if ($row = $result->fetch_array())
+    {
+        $udundi_user_id = $row['id'];
+        $udundi_user_email $row['email'];
 
-// If they have a session, see if it's in the database still.
-$con = udundi_sql_connect();
-$result = $con->query("SELECT email FROM users ORDER BY id ASC");
-
-while ($row = $result->fetch_array())
-    $udundi_user_email = $row['email'];
-$result->close();
-
-// If it is, load up those permissions.
-
-// If it is NOT, clear out the cookie and redirect the user to the login page.
+        session_id($_COOKIE['id']);
+        session_start();
+    }
+        else
+    {
+        // If it is NOT, clear out the cookie and redirect the user to the login page.
+        unset($_COOKIE['id']);
+        setcookie('id', '', time() - 3600);
+    }
+    $result->close();
+}
+else
+{
+    // No cookie, need to authenticate. Redirect to login probably.    
+}
 
 //if (session_id() == '')
 //{
