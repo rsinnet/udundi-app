@@ -14,7 +14,7 @@ ChartPanel.prototype.toString = function()
 ChartPanel.prototype.html = function()
 {
     articleElem = $('<article/>', {class: "col-xs-12 col-sm-12 col-md-12 col-lg-12"});
-    divElem = $('<div data-widget-editbutton="false"></div>').attr({id: this.id}).addClass('jarviswidget');
+    divElem = $('<div></div>').attr({id: this.id}).addClass('jarviswidget');
     headerElem = $('<header/>')
 	.append($('<span/>').addClass('widget-icon')
 		.append($('<i/>').addClass('fa fa-bar-chart-o')))
