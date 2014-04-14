@@ -51,7 +51,8 @@ include("inc/nav.php");
 
 			<!-- row -->
 			<div class="row">
-
+                    
+                    <!-- Need to use JS to add these. -->
 				<!-- NEW WIDGET START -->
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
