@@ -30,6 +30,9 @@
 		<!-- JARVIS WIDGETS -->
 		<!--<script src="<?php echo ASSETS_URL; ?>/js/smartwidgets/jarvis.widget.js"></script>-->
 
+		<!-- Underscore.js -->
+		<script src="<?php echo ASSETS_URL; ?>/js/underscore-min.js"></script>
+
 		<!-- EASY PIE CHARTS -->
 		<script src="<?php echo ASSETS_URL; ?>/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
 
