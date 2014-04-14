@@ -20,12 +20,13 @@ $(document).ready(function() {
 
     $('#charts_container').append(elem);
 
-    // DO NOT REMOVE : GLOBAL FUNCTIONS!
-    pageSetUp();
 
     // Load all charts from configuration data.
     cp = new ChartPanel('wid-id-4');
     cp.add();
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
 
     /* sales chart */
 
