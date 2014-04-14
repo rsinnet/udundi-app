@@ -27,8 +27,8 @@ if (isset($_COOKIE['id']))
     // If they have a session, see if it's in the database still.
     $con = udundi_sql_connect();
     $result = $con->query("SELECT u.id, u.email FROM sessions AS s ".
-                          "INNER JOIN users AS u ON u.id = s.userid "
-                          "WHERE s.id='".$_COOKIE['id']."' ");
+                          "INNER JOIN users AS u ON u.id = s.userid ".
+                          "WHERE s.id=\"" . $_COOKIE['id'] . "\"");
     
     if ($row = $result->fetch_array())
     {
