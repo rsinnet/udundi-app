@@ -33,7 +33,7 @@ if (isset($_COOKIE['id']))
     if ($row = $result->fetch_array())
     {
         $udundi_user_id = $row['id'];
-        $udundi_user_email $row['email'];
+        $udundi_user_email = $row['email'];
 
         session_id($_COOKIE['id']);
         session_start();
