@@ -25,8 +25,7 @@ ChartPanel.prototype.html = function()
 	.append($('<div/>').addClass('widget-body no-padding')
 		.append($('<div/>').attr({id: 'saleschart'}).addClass('chart')));
 
-    headerElem.append(chartElem);
-    divElem.append(headerElem);
+    divElem.append(headerElem).append(chartElem);
     articleElem.append(divElem);
 
     return articleElem;
