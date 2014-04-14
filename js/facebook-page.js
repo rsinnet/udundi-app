@@ -20,10 +20,9 @@ $(document).ready(function() {
 	type: "GET",
 	url: "data/facebook_default.json"
     }).done(function(msg) {
-	chartNames = Object.keys(msg)
-	_.each(chartNames, function(chartName) {
+	_.each(msg["data"], function(chartData) {
 	    // Load all charts from configuration data.
-	    cp = new ChartPanel();
+	    cp = new ChartPanel(chartData);
 	    cp.add();
 	    $.getScript('js/smartwidgets/jarvis.widget.js', function() {
 
