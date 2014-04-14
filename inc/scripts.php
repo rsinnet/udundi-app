@@ -28,7 +28,7 @@
 		<script src="<?php echo ASSETS_URL; ?>/js/notification/SmartNotification.min.js"></script>
 
 		<!-- JARVIS WIDGETS -->
-		<script src="<?php echo ASSETS_URL; ?>/js/smartwidgets/jarvis.widget.min.js"></script>
+		<script src="<?php echo ASSETS_URL; ?>/js/smartwidgets/jarvis.widget.js"></script>
 
 		<!-- EASY PIE CHARTS -->
 		<script src="<?php echo ASSETS_URL; ?>/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
