@@ -1,6 +1,7 @@
 <html>
   <body>
     <?php
+echo "hey";
       if ( isset($_POST['submit']) && isset($_POST['username']) && isset($_POST['password']) )
       {
           echo $password;
