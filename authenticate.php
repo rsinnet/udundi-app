@@ -4,11 +4,11 @@ require_once("lib/password.php");
 require_once("inc/utilities.php");
 require_once("inc/secure.php");
 
-function do_login()
+function do_login($email)
 {
     $con = udundi_sql_connect();
     // Make sure the id is not a duplicate. This is unlikely. Also store in database.
-    while (!add_session_to_database($con, session_id()))
+    while (!add_session_to_database($con, session_id(), $email))
         session_regenerate_id();
     redirect_to_home();
 }
@@ -30,7 +30,7 @@ $result = $scon->query($sql_command);
 
 if ($row = $result->fetch_array()) {
     if (password_verify($_POST['password'], $row['password']))
-        do_login();
+        do_login($_POST['email']);
     else
         login_error();
 }
