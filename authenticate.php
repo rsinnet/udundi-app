@@ -19,7 +19,7 @@ $sql_command = "SELECT password FROM users WHERE email=\"" . $_POST['email'] . "
 $result = $con->query($sql_command);
   
 if ($row = $result->fetch_array()) {
-    $pass_good = password_verify($POST_['password'], $row['password'])
+    $pass_good = password_verify($POST_['password'], $row['password']);
     if ($pass_good)
     {
         // Make sure the id is not a duplicate. This is unlikely. Also store in database.
@@ -39,7 +39,7 @@ $result->close();
 <html>
   <body>
     <?php
-print $pass_good;
+      print $pass_good;
       ?>
   </body>
 </html>
