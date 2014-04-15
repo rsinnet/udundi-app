@@ -16,7 +16,7 @@ ChartPanel.prototype.html = function()
     articleElem = $('<article/>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12');
 
     divElem = $('<div data-widget-editbutton="false"/>')
-	.attr({id: 'widget_'.this.id}).addClass('jarviswidget');
+	.attr({id: 'widget_'+this.id}).addClass('jarviswidget');
 
     headerElem = $('<header/>')
 	.append($('<span/>').addClass('widget-icon')
@@ -26,7 +26,7 @@ ChartPanel.prototype.html = function()
     chartElem = $('<div/>')
 	.append($('<div/>').addClass('jarviswidget-editbox'))
 	.append($('<div/>').addClass('widget-body no-padding')
-		.append($('<div/>').attr({id: 'chart_'.this.id}).addClass('chart')));
+		.append($('<div/>').attr({id: 'chart_'+this.id}).addClass('chart')));
 
     divElem.append(headerElem).append(chartElem);
     articleElem.append(divElem);
