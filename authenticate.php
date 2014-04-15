@@ -17,16 +17,11 @@ $con = udundi_sql_connect();
 // Get the hash from the database.
 $sql_command = "SELECT password FROM users WHERE email=\"" . $_POST['email'] . "\"";
 $result = $con->query($sql_command);
-  
+ 
+$password = $POST_['password'];
+
 if ($row = $result->fetch_array()) {
-    $pass_good = password_verify($POST_['password'], $row['password']);
-    if ($pass_good)
-    {
-        // Make sure the id is not a duplicate. This is unlikely. Also store in database.
-        while (!add_session_to_database($con, session_id()))
-            session_regenerate_id();
-        redirect_to_home();
-    }
+    $hash = $row['password'];
 //else
 //        login_error();
 }
@@ -39,6 +34,15 @@ $result->close();
 <html>
   <body>
     <?php
+      $pass_good = password_verify($password, $hash);
+      //if ($pass_good)
+      //{
+      //// Make sure the id is not a duplicate. This is unlikely. Also store in database.
+      //    while (!add_session_to_database($con, session_id()))
+      //        session_regenerate_id();
+      //    redirect_to_home();
+      //}
+
       if ($pass_good)
           echo "Succcess!";
       else
