@@ -17,7 +17,7 @@ if (!isset($__INCLUDE_UTILITIES_PHP))
     function add_session_to_database($con, $session_id)
     {
         $user_id = 1;
-        $sql_command = "INSERT INTO session (id, userid) ".
+        $sql_command = "INSERT INTO sessions (id, userid) ".
                        "VALUES (\"" . $session_id . "\", \"" . $user_id."\")";
         echo $sql_command;
         return $con->query($sql_command);
