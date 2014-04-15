@@ -1,8 +1,6 @@
 <?php
 if (!isset($__INCLUDE_UTILITIES_PHP))
 {
-    $public_space = array("login.php", "register.php");
-
     function udundi_sql_connect()
     {
         $dbuser = 'rsinnet_webuser';
@@ -26,6 +24,7 @@ if (!isset($__INCLUDE_UTILITIES_PHP))
 
     function redirect_to_login()
     {
+        $public_space = array("login.php", "register.php");
         if (!in_array(basename($_SERVER['REQUEST_URI']), $public_space))
             header('Location: http://dev.iamphilosopher.com/login.php');
     }
@@ -37,6 +36,7 @@ if (!isset($__INCLUDE_UTILITIES_PHP))
 
     function conditional_redirect_from_public_area()
     {
+        $public_space = array("login.php", "register.php");
         if (in_array(basename($_SERVER['REQUEST_URI']), $public_space))
             redirect_to_home();
     }
