@@ -56,12 +56,12 @@ function loadPanelConfig() {
 	type: "GET",
 	url: "data/facebook_default.json"
     }).done(function(msg) {
-	_.each(msg["data"], function(chartData) {
+	_.each(msg["data"], function(configData) {
 	    // Load up charts
-	    // Get the chart for chartData.name from the python
+	    // Get the chart for configData.name from the python
 	    
 	    // Load all charts from configuration data.
-	    cp = new ChartPanel(chartData);
+	    cp = new ChartPanel(configData);
 	    charts[cp.toString()] = cp;
 	    cp.add();
 	});
@@ -88,84 +88,19 @@ function loadChartData(edgeName)
 
     console.log(accessToken);
 
-    _.each(Object.keys(window.charts), function(edgeName) {
+    _.each(Object.keys(window.charts), function(key) {
 
 	$.ajax({
 	    type: "GET",
 	    url: "py/fpe_interface.py",
 	    data: { user_access_token: accessToken, edge: edgeName}
 	}).done(function(msg) {)
-	    window.charts[edgeName].populateChart(msg);
+	    window.charts[key].populateChart(msg);
 	});
 
     });
 }
 
-function initializeCharts()
-{
-    // TODO
-
-    if ($("#saleschart").length) {
-	for (var i = 0; i < d.length; ++i)
-	    d[i][0] += 60 * 60 * 1000;
-
-	function weekendAreas(axes) {
-	    var markings = [];
-	    var d = new Date(axes.xaxis.min);
-	    // go to the first Saturday
-	    d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 1) % 7))
-	    d.setUTCSeconds(0);
-	    d.setUTCMinutes(0);
-	    d.setUTCHours(0);
-	    var i = d.getTime();
-	    do {
-		// when we don't set yaxis, the rectangle automatically
-		// extends to infinity upwards and downwards
-		markings.push({
-		    xaxis : {
-			from : i,
-			to : i + 2 * 24 * 60 * 60 * 1000
-		    }
-		});
-		i += 7 * 24 * 60 * 60 * 1000;
-	    } while (i < axes.xaxis.max);
-
-	    return markings;
-	}
-
-	var options = {
-	    xaxis : { mode : "time", tickLength : 5 },
-	    series : {
-		lines : {
-		    show : true,
-		    lineWidth : 1,
-		    fill : true,
-		    fillColor : { colors : [{ opacity : 0.1 }, { opacity : 0.15 }] }
-		},
-		//points: { show: true },
-		shadowSize : 0
-	    },
-	    selection : { mode : "x" },
-	    grid : {
-		hoverable : true,
-		clickable : true,
-		tickColor : $chrt_border_color,
-		borderWidth : 0,
-		borderColor : $chrt_border_color,
-	    },
-	    tooltip : true,
-	    tooltipOpts : {
-		content : "Your Likes for <b>%x</b> were <span>$%y</span>",
-		dateFormat : "%y-%0m-%0d",
-		defaultTheme : false
-	    },
-	    colors : [$chrt_second],
-
-	};
-
-	var plot = $.plot($("#saleschart"), [d], options);
-    }
-}
 
 window.fbAsyncInit = function() {
     FB.init({

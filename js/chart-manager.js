@@ -9,6 +9,8 @@ function ChartPanel(data)
 
 ChartPanel.prototype.toString = function() { return this.id; };
 
+ChartPanel.prototype.chartId = function() { return "chart_" + this.id; };
+
 ChartPanel.prototype.html = function()
 {
     articleElem = $('<article/>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12');
@@ -44,9 +46,59 @@ ChartPanel.prototype.refresh = function()
     console.log('Refresh chart.');
 };
 
+
+// Parses the returned message containing chart data for the Jarvis Widget chart.
+ChartPanel.prototype.parse = function(msg)
+{
+    // Extract the data from the message.
+    data = _.map(msg.values, function(val) { return val.value; });
+    labels = _.map(msg.values, function(val) { return new Date(Date.parse(val.end_time)); });
+
+    // Sort the data in chronological order.
+    data = _.sortBy(data, function(datum, index) { return labels[index].getTime(); });
+    labels = _.sortBy(labels, function(label) { return label.getTime(); });
+
+    // Structure the data for the Jarvis Widget charts.
+    return _.map(_.range(data.length), function(index) { return [labels[index], data[index]]; });   
+}
+
 ChartPanel.prototype.populate = function(msg)
 {
-    
+    if ($("#" + this.chartId()).length) {
+	for (var i = 0; i < d.length; ++i)
+	    d[i][0] += 60 * 60 * 1000;
+
+	var options = {
+	    xaxis : { mode : "time", tickLength : 5 },
+	    series : {
+		lines : {
+		    show : true,
+		    lineWidth : 1,
+		    fill : true,
+		    fillColor : { colors : [{ opacity : 0.1 }, { opacity : 0.15 }] }
+		},
+		//points: { show: true },
+		shadowSize : 0
+	    },
+	    selection : { mode : "x" },
+	    grid : {
+		hoverable : true,
+		clickable : true,
+		tickColor : $chrt_border_color,
+		borderWidth : 0,
+		borderColor : $chrt_border_color,
+	    },
+	    tooltip : true,
+	    tooltipOpts : {
+		content : "Your Likes for <b>%x</b> were <span>$%y</span>",
+		dateFormat : "%y-%0m-%0d",
+		defaultTheme : false
+	    },
+	    colors : [$chrt_second],
+
+	};
+	$.plot($("#" + this.chartId()), [d], options);
+    }    
 };
 
 function makeId()
@@ -64,4 +116,28 @@ function addChartPanel(chartData)
 {
     // Generate a unique string for each panel.
     //var myLine = new Chart(document.getElementById(cp.canvasId()).getContext('2d')).Line(chartData);
+}
+
+function weekendAreas(axes) {
+    var markings = [];
+    var d = new Date(axes.xaxis.min);
+    // go to the first Saturday
+    d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 1) % 7))
+    d.setUTCSeconds(0);
+    d.setUTCMinutes(0);
+    d.setUTCHours(0);
+    var i = d.getTime();
+    do {
+	// when we don't set yaxis, the rectangle automatically
+	// extends to infinity upwards and downwards
+	markings.push({
+	    xaxis : {
+		from : i,
+		to : i + 2 * 24 * 60 * 60 * 1000
+	    }
+	});
+	i += 7 * 24 * 60 * 60 * 1000;
+    } while (i < axes.xaxis.max);
+
+    return markings;
 }
