@@ -48,9 +48,6 @@ if (isset($_POST['email']) &&
         // Going to need a cronjob or something to clean up the database.
 
         // Display thank you page.
-        echo $password;
-        echo "<br>";
-        echo $token;
     }
     else
     {
