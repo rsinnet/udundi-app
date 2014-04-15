@@ -20,4 +20,8 @@ $con->close();
 
 $sql_command = "UPDATE users SET active=TRUE, enabled=TRUE WHERE email=\"$email\"";
 echo $sql_command;
+
+$sql_command = "DELETE FROM activations WHERE token=\"$token\"";
+echo "<br>";
+echo $sql_command;
 ?>
