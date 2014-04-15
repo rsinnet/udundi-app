@@ -12,6 +12,7 @@ data = cgi.FieldStorage()
 
 access_token = data.getvalue('user_access_token')
 edge = data.getvalue('edge');
+period = data.getvalue('period');
 
 graph = G(access_token)
 
@@ -22,7 +23,7 @@ for d in accounts:
     graph.set_access_token(d['access_token'])
     page_id = d['id']
 
-data = graph.get(page_id + '/insights/' + edge, {'period': 'week'})[0]
+data = graph.get(page_id + '/insights/' + edge, {'period': period})[0]
 
 for i in range(5):
    if graph.paginated():

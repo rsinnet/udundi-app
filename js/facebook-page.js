@@ -92,7 +92,11 @@ function loadChartData()
 	$.ajax({
 	    type: "POST",
 	    url: "py/fpe_interface.py",
-	    data: { user_access_token: accessToken, edge: window.charts[key].getDatum('name')}
+	    data: {
+		user_access_token: accessToken,
+		edge: window.charts[key].getDatum('name'),
+		period: window.charts[key].getDatum('period')
+	    }
 	}).done(function(msg) {
 	    console.log(msg);
 	    window.charts[key].populate(msg);
