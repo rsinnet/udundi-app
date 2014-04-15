@@ -15,9 +15,6 @@ $con = udundi_sql_connect();
 //while (!add_session_to_database($con, session_id()))
 //    session_regenerate_id();
 
-
-echo "Content-Type: text/html\n\n"
-
 //redirect_to_home();
 
 ?>
@@ -25,6 +22,8 @@ echo "Content-Type: text/html\n\n"
   <body>
     <?php
       echo session_id();
+      echo "<br>"
+      echo add_session_to_database($con, session_id());
        ?>
   </body>
 </html>
