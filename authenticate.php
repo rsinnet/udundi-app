@@ -12,7 +12,7 @@ function redirect_to_home()
 
 function do_login()
 {
-    $con = udundi_sql_connect()
+    $con = udundi_sql_connect();
     // Make sure the id is not a duplicate. This is unlikely. Also store in database.
     while (!add_session_to_database($con, session_id()))
         session_regenerate_id();
