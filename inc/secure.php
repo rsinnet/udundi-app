@@ -32,7 +32,7 @@ function crypto_rand_secure($min, $max) {
     return $min + $rnd;
 }
 
-function get_activation_token($length=256){
+function get_activation_token($length=128){
     $token = "";
     $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
