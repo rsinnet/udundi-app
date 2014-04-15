@@ -26,6 +26,11 @@ if (!isset($__INCLUDE_UTILITIES_PHP))
         if (basename($_SERVER['REQUEST_URI']) != "login.php")
             header('Location: http://dev.iamphilosopher.com/login.php');
     }
+
+    function redirect_to_home()
+    {
+        header('Location: http://dev.iamphilosopher.com/index.php');
+    }
 }
 $__INCLUDE_UTILITIES_PHP = 1;
 ?>

@@ -15,4 +15,6 @@ $con = udundi_sql_connect();
 while (!add_session_to_database($con, session_id()))
     session_regenerate_id();
 
+redirect_to_home();
+
 ?>
