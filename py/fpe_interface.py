@@ -5,7 +5,8 @@ import facebook
 from facebook_python_extension import GraphApiExtension as G
 
 import json
-import cgi
+import cgi, cgitb
+cgitb.enable()
 
 data = cgi.FieldStorage()
 
