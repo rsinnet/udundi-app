@@ -1,7 +1,7 @@
 <?php
 
-require_once('../php/utilities.php');
-require_once('../php/secure.php');
+require_once('../inc/utilities.php');
+require_once('../inc/secure.php');
 
 if (isset($_POST['email']) &&
     isset($_POST['password']) &&
