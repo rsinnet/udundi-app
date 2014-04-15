@@ -95,6 +95,7 @@ function loadChartData(edgeName)
 	    url: "py/fpe_interface.py",
 	    data: { user_access_token: accessToken, edge: edgeName}
 	}).done(function(msg) {
+	    console.log(msg);
 	    window.charts[key].populate(msg);
 	});
 
