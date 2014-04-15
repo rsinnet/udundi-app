@@ -15,7 +15,6 @@ if ($row = $result->fetch_array())
 }
 
 $result->close()
-$con->close();
 
 
 $sql_command = "UPDATE users SET active=TRUE, enabled=TRUE WHERE email=\"$email\"";
