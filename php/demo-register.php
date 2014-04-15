@@ -1,3 +1,5 @@
+<html>
+<body>
 <?php
 
 require_once('../inc/utilities.php');
@@ -59,3 +61,5 @@ if (isset($_POST['email']) &&
     }
 }
 ?>
+</body>
+</html>
