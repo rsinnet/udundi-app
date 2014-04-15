@@ -16,8 +16,8 @@ if (isset($_POST['email']) &&
     {
 
         // Connect to both databases.
-        $con = udundi_sql_connect();
-        $scon = udundi_secure_sql_connect();
+    //  $con = udundi_sql_connect();
+    //  $scon = udundi_secure_sql_connect();
 
         // Hash the password with bcrypt.
         require_once('../lib/password.php');
@@ -27,8 +27,8 @@ if (isset($_POST['email']) &&
         // Add user to database, but with account not activated.
         $sql_command = "INSERT INTO users_secure (email, password) VALUES (\"$email\", \"$hash\")";
         echo $sql_command;
-    //$scon->query($sql_command);
-    $scon->close();
+        //$scon->query($sql_command);
+    //$scon->close();
         unset($hash);
         
         $sql_command = "INSERT INTO users (email) VALUES (\"$email\")";
@@ -45,7 +45,7 @@ if (isset($_POST['email']) &&
         // Add activation code to database with expiration time three days from now.
         $sql_command = "INSERT INTO activations (email, token) VALUES (\"$email\", \"$token\")";
     //        $con->query($sql_command);
-            $con->close();
+    //      $con->close();
         echo "<br>";
         echo $sql_command;
         
