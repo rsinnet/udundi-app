@@ -42,11 +42,11 @@
 <html>
   <body>
     <?php
-      echo "$password<br>$hash<br>"
+      echo "$password<br>$hash<br>";
       if (password_verify($password, $hash))
-          echo "Success!"
-          else
-              echo "Failure!"
-    ?>
+          echo "Success!";
+      else
+          echo "Failure!";
+       ?>
   </body>
 </html>
