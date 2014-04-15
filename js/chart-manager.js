@@ -7,6 +7,10 @@ function ChartPanel(data)
     this.data = data;
 }
 
+ChartPanel.prototype.getData = function() { return this.data; };
+
+ChartPanel.prototype.getDatum = function(key) { return this.data[key]; };
+
 ChartPanel.prototype.toString = function() { return this.id; };
 
 ChartPanel.prototype.chartId = function() { return "chart_" + this.id; };

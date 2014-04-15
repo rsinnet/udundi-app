@@ -39,7 +39,7 @@ FSM.prototype.go = function() {
 	     this.state['configLoaded'] &&
 	     this.state['jarvisWidgetLoaded'] &&
 	     this.state['facebookConnected'])
-	loadChartData();	
+	loadChartData();
 };
 
 window.fsm = new FSM();
@@ -81,7 +81,7 @@ function loadJarvisWidget() {
     });
 }
 
-function loadChartData(edgeName)
+function loadChartData()
 {
     var authResponse = FB.getAuthResponse();
     var accessToken = authResponse.accessToken;
@@ -89,11 +89,10 @@ function loadChartData(edgeName)
     console.log(accessToken);
 
     _.each(Object.keys(window.charts), function(key) {
-
 	$.ajax({
-	    type: "GET",
+	    type: "POST",
 	    url: "py/fpe_interface.py",
-	    data: { user_access_token: accessToken, edge: edgeName}
+	    data: { user_access_token: accessToken, edge: window.charts[key].getDatum('name')}
 	}).done(function(msg) {
 	    console.log(msg);
 	    window.charts[key].populate(msg);
