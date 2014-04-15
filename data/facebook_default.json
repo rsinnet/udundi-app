@@ -1,22 +1,37 @@
 {
     "data": [
-	{
-	    "fullName": "Page Impressions",
-	    "name": "page_impressions",
-	    "description": "The total number of impressions seen of any content associated with your Page",
-	    "period": "day"
-	},
-	{
-	    "fullName": "Unique Page Impressions",
-	    "name": "page_impressions_unique",
-	    "description": "The number of people who have seen any content associated with your Page",
-	    "period": "day"
-	},
+
 	{
 	    "fullName": "Lifetime Page Likes",
 	    "name": "page_fans",
 	    "description": "The total number of people who have liked your Page.",
 	    "period": "lifetime"
-	}
+	},
+	{
+	    "fullName": "Daily Page Impressions",
+	    "name": "page_impressions",
+	    "description": "The total number of impressions seen of any content associated with your Page",
+	    "period": "day"
+	},
+	{
+	    "fullName": "Daily Unique Page Impressions",
+	    "name": "page_impressions_unique",
+	    "description": "The number of people who have seen any content associated with your Page",
+	    "period": "day"
+	},
+	{
+	    "fullName": "Daily Page Consumptions",
+	    "name": "page_consumptions",
+	    "description": "The number of times people clicked on any of your content",
+	    "period": "day"
+	},
+	{
+	    "fullName": "Daily Post Impressions",
+	    "name": "page_posts_impressions",
+	    "description": "The number of impressions that came from all of your posts",
+	    "period": "day"
+	},
+
+	
     ]	
 }
