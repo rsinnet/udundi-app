@@ -11,14 +11,6 @@ function udundi_sql_connect()
     }
     return $con;
 }
-    
-function add_session_to_database($con, $session_id)
-{
-    $user_id = 1;
-    $sql_command = "INSERT INTO sessions (id, userid) ".
-                   "VALUES (\"" . $session_id . "\", \"" . $user_id."\")";
-    return $con->query($sql_command);
-}
 
 function redirect_to_login()
 {
@@ -27,14 +19,17 @@ function redirect_to_login()
         header('Location: http://dev.iamphilosopher.com/login.php');
 }
 
-function redirect_to_home()
-{
-    header('Location: http://dev.iamphilosopher.com/index.php');
-}
-
 function login_error()
 {
     header('Location: http://dev.iamphilosopher.com/error404.php');
+}
+
+function add_session_to_database($con, $session_id)
+{
+    $user_id = 1;
+    $sql_command = "INSERT INTO sessions (id, userid) ".
+                   "VALUES (\"" . $session_id . "\", \"" . $user_id."\")";
+    return $con->query($sql_command);
 }
 
 function conditional_redirect_from_public_area()
@@ -43,4 +38,5 @@ function conditional_redirect_from_public_area()
     if (in_array(basename($_SERVER['REQUEST_URI']), $public_space))
         redirect_to_home();
 }
+
 ?>

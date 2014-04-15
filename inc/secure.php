@@ -11,3 +11,5 @@ function udundi_secure_sql_connect()
     }
     return $con;
 }
+
+?>
