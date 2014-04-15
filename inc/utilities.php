@@ -22,9 +22,9 @@ function add_session_to_database($con, $session_id)
 
 function redirect_to_login()
 {
-    $public_space = array("login.php", "register.php");
+    $public_space = array("login.php", "register.php", "error404.php", "error500.php");
     if (!in_array(basename($_SERVER['REQUEST_URI']), $public_space))
-        header('Location: http://dev.iamphilosopher.com/login.php');
+        header('Location: http://dev.iamphilosopher.com/logni.php');
 }
 
 function redirect_to_home()
@@ -32,9 +32,14 @@ function redirect_to_home()
     header('Location: http://dev.iamphilosopher.com/index.php');
 }
 
+function login_error()
+{
+    header('Location: http://dev.iamphilosopher.com/error404.php');
+}
+
 function conditional_redirect_from_public_area()
 {
-    $public_space = array("login.php", "register.php");
+    $public_space = array("login.php", "register.php", "error404.php", "error500.php");
     if (in_array(basename($_SERVER['REQUEST_URI']), $public_space))
         redirect_to_home();
 }
