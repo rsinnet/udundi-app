@@ -15,102 +15,214 @@ var $chrt_fifth = "#BD362F";
 /* dark red  */
 var $chrt_mono = "#000";
 
+// Finite state machine for loading and page operations
+function FSM() {
+    this.state = {
+	docReady: false,
+	configLoaded: false,
+	jarvisWidgetLoaded: false,
+	facebookConnected: false
+    };
+}
+FSM.prototype.setState = function(state) { this.state[state] = true; };
+FSM.prototype.clearState = function(state) { this.state[state] = false; };
+FSM.prototype.toString = function() { return this.state.toString(); };
+FSM.prototype.go = function() {
+    if (this.state['docReady'] &&
+	!this.state['configLoaded'])
+	loadPanelConfig();
+    else if (this.state['docReady'] &&
+	     this.state['configLoaded'] &&
+	     !this.state['jarvisWidgetLoaded'])
+	loadJarvisWidget();
+    else if (this.state['docReady'] &&
+	     this.state['configLoaded'] &&
+	     this.state['jarvisWidgetLoaded'] &&
+	     this.state['facebookConnected'])
+	loadChartData();	
+};
+
+window.fsm = new FSM();
+
 $(document).ready(function() {
+    window.fsm.setState('docReady');
+    window.fsm.go();
+});
+
+window.charts = {};
+
+function loadPanelConfig() {
     $.ajax({
 	type: "GET",
 	url: "data/facebook_default.json"
     }).done(function(msg) {
 	_.each(msg["data"], function(chartData) {
+	    // Load up charts
+	    // Get the chart for chartData.name from the python
+	    
 	    // Load all charts from configuration data.
 	    cp = new ChartPanel(chartData);
+	    charts[cp.toString()] = cp;
 	    cp.add();
-	    $.getScript('js/smartwidgets/jarvis.widget.js', function() {
-
-		// DO NOT REMOVE : GLOBAL FUNCTIONS!
-		pageSetUp();
-
-		/* sales chart */
-
-		if ($("#saleschart").length) {
-		    var d = [[1196463600000, 0], [1196550000000, 0], [1196636400000, 0], [1196722800000, 77], [1196809200000, 3636], [1196895600000, 3575], [1196982000000, 2736], [1197068400000, 1086], [1197154800000, 676], [1197241200000, 1205], [1197327600000, 906], [1197414000000, 710], [1197500400000, 639], [1197586800000, 540], [1197673200000, 435], [1197759600000, 301], [1197846000000, 575], [1197932400000, 481], [1198018800000, 591], [1198105200000, 608], [1198191600000, 459], [1198278000000, 234], [1198364400000, 1352], [1198450800000, 686], [1198537200000, 279], [1198623600000, 449], [1198710000000, 468], [1198796400000, 392], [1198882800000, 282], [1198969200000, 208], [1199055600000, 229], [1199142000000, 177], [1199228400000, 374], [1199314800000, 436], [1199401200000, 404], [1199487600000, 253], [1199574000000, 218], [1199660400000, 476], [1199746800000, 462], [1199833200000, 500], [1199919600000, 700], [1200006000000, 750], [1200092400000, 600], [1200178800000, 500], [1200265200000, 900], [1200351600000, 930], [1200438000000, 1200], [1200524400000, 980], [1200610800000, 950], [1200697200000, 900], [1200783600000, 1000], [1200870000000, 1050], [1200956400000, 1150], [1201042800000, 1100], [1201129200000, 1200], [1201215600000, 1300], [1201302000000, 1700], [1201388400000, 1450], [1201474800000, 1500], [1201561200000, 546], [1201647600000, 614], [1201734000000, 954], [1201820400000, 1700], [1201906800000, 1800], [1201993200000, 1900], [1202079600000, 2000], [1202166000000, 2100], [1202252400000, 2200], [1202338800000, 2300], [1202425200000, 2400], [1202511600000, 2550], [1202598000000, 2600], [1202684400000, 2500], [1202770800000, 2700], [1202857200000, 2750], [1202943600000, 2800], [1203030000000, 3245], [1203116400000, 3345], [1203202800000, 3000], [1203289200000, 3200], [1203375600000, 3300], [1203462000000, 3400], [1203548400000, 3600], [1203634800000, 3700], [1203721200000, 3800], [1203807600000, 4000], [1203894000000, 4500]];
-
-		    for (var i = 0; i < d.length; ++i)
-			d[i][0] += 60 * 60 * 1000;
-
-		    function weekendAreas(axes) {
-			var markings = [];
-			var d = new Date(axes.xaxis.min);
-			// go to the first Saturday
-			d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 1) % 7))
-			d.setUTCSeconds(0);
-			d.setUTCMinutes(0);
-			d.setUTCHours(0);
-			var i = d.getTime();
-			do {
-			    // when we don't set yaxis, the rectangle automatically
-			    // extends to infinity upwards and downwards
-			    markings.push({
-				xaxis : {
-				    from : i,
-				    to : i + 2 * 24 * 60 * 60 * 1000
-				}
-			    });
-			    i += 7 * 24 * 60 * 60 * 1000;
-			} while (i < axes.xaxis.max);
-
-			return markings;
-		    }
-
-		    var options = {
-			xaxis : {
-			    mode : "time",
-			    tickLength : 5
-			},
-			series : {
-			    lines : {
-				show : true,
-				lineWidth : 1,
-				fill : true,
-				fillColor : {
-				    colors : [{
-					opacity : 0.1
-				    }, {
-					opacity : 0.15
-				    }]
-				}
-			    },
-			    //points: { show: true },
-			    shadowSize : 0
-			},
-			selection : {
-			    mode : "x"
-			},
-			grid : {
-			    hoverable : true,
-			    clickable : true,
-			    tickColor : $chrt_border_color,
-			    borderWidth : 0,
-			    borderColor : $chrt_border_color,
-			},
-			tooltip : true,
-			tooltipOpts : {
-			    content : "Your sales for <b>%x</b> was <span>$%y</span>",
-			    dateFormat : "%y-%0m-%0d",
-			    defaultTheme : false
-			},
-			colors : [$chrt_second],
-
-		    };
-
-		    var plot = $.plot($("#saleschart"), [d], options);
-		};
-
-		/* end sales chart */
-	    });
-
 	});
-    }).error(function(msg) {
-	console.log(msg);
+
+	window.fsm.setState('configLoaded');
+	window.fsm.go();
+    });
+}
+
+function loadJarvisWidget() {
+    $.getScript('js/smartwidgets/jarvis.widget.js', function() {	    
+	// DO NOT REMOVE : GLOBAL FUNCTIONS!
+	pageSetUp();
+	
+	window.fsm.setState('jarvisWidgetLoaded');
+	window.fsm.go();
+    });
+}
+
+function loadChartData(edgeName)
+{
+    var authResponse = FB.getAuthResponse();
+    var accessToken = authResponse.accessToken;
+
+    console.log(accessToken);
+
+    _.each(Object.keys(window.charts), function(edgeName) {
+
+	$.ajax({
+	    type: "GET",
+	    url: "py/fpe_interface.py",
+	    data: { user_access_token: accessToken, edge: edgeName}
+	}).done(function(msg) {)
+	    window.charts[edgeName].populateChart(msg);
+	});
+
+    });
+}
+
+function initializeCharts()
+{
+    // TODO
+
+    if ($("#saleschart").length) {
+	for (var i = 0; i < d.length; ++i)
+	    d[i][0] += 60 * 60 * 1000;
+
+	function weekendAreas(axes) {
+	    var markings = [];
+	    var d = new Date(axes.xaxis.min);
+	    // go to the first Saturday
+	    d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 1) % 7))
+	    d.setUTCSeconds(0);
+	    d.setUTCMinutes(0);
+	    d.setUTCHours(0);
+	    var i = d.getTime();
+	    do {
+		// when we don't set yaxis, the rectangle automatically
+		// extends to infinity upwards and downwards
+		markings.push({
+		    xaxis : {
+			from : i,
+			to : i + 2 * 24 * 60 * 60 * 1000
+		    }
+		});
+		i += 7 * 24 * 60 * 60 * 1000;
+	    } while (i < axes.xaxis.max);
+
+	    return markings;
+	}
+
+	var options = {
+	    xaxis : { mode : "time", tickLength : 5 },
+	    series : {
+		lines : {
+		    show : true,
+		    lineWidth : 1,
+		    fill : true,
+		    fillColor : { colors : [{ opacity : 0.1 }, { opacity : 0.15 }] }
+		},
+		//points: { show: true },
+		shadowSize : 0
+	    },
+	    selection : { mode : "x" },
+	    grid : {
+		hoverable : true,
+		clickable : true,
+		tickColor : $chrt_border_color,
+		borderWidth : 0,
+		borderColor : $chrt_border_color,
+	    },
+	    tooltip : true,
+	    tooltipOpts : {
+		content : "Your Likes for <b>%x</b> were <span>$%y</span>",
+		dateFormat : "%y-%0m-%0d",
+		defaultTheme : false
+	    },
+	    colors : [$chrt_second],
+
+	};
+
+	var plot = $.plot($("#saleschart"), [d], options);
+    }
+}
+
+window.fbAsyncInit = function() {
+    FB.init({
+	appId      : '262037167304306',
+	status     : true, // check login status
+	cookie     : true, // enable cookies to allow the server to access the session
+	xfbml      : true  // parse XFBML
+    });
+    
+    // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
+    // for any authentication related change, such as login, logout or session refresh. This means that
+    // whenever someone who was previously logged out tries to log in again, the correct case below 
+    // will be handled. 
+    FB.Event.subscribe('auth.authResponseChange', function(response) {
+	// Here we specify what we do with the response anytime this event occurs. 
+	if (response.status === 'connected') {
+	    // The response object is returned with a status field that lets the app know the current
+	    // login status of the person. In this case, we're handling the situation where they 
+	    // have logged in to the app.
+	    facebookConnectCallback();
+	} else if (response.status === 'not_authorized') {
+	    // In this case, the person is logged into Facebook, but not into the app, so we call
+	    // FB.login() to prompt them to do so. 
+	    // In real-life usage, you wouldn't want to immediately prompt someone to login 
+	    // like this, for two reasons:
+	    // (1) JavaScript created popup windows are blocked by most browsers unless they 
+	    // result from direct interaction from people using the app (such as a mouse click)
+	    // (2) it is a bad experience to be continually prompted to login upon page load.
+	    FB.login(function(){}, {scope: 'manage_pages'});
+	    window.fsm.clearState('facebookConnected');
+	} else {
+	    // In this case, the person is not logged into Facebook, so we call the login() 
+	    // function to prompt them to do so. Note that at this stage there is no indication
+	    // of whether they are logged into the app. If they aren't then they'll see the Login
+	    // dialog right after they log in to Facebook. 
+	    // The same caveats as above apply to the FB.login() call here.
+	    FB.login(function(){}, {scope: 'manage_pages'});
+	    window.fsm.clearState('facebookConnected');
+	}
+    });
+};
+
+// Load the SDK asynchronously
+(function(d){
+    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement('script'); js.id = id; js.async = true;
+    js.src = "//connect.facebook.net/en_US/all.js";
+    ref.parentNode.insertBefore(js, ref);
+}(document));
+
+function facebookConnectCallback() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+	console.log('Good to see you, ' + response.name + '.');
     });
 
-});
+    window.fsm.setState('facebookConnected');
+    window.fsm.go();
+}
