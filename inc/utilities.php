@@ -24,7 +24,7 @@ function redirect_to_login()
 {
     $public_space = array("login.php", "register.php", "error404.php", "error500.php");
     if (!in_array(basename($_SERVER['REQUEST_URI']), $public_space))
-        header('Location: http://dev.iamphilosopher.com/logni.php');
+        header('Location: http://dev.iamphilosopher.com/login.php');
 }
 
 function redirect_to_home()
