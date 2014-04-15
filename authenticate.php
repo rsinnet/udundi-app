@@ -25,13 +25,12 @@ if ($row = $result->fetch_array()) {
         while (!add_session_to_database($con, session_id()))
             session_regenerate_id();
         redirect_to_home();
-          
     }
     else
         login_error();
 }
-else
-    login_error();
+//else
+//    login_error();
   
 $result->close();
   
