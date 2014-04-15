@@ -12,8 +12,7 @@ if (isset($_POST['email']) &&
 {
     $email = $_POST['email'];
 
-    if ($_POST['terms'] &&
-        ($_POST['password'] == $_POST['confirmPassword']))
+    if ($_POST['terms'])
     {
 
         // Connect to both databases.
