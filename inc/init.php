@@ -5,9 +5,6 @@ require_once("inc/utilities.php");
 // Session management
 // Authentication is done elsewhere.
 
-// Need to stop checking their cookies maybe. PHP handles that.
-// Check users cookie for a persistent session identifier.
-
 // Get a session id.
 if (session_id() == '')
     session_start();
@@ -24,6 +21,8 @@ if ($row = $result->fetch_array())
 {
     $udundi_user_id = $row['id'];
     $udundi_user_email = $row['email'];
+
+    conditional_redirect_from_public_area();
 }
 else
     redirect_to_login();
