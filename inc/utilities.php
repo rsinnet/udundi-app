@@ -30,11 +30,10 @@ function login_error()
     header('Location: http://dev.iamphilosopher.com/error404.php');
 }
 
-function add_session_to_database($con, $session_id)
+function add_session_to_database($con, $session_id, $email)
 {
-    $user_id = 1;
-    $sql_command = "INSERT INTO sessions (id, userid) ".
-                   "VALUES (\"" . $session_id . "\", \"" . $user_id."\")";
+    $sql_command = "INSERT INTO sessions (id, email) ".
+                   "VALUES (\"" . $session_id . "\", \"" . $email."\")";
     return $con->query($sql_command);
 }
 
