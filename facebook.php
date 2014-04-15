@@ -28,6 +28,9 @@
   
 ?>
 
+<div id="fb-root"></div>
+
+
 <!-- ==========================CONTENT STARTS HERE ========================== -->
 <!-- MAIN PANEL -->
 <div id="main" role="main">
@@ -41,7 +44,8 @@
   <div id="content">
     <div class="row">
       <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-      <h1 class="page-title txt-color-blueDark"><i class="fa fa-bar-chart-o fa-facebook "></i> Facebook <?php echo $udundi_user_email; ?></h1>
+      <h1 class="page-title txt-color-blueDark"><i class="fa fa-bar-chart-o fa-facebook "></i> Facebook </h1>
+      <fb:login-button data-scope="manage_pages,read_insights" data-show-faces="true" width="200" max-rows="1"></fb:login-button>
       </div>
     </div>
     
