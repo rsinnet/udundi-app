@@ -87,12 +87,6 @@
 	    
 	    <fieldset>
 	      <section>
-		<label class="input"> <i class="icon-append fa fa-user"></i>
-		  <input type="text" name="username" placeholder="Username">
-		  <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
-	      </section>
-	      
-	      <section>
 		<label class="input"> <i class="icon-append fa fa-envelope"></i>
 		  <input type="email" name="email" placeholder="Email address">
 		  <b class="tooltip tooltip-bottom-right">Needed to verify your account</b> </label>
@@ -112,36 +106,6 @@
 	    </fieldset>
 	    
 	    <fieldset>
-	      <div class="row">
-		<section class="col col-6">
-		  <label class="input">
-		    <input type="text" name="firstname" placeholder="First name">
-		  </label>
-		</section>
-		<section class="col col-6">
-		  <label class="input">
-		    <input type="text" name="lastname" placeholder="Last name">
-		  </label>
-		</section>
-	      </div>
-	      
-	      <div class="row">
-		<section class="col col-6">
-		  <label class="select">
-		    <select name="gender">
-		      <option value="0" selected="" disabled="">Gender</option>
-		      <option value="1">Male</option>
-		      <option value="2">Female</option>
-		      <option value="3">Prefer not to answer</option>
-		    </select> <i></i> </label>
-		</section>
-		<section class="col col-6">
-		  <label class="input"> <i class="icon-append fa fa-calendar"></i>
-		    <input type="text" name="request" placeholder="Request activation on" class="datepicker" data-dateformat='dd/mm/yy'>
-		  </label>
-		</section>
-	      </div>
-	      
 	      <section>
 		<label class="checkbox">
 		  <input type="checkbox" name="subscription" id="subscription">
@@ -425,9 +389,6 @@
 		      
 		      // Rules for form validation
 		      rules : {
-			  username : {
-			      required : true
-			  },
 			  email : {
 			      required : true,
 			      email : true
@@ -443,15 +404,6 @@
 			      maxlength : 20,
 			      equalTo : '#password'
 			  },
-			  firstname : {
-			      required : true
-			  },
-			  lastname : {
-			      required : true
-			  },
-			  gender : {
-			      required : true
-			  },
 			  terms : {
 			      required : true
 			  }
@@ -459,9 +411,6 @@
 		      
 		      // Messages for form validation
 		      messages : {
-			  login : {
-			      required : 'Please enter your login'
-			  },
 			  email : {
 			      required : 'Please enter your email address',
 			      email : 'Please enter a VALID email address'
@@ -472,15 +421,6 @@
 			  passwordConfirm : {
 			      required : 'Please enter your password one more time',
 			      equalTo : 'Please enter the same password as above'
-			  },
-			  firstname : {
-			      required : 'Please select your first name'
-			  },
-			  lastname : {
-			      required : 'Please select your last name'
-			  },
-			  gender : {
-			      required : 'Please select your gender'
 			  },
 			  terms : {
 			      required : 'You must agree with Terms and Conditions'
