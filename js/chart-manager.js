@@ -58,6 +58,8 @@ ChartPanel.prototype.parse = function(msg)
     data = _.sortBy(data, function(datum, index) { return labels[index].getTime(); });
     labels = _.sortBy(labels, function(label) { return label.getTime(); });
 
+    console.log(labels);
+
     // Structure the data for the Jarvis Widget charts.
     return _.map(_.range(data.length), function(index) { return [labels[index], data[index]]; });   
 }
