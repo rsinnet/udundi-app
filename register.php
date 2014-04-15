@@ -140,7 +140,10 @@
 	    <a href="javascript:void(0);" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
 	  </li>
 	  <li>
-	    <a href="javascript:void(0);" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>
+	    <a href="javascript:void(0);" class="btn btn-warning btn-circle"><i class="fa fa-google-plus"></i></a>
+	  </li>
+	  <li>
+	    <a href="javascript:void(0);" class="btn btn-danger btn-circle"><i class="fa fa-linkedin"></i></a>
 	  </li>
 	</ul>
       </div>
