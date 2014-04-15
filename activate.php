@@ -1,5 +1,5 @@
 <?php
-require_once('utilities.php');
+require_once('inc/utilities.php');
 
 $con = udundi_sql_connect();
 
