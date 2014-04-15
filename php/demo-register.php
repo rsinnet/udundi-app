@@ -4,17 +4,10 @@
 
 require_once('../inc/utilities.php');
 require_once('../inc/secure.php');
-
-
-echo $_POST['email'];
-echo $_POST['password'];
-echo $_POST['confirmPassword'];
-echo $_POST['terms'];
      
 
 if (isset($_POST['email']) &&
     isset($_POST['password']) &&
-    isset($_POST['confirmPassword']) &&
     isset($_POST['terms']))
 {
     $email = $_POST['email'];
