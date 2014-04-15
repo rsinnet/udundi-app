@@ -18,17 +18,19 @@ $con = udundi_sql_connect();
 $sql_command = "SELECT password FROM users WHERE email=\"" . $_POST['email'] . "\"";
 $result = $con->query($sql_command);
 
-if ($row = $result->fetch_array())
-    password_verify($POST_['password'], $row['password']);
+if ($row = $result->fetch_array()) {
+    if (password_verify($POST_['password'], $row['password']))
+    {
+        // Make sure the id is not a duplicate. This is unlikely. Also store in database.
+        while (!add_session_to_database($con, session_id()))
+            session_regenerate_id();
+        redirect_to_home();
+    
+    }
+}
 else
     login_error();
 
 $result->close();
-
-// Make sure the id is not a duplicate. This is unlikely. Also store in database.
-while (!add_session_to_database($con, session_id()))
-    session_regenerate_id();
-
-  redirect_to_home();
 
 ?>
