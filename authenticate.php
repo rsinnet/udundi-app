@@ -27,6 +27,8 @@ if ($row = $result->fetch_array()) {
         redirect_to_home();
     
     }
+    else
+        login_error();
 }
 else
     login_error();
