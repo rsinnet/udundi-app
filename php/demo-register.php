@@ -26,9 +26,9 @@ if (isset($_POST['email']) &&
 
         // Add user to database, but with account not activated.
         $sql_command = "INSERT INTO users_secure (email, password) VALUES (\"$email\", \"$hash\")";
-//$scon->query($sql_command);
-//$scon->close();
-//unset($hash);
+        $scon->query($sql_command);
+        $scon->close();
+        unset($hash);
         echo $sql_command;
         echo "<br>";
         
@@ -38,9 +38,8 @@ if (isset($_POST['email']) &&
 
         // Generate an activation token.
         $token = get_activation_token();
-        echo $token;
-        echo "<br>";
-
+        echo "Activation token: $token";
+        
         // Send activation email to registrant.
 
         // Add activation code to database with expiration time three days from now.
