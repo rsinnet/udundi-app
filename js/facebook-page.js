@@ -100,8 +100,10 @@ function loadChartData()
 	}).done(function(msg) {
 	    console.log(msg);
 	    window.charts[key].populate(msg);
+	}).fail(function(msg) {
+	    console.log('Could not access Facebook--Python interface.');
+	    console.log(msg);
 	});
-
     });
 }
 

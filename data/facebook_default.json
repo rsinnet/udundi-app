@@ -30,8 +30,6 @@
 	    "name": "page_posts_impressions",
 	    "description": "The number of impressions that came from all of your posts",
 	    "period": "day"
-	},
-
-	
+	}	
     ]	
 }
