@@ -33,6 +33,8 @@ $__INCLUDE_UTILITIES_PHP = 1;
 // Session management
 // Authentication is done elsewhere.
 
+// Need to stop checking their cookies maybe. PHP handles that.
+
 // Check users cookie for a persistent session identifier.
 if (isset($_COOKIE['id']))
 {
