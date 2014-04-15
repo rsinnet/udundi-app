@@ -79,7 +79,7 @@ include("inc/header.php");
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
 				<div class="well no-padding">
-					<form action="<?php echo APP_URL; ?>" id="login-form" class="smart-form client-form">
+					<form action="authenticate.php?>" method="POST" id="login-form" class="smart-form client-form">
 						<header>
 							Sign In
 						</header>

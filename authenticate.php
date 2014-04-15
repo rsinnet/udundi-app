@@ -1,3 +1,5 @@
+<html>
+<head>
 <?php
 
 require_once("lib/password.php");
@@ -7,7 +9,7 @@ require_once("inc/utilities.php");
 if (session_id() == '')
     session_start();
 
-if (empty($_POST['id']) || empty($_POST['password']) )
+if (empty($_POST['email']) || empty($_POST['password']) )
     login_error();
 
 // Connect to the database.
@@ -15,7 +17,7 @@ $con = udundi_sql_connect();
 
 // DO AUTHENTICATION HERE!
 // Get the hash from the database.
-$sql_command = "SELECT password FROM users WHERE userid=\"" . $_POST['id'] . "\"";
+$sql_command = "SELECT password FROM users WHERE email=\"" . $_POST['email'] . "\"";
 $result = $con->query($sql_command);
 
 if ($row = $result->fetch_array())
@@ -26,9 +28,11 @@ else
 $result->close();
 
 // Make sure the id is not a duplicate. This is unlikely. Also store in database.
-while (!add_session_to_database($con, session_id()))
-    session_regenerate_id();
+//while (!add_session_to_database($con, session_id()))
+//    session_regenerate_id();
 
-redirect_to_home();
+//redirect_to_home();
 
 ?>
+</head>
+</html>
