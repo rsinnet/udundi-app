@@ -39,7 +39,10 @@ $result->close();
 <html>
   <body>
     <?php
-      print $pass_good;
+      if ($pass_good)
+          echo "Succcess!";
+      else
+          echo "Failure!";
       ?>
   </body>
 </html>
