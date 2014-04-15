@@ -23,7 +23,7 @@ $con = udundi_sql_connect();
     <?php
       echo session_id();
       echo "<br>"
-      echo add_session_to_database($con, session_id());
+ add_session_to_database($con, session_id());
        ?>
   </body>
 </html>
