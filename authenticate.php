@@ -42,7 +42,7 @@
 <html>
   <body>
     <?php
-      echo $password;
+      echo "$password<br>$hash<br>" . password_verify($password, $hash);;
     ?>
   </body>
 </html>
