@@ -94,7 +94,7 @@ ChartPanel.prototype.populate = function(msg)
 		dateFormat : "%y-%0m-%0d",
 		defaultTheme : false
 	    },
-	    colors : [$chrt_second],
+	    colors : [$chrt_second]
 
 	};
 	$.plot($("#" + this.chartId()), [d], options);
