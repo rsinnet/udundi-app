@@ -3,12 +3,20 @@
 	{
 	    "fullName": "Page Impressions",
 	    "name": "page_impressions",
-	    "description": "The total number of impressions seen of any content associated with your Page"
+	    "description": "The total number of impressions seen of any content associated with your Page",
+	    "period": "day"
 	},
 	{
 	    "fullName": "Unique Page Impressions",
 	    "name": "page_impressions_unique",
-	    "description": "The number of people who have seen any content associated with your Page"
+	    "description": "The number of people who have seen any content associated with your Page",
+	    "period": "day"
+	},
+	{
+	    "fullName": "Lifetime Page Likes",
+	    "name": "page_fans",
+	    "description": "The total number of people who have liked your Page.",
+	    "period": "lifetime"
 	}
     ]	
 }
