@@ -4,12 +4,6 @@ require_once("lib/password.php");
 require_once("inc/utilities.php");
 require_once("inc/secure.php");
 
-
-function redirect_to_home()
-{
-    header('Location: http://dev.iamphilosopher.com/index.php');
-}
-
 function do_login()
 {
     $con = udundi_sql_connect();

@@ -12,6 +12,12 @@ function udundi_sql_connect()
     return $con;
 }
 
+
+function redirect_to_home()
+{
+    header('Location: http://dev.iamphilosopher.com/index.php');
+}
+
 function redirect_to_login()
 {
     $public_space = array("login.php", "register.php", "error404.php", "error500.php");
