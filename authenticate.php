@@ -18,7 +18,7 @@ $con = udundi_sql_connect();
 $sql_command = "SELECT password FROM users WHERE email=\"" . $_POST['email'] . "\"";
 $result = $con->query($sql_command);
  
-$password = $POST_['password'];
+$password = $_POST['password'];
 
 if ($row = $result->fetch_array()) {
     $hash = $row['password'];
