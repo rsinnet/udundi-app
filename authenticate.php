@@ -34,6 +34,10 @@ $result->close();
 <html>
   <body>
     <?php
+      echo $password;
+      echo "<br/>";
+      echo $hash;
+      echo "<br/>";
       $pass_good = password_verify($password, $hash);
       //if ($pass_good)
       //{
