@@ -26,14 +26,9 @@ else
 $result->close();
 
 // Make sure the id is not a duplicate. This is unlikely. Also store in database.
-//while (!add_session_to_database($con, session_id()))
-//    session_regenerate_id();
+while (!add_session_to_database($con, session_id()))
+    session_regenerate_id();
 
-  //redirect_to_home();
+  redirect_to_home();
 
 ?>
-<html>
-<head>
-hey
-</head>
-</html>
