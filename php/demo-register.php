@@ -31,7 +31,7 @@ if (isset($_POST['email']) &&
     //$scon->close();
         unset($hash);
         
-        $sql_command = "INSERT INTO users (email) VALUES (\"$email\")";
+        $sql_command = "INSERT INTO users (email, created) VALUES (\"$email\", NULL)";
         echo "<br>";
         echo $sql_command;
     //$con->query($sql_command);
