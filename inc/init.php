@@ -14,15 +14,21 @@ if (!isset($__INCLUDE_UTILITIES_PHP))
         }
         return $con;
     }
+    
+    function add_session_to_database($con)
+    {
+        $sql_command = "INSERT INTO session (id, userid) ".
+                       "VALUES (\"" . session_id() . "\", \"" . $user_id."\")";
+        return $con->query($sql_command);
+    }
 
     function redirect_to_login()
     {
         if (basename($_SERVER['REQUEST_URI']) != "login.php")
-            header( 'Location: http://www.iamphilosopher.com/udundi/app/login.php');
+            header('Location: http://www.iamphilosopher.com/udundi/app/login.php');
     }
 }
 $__INCLUDE_UTILITIES_PHP = 1;
-
 
 // Session management
 // Authentication is done elsewhere.
@@ -30,8 +36,10 @@ $__INCLUDE_UTILITIES_PHP = 1;
 // Check users cookie for a persistent session identifier.
 if (isset($_COOKIE['id']))
 {
-    // If they have a session, see if it's in the database still.
+    // Connect to the database.
     $con = udundi_sql_connect();
+
+    // If they have a session, see if it's still in the database.
     $result = $con->query("SELECT u.id, u.email FROM sessions AS s ".
                           "INNER JOIN users AS u ON u.id = s.userid ".
                           "WHERE s.id=\"" . $_COOKIE['id'] . "\"");
@@ -44,7 +52,7 @@ if (isset($_COOKIE['id']))
         session_id($_COOKIE['id']);
         session_start();
     }
-        else
+    else
     {
         // If it is NOT, clear out the cookie and redirect the user to the login page.
         unset($_COOKIE['id']);
@@ -60,13 +68,20 @@ else
     redirect_to_login();
 }
 
-//if (session_id() == '')
-//{
-//    session_start();
+// AUTHENTICATION!
 
-    // Store session ID in database
-    
+
+// Get a session id.
+//if (session_id() == '') {
+//    session_start();
+//} else {
+//    session_regenerate_id();
 //}
+
+// Make sure the id is not a duplicate. This is unlikely. Also store in database.
+//while (!add_session_to_database($con))
+//    session_regenerate_id();
+
 
 
 require_once("lib/config.php");
