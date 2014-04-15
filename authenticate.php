@@ -26,8 +26,8 @@ if ($row = $result->fetch_array()) {
             session_regenerate_id();
         redirect_to_home();
     }
-    else
-        login_error();
+//else
+//        login_error();
 }
 //else
 //    login_error();
