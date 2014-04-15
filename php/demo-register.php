@@ -55,7 +55,7 @@ if (isset($_POST['email']) &&
     {
         // Redirect to login page, preferably filling in certain values by passing
         // POST data.
-        redirect_to_login)(;
+        redirect_to_login();
     }
 }
 ?>
