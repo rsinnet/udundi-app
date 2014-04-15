@@ -64,6 +64,7 @@ ChartPanel.prototype.parse = function(msg)
 
 ChartPanel.prototype.populate = function(msg)
 {
+    var d = this.parse(msg);
     if ($("#" + this.chartId()).length) {
 	for (var i = 0; i < d.length; ++i)
 	    d[i][0] += 60 * 60 * 1000;
