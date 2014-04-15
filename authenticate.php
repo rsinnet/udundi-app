@@ -1,5 +1,3 @@
-<html>
-<head>
 <?php
 
 require_once("lib/password.php");
@@ -31,8 +29,11 @@ $result->close();
 //while (!add_session_to_database($con, session_id()))
 //    session_regenerate_id();
 
-//redirect_to_home();
+  //redirect_to_home();
 
 ?>
+<html>
+<head>
+hey
 </head>
 </html>
