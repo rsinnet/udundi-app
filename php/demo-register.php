@@ -2,7 +2,7 @@
   <body>
     <?php
 echo "hey";
-      if ( isset($_POST['submit']) && isset($_POST['username']) && isset($_POST['password']) )
+      if (isset($_POST['username']) && isset($_POST['password']) )
       {
           echo $password;
           echo "<br>";
