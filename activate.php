@@ -37,11 +37,10 @@ if ($row = $result->fetch_array())
 $result->close();
 $con->close();
 
+echo "<html>".
+"  <body>".
+"    Account <b>$email</b> activated. Please <a href=\"login.php\">login</a>.".
+"  </body>".
+"</html>";
 
 ?>
-
-<html>
-  <body>
-    Account <b><?php echo $email; ?></b> activated. Please <a href="login.php">login</a>.
-  </body>
-</html>
