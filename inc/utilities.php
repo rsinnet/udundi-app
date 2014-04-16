@@ -105,4 +105,30 @@ function conditional_redirect_from_public_area()
         redirect_to_home();
 }
 
+function account_active($email)
+{
+// Connect to the database.
+    $con = udundi_sql_connect();
+
+    $sql_command = "SELECT active FROM users WHERE email=\"$email\"";
+
+    try
+    {
+        $sth = execute_query($scon, $sql_command);
+    }
+    catch (PDOException $ex)
+    {
+// TODO: Error handling. Send the user to an error page.
+        log_error("Problem executing activation status query: {$ex->getMessage()}");
+    }
+
+    if ($row = $sth->fetch(PDO::FETCH_ASSOC))
+    {
+// Check if active
+        if ($row['active'])
+            return true;
+    }
+    return false;
+}
+
 ?>
