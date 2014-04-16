@@ -26,9 +26,18 @@ $scon = udundi_secure_sql_connect();
 // DO AUTHENTICATION HERE!
 // Get the hash from the database.
 $sql_command = "SELECT password FROM users_secure WHERE email=\"" . $_POST['email'] . "\"";
-$result = $scon->query($sql_command);
 
-if ($row = $result->fetch_array()) {
+try
+{
+    $sth = execute_query($scon, $sql_command);
+}
+catch (PDOException $ex)
+{
+    log_error("Problem executing authentication query: [" . $ex->getCode() . "] " . $ex->getMessage());
+}
+
+if ($row = $sth->fetch(PDO::FETCH_ASSOC))
+{
     if (password_verify($_POST['password'], $row['password']))
         do_login($_POST['email']);
     else
@@ -36,7 +45,5 @@ if ($row = $result->fetch_array()) {
 }
 else
     login_error();
-
-$result->close();
 
 ?>

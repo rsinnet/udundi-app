@@ -3,19 +3,51 @@ require_once('logging.php');
 
 $GLOBALS['public_space'] = array("login.php", "register.php", "error404.php", "error500.php", "demo-register.php");
 
-function udundi_sql_connect()
+function udundi_connect($dbname, $dbuser, $dbpass)
 {
-    $dbuser = 'rsinnet_webuser';
-    $dbpass = 'Z?Z07uwL#(4g';
-    $con = mysqli_connect("localhost", $dbuser, $dbpass, "rsinnet_udundi");
-    if (mysqli_connect_errno())
+    try
     {
-        log_error("Failed to connect: " . mysqli_connect_error());
+        $con = new PDO("mysql:host=localhost;dbname=$dbname", $dbuser, $dbpass);
+        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+    catch (PDOException $ex)
+    {
+        log_error("Failed to connect: " . $ex->getMessage());
         // redirect to error page.
     }
+    
     return $con;
 }
 
+function udundi_sql_connect()
+{
+    return udundi_connect("rsinnet_udundi", "rsinnet_webuser",  "Z?Z07uwL#(4g");
+}
+
+function execute_query($con, $sql_command)
+{
+    // Never log this. We don't want hashes written to a log.
+    try
+    {
+        $st = $con->prepare($sql_command);
+    }
+    catch (PDOException $ex)
+    { 
+        log_error("Failed to connect: " . $ex->getMessage());       
+        throw($ex); // rethrow
+    }
+
+    try
+    {
+        $st->execute();
+    }
+    catch (PDOException $ex)
+    {
+        log_warn("Failed to execute query: [" . $ex->getCode() . "] " . $ex->getMessage());
+        throw($ex); // rethrow
+    }
+    return $st;
+}
 
 function redirect_to_home()
 {
@@ -24,7 +56,6 @@ function redirect_to_home()
 
 function redirect_to_login()
 {
-
     if (!in_array(basename($_SERVER['REQUEST_URI']), $GLOBALS['public_space']))
         header('Location: http://dev.iamphilosopher.com/login.php');
 }
@@ -45,19 +76,21 @@ function add_session_to_database($con, $session_id, $email)
 {
     $sql_command = "INSERT INTO sessions (id, email) ".
                    "VALUES (\"" . $session_id . "\", \"" . $email."\")";
-    return $con->query($sql_command);
+    try
+    {
+        $st = execute_query($sql_command);
+    }
+    catch (PDOException $ex) {
+// TODO: If duplicate entry, no big deal, just return false.
+// TODO: Other problems should write to the error log.
+        log_warn("Couldn't add session to database: [" . $ex->getCode() . "] " . $ex->getMessage());
+    }
 }
 
 function conditional_redirect_from_public_area()
 {
     if (in_array(basename($_SERVER['REQUEST_URI']), $GLOBALS['public_space']))
         redirect_to_home();
-}
-
-function execute_query($con, $sql_command)
-{
-    // Never log this. We don't want hashes written to a log.
-    return $con->query($sql_command);
 }
 
 ?>

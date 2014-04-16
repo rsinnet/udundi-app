@@ -13,17 +13,17 @@ if (session_id() == '')
 $con = udundi_sql_connect();
 
 // If they have a session, see if it's still in the database.
-if (!($result = execute_query($con, "SELECT u.email, u.active, u.enabled FROM sessions AS s ".
-                              "INNER JOIN users AS u ON u.email = s.email ".
-                              "WHERE s.id=\"" . session_id() . "\"")))
-{
+try {
+    $st = execute_query($con, "SELECT u.email, u.active, u.enabled FROM sessions AS s ".
+                        "INNER JOIN users AS u ON u.email = s.email ".
+                        "WHERE s.id=\"" . session_id() . "\"");
+} catch (PDOException $ex) {
     // TODO: Error Handling
     log_error("Unable to SELECT from sessions table while trying to query for user and session info. ".
-             mysqli_errno($scon) . " " . mysqli_error($scon));
-
+              $ex->getMessage());
 }
 
-if ($row = $result->fetch_array())
+if ($row = $st->fetch(PDO::FETCH_ASSOC))
 {
     $udundi_user_email = $row['email'];
     if ($row['active'] && $row['enabled'])
@@ -33,9 +33,6 @@ if ($row = $result->fetch_array())
 }
 else
     redirect_to_login();
-
-$result->close();
-
 
 require_once("lib/config.php");
 
