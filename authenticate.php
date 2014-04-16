@@ -23,7 +23,10 @@ else
     if ($authentic)
     {
         if (account_active($email))
+        {
             echo "Authenticated successfully.";
+            do_login($email);
+        }
         else
         {
 // TODO: Redirect to resend e-mail page.
