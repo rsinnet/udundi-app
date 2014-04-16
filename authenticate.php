@@ -25,7 +25,7 @@ else
         if (account_active($email))
         {
             echo "Authenticated successfully.";
-            do_login($email);
+//do_login($email);
         }
         else
         {
