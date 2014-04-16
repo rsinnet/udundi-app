@@ -21,7 +21,7 @@ else
         }
         elseif ($ex->getCode() == 2)
         {
-            echo "Invalid login credentials."
+            echo "Invalid login credentials.";
         }
     }
 }
