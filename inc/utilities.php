@@ -1,4 +1,6 @@
 <?php
+require_once('logging.php');
+
 function udundi_sql_connect()
 {
     $dbuser = 'rsinnet_webuser';
@@ -42,6 +44,14 @@ function conditional_redirect_from_public_area()
     $public_space = array("login.php", "register.php", "error404.php", "error500.php");
     if (in_array(basename($_SERVER['REQUEST_URI']), $public_space))
         redirect_to_home();
+}
+
+function execute_query($con, $sql_command)
+{
+    if ($debug_mode)
+        log_notice($sql_command);
+
+    return $con->query($sql_command);
 }
 
 ?>
