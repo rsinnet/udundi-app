@@ -10,6 +10,7 @@ $result = execute_query($con, $sql_command);
 
 if ($row = $result->fetch_array())
 {
+    $email = $row['email'];
     // Enable and activate the account.
     $sql_command = "UPDATE users SET active=TRUE, enabled=TRUE WHERE email=\"$email\"";
     if (!execute_query($con, $sql_command))
@@ -17,6 +18,8 @@ if ($row = $result->fetch_array())
         // TODO: Error Handling
         log_error("Unable to activate and enable user `$email` in users table. ".
                  mysqli_errno($scon) . " " . mysqli_error($scon));
+
+        // TODO: How many records were updated? Should be one.
     }
 
     // Remove the activation nonce from the database.
