@@ -26,6 +26,7 @@ try {
 if ($row = $st->fetch(PDO::FETCH_ASSOC))
 {
     $udundi_user_email = $row['email'];
+    log_notice("Found user `$udundi_user_email`");
     if ($row['active'] && $row['enabled'])
         conditional_redirect_from_public_area();
     else
