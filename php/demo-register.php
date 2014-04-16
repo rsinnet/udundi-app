@@ -30,7 +30,7 @@ if (isset($_POST['email']) &&
         $sql_command = "INSERT INTO users_secure (email, password) VALUES (\"$email\", \"$hash\")";
         if (!execute_query($scon, $sql_command))
             log_warn('Unable to insert user with email `$email` into users_secure table. '.
-                     mysql_errorno($scon) . " " . mysql_error($scon));
+                     mysql_errno($scon) . " " . mysql_error($scon));
     // die here
         $scon->close();
         unset($hash);
@@ -38,7 +38,7 @@ if (isset($_POST['email']) &&
         $sql_command = "INSERT INTO users (email, created) VALUES (\"$email\", NULL)";
         if (!execute_query($con, $sql_command))
             log_warn('Unable to insert user with email `$email` into users table. '.
-                     mysql_errorno($con) . " " . mysql_error($con));
+                     mysql_errno($con) . " " . mysql_error($con));
         
 
         // Generate an activation token.
@@ -49,7 +49,7 @@ if (isset($_POST['email']) &&
         $con->query($sql_command);
         if (!execute_query($con, $sql_command))
             log_warn('Unable to insert activation token for user `$email`. '.
-                     mysql_errorno($con) . " " . mysql_error($con));
+                     mysql_errno($con) . " " . mysql_error($con));
         $con->close();        
 
         // Send activation email to registrant.
