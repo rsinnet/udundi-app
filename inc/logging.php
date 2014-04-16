@@ -6,7 +6,7 @@ function do_log($msg, $type)
 {
     global $log_dir;
     $bt = debug_backtrace();
-    $caller = array_shift(array_shift($bt));
+    $caller = $bt[2];
     $today = date("Y-m-d H:i:s");
     $lmsg = "$today $type ".$caller['file'].":".$caller['line'].": $msg\n";
 
