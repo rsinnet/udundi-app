@@ -86,7 +86,7 @@ function sql_connect_error()
 function add_session_to_database($con, $session_id, $email)
 {
     $sql_command = "INSERT INTO sessions (id, email) ".
-                   "VALUES (\"" . $session_id . "\", \"" . $email."\")";
+                   "VALUES (\"$session_id\", \"$email\")";
     try
     {
         $st = execute_query($con, $sql_command);
@@ -94,7 +94,7 @@ function add_session_to_database($con, $session_id, $email)
     catch (PDOException $ex) {
 // TODO: If duplicate entry, no big deal, just return false.
 // TODO: Other problems should write to the error log.
-        log_warn("Couldn't add session to database: [" . $ex->getCode() . "] " . $ex->getMessage());
+        log_warn("Couldn't add session to database: {$ex->getMessage()}");
     }
 }
 
@@ -112,8 +112,7 @@ function account_active($email)
     $sql_command = "SELECT active FROM users WHERE email=\"$email\"";
     try
     {
-        $sth = execute_query($scon, $sql_command);
-        throw new Exception($sql_command, 0);
+        $sth = execute_query($con, $sql_command);
     }
     catch (PDOException $ex)
     {
