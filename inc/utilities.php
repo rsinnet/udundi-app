@@ -1,6 +1,8 @@
 <?php
 require_once('logging.php');
 
+$public_space = array("login.php", "register.php", "error404.php", "error500.php", "demo-register.php");
+
 function udundi_sql_connect()
 {
     $dbuser = 'rsinnet_webuser';
@@ -8,7 +10,7 @@ function udundi_sql_connect()
     $con = mysqli_connect("localhost", $dbuser, $dbpass, "rsinnet_udundi");
     if (mysqli_connect_errno())
     {
-        echo "Failed to connect: " . mysqli_connect_error();
+        log_error("Failed to connect: " . mysqli_connect_error());
         // redirect to error page.
     }
     return $con;
@@ -22,8 +24,8 @@ function redirect_to_home()
 
 function redirect_to_login()
 {
-    $public_space = array("login.php", "register.php", "error404.php", "error500.php");
-    if (!in_array(basename($_SERVER['REQUEST_URI']), $public_space))
+
+    if (!in_array(basename($_SERVER['REQUEST_URI']), $GLOBALS['public_space']))
         header('Location: http://dev.iamphilosopher.com/login.php');
 }
 
@@ -46,8 +48,7 @@ function add_session_to_database($con, $session_id, $email)
 
 function conditional_redirect_from_public_area()
 {
-    $public_space = array("login.php", "register.php", "error404.php", "error500.php");
-    if (in_array(basename($_SERVER['REQUEST_URI']), $public_space))
+    if (in_array(basename($_SERVER['REQUEST_URI']), $GLOBALS['public_space']))
         redirect_to_home();
 }
 
