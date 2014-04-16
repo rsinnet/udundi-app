@@ -1,6 +1,8 @@
 <?php
 // This page is only accessed when writing to the secure database.
 
+require_once('logging.php');
+
 function udundi_secure_sql_connect()
 {
     $dbuser = 'rsinnet_authuser';
@@ -8,7 +10,7 @@ function udundi_secure_sql_connect()
     $con = mysqli_connect("localhost", $dbuser, $dbpass, "rsinnet_udundi_secure");
     if (mysqli_connect_errno())
     {
-        echo "Failed to connect: " . mysqli_connect_error();
+        log_error( "Failed to connect: " . mysqli_connect_error());
         // redirect to error page.
     }
     return $con;

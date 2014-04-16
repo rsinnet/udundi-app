@@ -40,7 +40,6 @@ if (isset($_POST['email']) &&
             log_warn('Unable to insert user with email `$email` into users table. '.
                      mysql_errno($con) . " " . mysql_error($con));
         
-
         // Generate an activation token.
         $token = get_activation_token();
         
