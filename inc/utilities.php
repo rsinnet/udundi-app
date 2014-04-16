@@ -1,7 +1,7 @@
 <?php
 require_once('logging.php');
 
-$public_space = array("login.php", "register.php", "error404.php", "error500.php", "demo-register.php");
+$GLOBALS['public_space'] = array("login.php", "register.php", "error404.php", "error500.php", "demo-register.php");
 
 function udundi_sql_connect()
 {
