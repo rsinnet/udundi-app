@@ -142,9 +142,13 @@ function account_active($email)
 function do_login($email)
 {
 // TODO: Maximum number of retries.
+    $max_retries = 3;
+    $retries_left = $max_retries;
+
     $con = udundi_sql_connect();
+
     // Make sure the id is not a duplicate. This is unlikely. Also store in database.
-    while (!add_session_to_database($con, session_id(), $email))
+    while (($retries_left-- > 0) && (!add_session_to_database($con, session_id(), $email)))
     {
         session_regenerate_id();
     }
