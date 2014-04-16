@@ -77,7 +77,7 @@ if (isset($_POST['email']) &&
         mail($email,
              "Activate Your Udundi Analytics Account",
              "Please click <a href=\"http://dev.iamphilosopher.com/activate.php?token=$token\">here</a> to activate your account. The purpose of this step is to deter malicious users from trying to overload our databases.", "From: support@udundi.com");
-        log_notice("An activation e-mail has been sent to $email.")
+        log_notice("An activation e-mail has been sent to $email.");
       
 // Going to need a cronjob or something to clean up the database.
         
