@@ -98,7 +98,7 @@ function add_session_to_database($con, $session_id, $email)
         return false;
     }
 
-    return true
+    return true;
 }
 
 function conditional_redirect_from_public_area()
