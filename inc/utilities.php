@@ -12,7 +12,7 @@ function udundi_connect($dbname, $dbuser, $dbpass)
     }
     catch (PDOException $ex)
     {
-        log_error("Failed to connect: " . $ex->getMessage());
+        log_error("Failed to connect: [" . $ex->getCode() . "] " . $ex->getMessage());
         // redirect to error page.
     }
     
