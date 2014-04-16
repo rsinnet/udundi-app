@@ -36,7 +36,9 @@ function redirect_to_registration($email="")
 
 function login_error()
 {
-    header('Location: http://dev.iamphilosopher.com/error404.php');
+    $error_page = "error404.php";
+    if (!(basename($_SERVER['REQUEST_URI']) == $error_page))
+        header("Location: http://dev.iamphilosopher.com/$error_page");
 }
 
 function add_session_to_database($con, $session_id, $email)

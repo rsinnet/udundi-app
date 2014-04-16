@@ -13,9 +13,15 @@ if (session_id() == '')
 $con = udundi_sql_connect();
 
 // If they have a session, see if it's still in the database.
-$result = $con->query("SELECT u.email, u.active, u.enabled FROM sessions AS s ".
-                      "INNER JOIN users AS u ON u.email = s.email ".
-                      "WHERE s.id=\"" . session_id() . "\"");
+if (!($result = execute_query($con, "SELECT u.email, u.active, u.enabled FROM sessions AS s ".
+                              "INNER JOIN users AS u ON u.email = s.email ".
+                              "WHERE s.id=\"" . session_id() . "\"")))
+{
+    // TODO: Error Handling
+    log_error("Unable to SELECT from sessions table while trying to query for user and session info. ".
+             mysqli_errno($scon) . " " . mysqli_error($scon));
+
+}
 
 if ($row = $result->fetch_array())
 {
