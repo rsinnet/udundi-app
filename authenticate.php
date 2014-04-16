@@ -9,8 +9,10 @@ if (empty($_POST['email']) || empty($_POST['password']) )
     login_error();
 else
 {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
     try {
-        $authentic = do_authentication($_POST["email"], $_POST["password"]);
+        $authentic = do_authentication($email, $password);
     }
     catch (InvalidLoginException $ex)
     {
@@ -20,16 +22,14 @@ else
 
     if ($authentic)
     {
-        try {
-            account_active($_POST["email"]);
-        }
-        catch (InactiveAccountException $ex)
+        if (account_active($email))
+            echo "Authenticated successfully.";
+        else
         {
 // TODO: Redirect to resend e-mail page.
             echo $ex->getMessage();
         }
     }
 }
-
 
 ?>
