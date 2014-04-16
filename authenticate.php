@@ -27,6 +27,7 @@ else
         if (account_active($email))
         {
             do_login($email);
+            redirect_to_home();
          }
          else
          {
