@@ -95,7 +95,10 @@ function add_session_to_database($con, $session_id, $email)
 // TODO: If duplicate entry, no big deal, just return false.
 // TODO: Other problems should write to the error log.
         log_warn("Couldn't add session to database: {$ex->getMessage()}");
+        return false;
     }
+
+    return true
 }
 
 function conditional_redirect_from_public_area()
@@ -138,11 +141,11 @@ function account_active($email)
 
 function do_login($email)
 {
+// TODO: Maximum number of retries.
     $con = udundi_sql_connect();
     // Make sure the id is not a duplicate. This is unlikely. Also store in database.
     while (!add_session_to_database($con, session_id(), $email))
     {
-        log_notice("Regenerating system id.");
         session_regenerate_id();
     }
 }
