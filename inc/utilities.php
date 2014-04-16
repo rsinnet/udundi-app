@@ -48,7 +48,7 @@ function conditional_redirect_from_public_area()
 
 function execute_query($con, $sql_command)
 {
-    if ($debug_mode)
+    if ($GLOBALS['debug_mode'])
         log_notice($sql_command);
 
     return $con->query($sql_command);

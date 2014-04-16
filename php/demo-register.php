@@ -45,11 +45,12 @@ if (isset($_POST['email']) &&
         
         // Add activation code to database with expiration time three days from now.
         $sql_command = "INSERT INTO activations (email, token) VALUES (\"$email\", \"$token\")";
-        $con->query($sql_command);
         if (!execute_query($con, $sql_command))
-            log_warn('Unable to insert activation token for user `$email`. '.
+            log_warn('Unable to insert activation token for user `$email`. ' .
                      mysql_errno($con) . " " . mysql_error($con));
-        $con->close();        
+        $con->close();
+
+        // Need to deal with reactivation if e-mail exists but is not active.
 
         // Send activation email to registrant.
 
