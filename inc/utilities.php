@@ -112,7 +112,7 @@ function account_active($email)
 
     $sql_command = "SELECT active FROM users WHERE email=\"$email\"";
     
-    if ($GLOBALS["debug"])
+    if ($GLOBALS["debug_mode"])
         log_notice("Checking if $email is active.");
     try
     {
