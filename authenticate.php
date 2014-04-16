@@ -10,18 +10,23 @@ if (empty($_POST['email']) || empty($_POST['password']) )
 else
 {
     try {
-        do_authentication($_POST["email"], $_POST["password"]);
+        $authentic = do_authentication($_POST["email"], $_POST["password"]);
     }
-    catch (UdundiException $ex)
+    catch (InvalidLoginException $ex)
     {
-        if ($ex->getCode() == 1)
-        {
-// TODO: Goto resend activation e-mail.
-            echo "Goto resend activation e-mail.";
+// TODO: Redirect to login page with email field filled out.
+        echo $ex->getMessage();
+    }
+
+    if ($authentic)
+    {
+        try {
+            account_active($_POST["email"]);
         }
-        elseif ($ex->getCode() == 2)
+        catch (InactiveAccountException $ex)
         {
-            echo "Invalid login credentials.";
+// TODO: Redirect to resend e-mail page.
+            echo $ex->getMessage();
         }
     }
 }

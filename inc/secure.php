@@ -81,10 +81,11 @@ function do_authentication($email, $password)
         if (password_verify($password, $row['password']))
             do_login($email);
         else
-            throw new UdundiException('Account not yet activated.', 1);
+            throw new InvalidLoginException();
     }
     else
-        throw new UdundiException("User not found in database.", 2);
+        throw new InvalidLoginException();
+
 
     return true;
 }
