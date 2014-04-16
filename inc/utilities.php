@@ -7,8 +7,6 @@ function udundi_connect($dbname, $dbuser, $dbpass)
 {
     try
     {
-        $bt = debug_backtrace();
-        echo $bt;
         $con = new PDO("mysql:host=localhost;dbname=$dbname", $dbuser, $dbpass);
     }
     catch (PDOException $ex)
