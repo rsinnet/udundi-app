@@ -1,7 +1,7 @@
 <?php
 $debug_mode = true;
 
-function log($msg, $type)
+function do_log($msg, $type)
 {
     $bt = debug_backtrace();
     $caller = array_shift($bt);
@@ -13,17 +13,17 @@ function log($msg, $type)
 
 function log_notice($msg)
 {
-    log($msg, "NOTICE");
+    do_log($msg, "NOTICE");
 }
 
 function log_warn($msg)
 {
-    log($msg, "WARN");
+    do_log($msg, "WARN");
 }
 
 
 function log_error($msg)
 {
-    log($msg, "ERROR");
+    do_log($msg, "ERROR");
 }
 ?>
