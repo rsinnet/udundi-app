@@ -11,7 +11,9 @@ else
 {
     $email = $_POST["email"];
     $password = $_POST["password"];
-    try {
+
+    try
+    {
         $authentic = do_authentication($email, $password);
     }
     catch (InvalidLoginException $ex)
