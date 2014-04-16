@@ -8,7 +8,7 @@ function udundi_connect($dbname, $dbuser, $dbpass)
     try
     {
         $con = new PDO("mysql:host=localhost;dbname=$dbname", $dbuser, $dbpass);
-        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch (PDOException $ex)
     {
