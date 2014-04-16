@@ -13,7 +13,7 @@ function udundi_connect($dbname, $dbuser, $dbpass)
     {
         log_error("Failed to connect: [" . $ex->getCode() . "] " . $ex->getMessage());
         // redirect to error page.
-        throw $ex;
+        sql_connect_error();
     }
     
     return $con;
@@ -76,6 +76,11 @@ function login_error()
 function activation_error()
 {
 // TODO: Custom error page.
+    login_error();
+}
+
+function sql_connect_error()
+{
     login_error();
 }
 
