@@ -30,11 +30,15 @@ if ($row = $result->fetch_array())
         // TODO: Error Handling
         log_error("Unable to delete nonce from activations table. ".
                   mysqli_errno($scon) . " " . mysqli_error($scon));
-        die();
+
+        // Technically the account has been activated so this is not the end of
+        // the world, but it's bad because we should never be in this state.
     }
 }
 else
 {
+// TODO: Wrong activation token or none present, need a custom error page. Log back in to regenerate 
+// activation token.
     die();
 }
 
