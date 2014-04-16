@@ -110,10 +110,10 @@ function account_active($email)
     $con = udundi_sql_connect();
 
     $sql_command = "SELECT active FROM users WHERE email=\"$email\"";
-    throw new Exception($sql_command, 0);
     try
     {
         $sth = execute_query($scon, $sql_command);
+        throw new Exception($sql_command, 0);
     }
     catch (PDOException $ex)
     {
