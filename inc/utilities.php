@@ -7,13 +7,14 @@ function udundi_connect($dbname, $dbuser, $dbpass)
 {
     try
     {
+        $bt = debug_backtrace();
+        echo $bt;
         $con = new PDO("mysql:host=localhost;dbname=$dbname", $dbuser, $dbpass);
     }
     catch (PDOException $ex)
     {
         log_error("Failed to connect: [" . $ex->getCode() . "] " . $ex->getMessage());
         // redirect to error page.
-
     }
     
     return $con;
@@ -31,7 +32,7 @@ function execute_query($con, $sql_command)
     {
         $st = $con->prepare($sql_command);
     }
-    catch (Exception $ex)
+    catch (PDOException $ex)
     { 
         log_error("Failed to connect: " . $ex->getMessage());       
         throw($ex); // rethrow
