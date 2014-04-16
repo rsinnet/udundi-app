@@ -18,7 +18,7 @@ else
     }
     catch (InvalidLoginException $ex)
     {
-// TODO: Redirect to login page with email field filled out.
+        // TODO: Redirect to login page with email field filled out.
         echo $ex->getMessage();
     }
 
@@ -27,14 +27,15 @@ else
         if (account_active($email))
         {
             echo "Authenticated successfully.";
-//do_login($email);
+            //do_login($email);
         }
         else
         {
-// TODO: Redirect to resend e-mail page.
+           // TODO: Redirect to resend e-mail page.
             echo $ex->getMessage();
         }
     }
+    echo "Nope.";
 }
 
 ?>
