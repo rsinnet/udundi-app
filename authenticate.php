@@ -25,14 +25,17 @@ else
     if ($authentic)
     {
         if (account_active($email))
-        {
-            do_login($email);
+        {d_login($email);
             redirect_to_home();
          }
          else
          {
             // TODO: Redirect to resend e-mail page.
-             echo $ex->getMessage();
+// TODO: Duplicate entry
+// TODO: Need to deal with disabled accounts as well. Check if inactive and go to resend email page if so.
+         }
+
+             echo "Account has not been activated. Click <a href="
          }
      }
 }
