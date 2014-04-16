@@ -31,7 +31,6 @@ if (isset($_POST['email']) &&
 // TODO: Need to deal with disabled accounts as well. Check if inactive and go to resend email page if so.
         }
 
-        $scon->close();
         unset($hash);
         
         $sql_command = "INSERT INTO users (email, created) VALUES (\"$email\", NULL)";
@@ -60,8 +59,6 @@ if (isset($_POST['email']) &&
             
 // TODO: Duplicate entry. Goto resend activation email page.
         }
-
-        $con->close();
         
 // TODO: Need to deal with reactivation if e-mail exists but is not active.
         
