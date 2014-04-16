@@ -38,7 +38,7 @@ if (isset($_POST['email']) &&
         try
         {
             execute_query($con, $sql_command);
-        } (catch PDOException $ex) {
+        } catch (PDOException $ex) {
             log_warn("Unable to insert user with email `$email` into users_secure table. ".
                      $ex->getMessage());            
 // TODO: Duplicate entry
