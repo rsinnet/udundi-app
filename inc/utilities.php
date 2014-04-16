@@ -66,9 +66,16 @@ function redirect_to_registration($email="")
 
 function login_error()
 {
+// TODO: Login error page.
     $error_page = "error404.php";
     if (!(basename($_SERVER['REQUEST_URI']) == $error_page))
         header("Location: http://dev.iamphilosopher.com/$error_page");
+}
+
+function activation_error()
+{
+// TODO: Custom error page.
+    login_error();
 }
 
 function add_session_to_database($con, $session_id, $email)
