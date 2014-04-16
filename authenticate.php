@@ -27,15 +27,14 @@ else
         if (account_active($email))
         {
             echo "Authenticated successfully.";
-            //do_login($email);
-        }
-        else
-        {
-           // TODO: Redirect to resend e-mail page.
-            echo $ex->getMessage();
-        }
-    }
-    echo "Nope.";
+            do_login($email);
+         }
+         else
+         {
+            // TODO: Redirect to resend e-mail page.
+             echo $ex->getMessage();
+         }
+     }
 }
 
 ?>

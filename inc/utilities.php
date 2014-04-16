@@ -136,4 +136,12 @@ function account_active($email)
     return false;
 }
 
+function do_login($email)
+{
+    $con = udundi_sql_connect();
+    // Make sure the id is not a duplicate. This is unlikely. Also store in database.
+    while (!add_session_to_database($con, session_id(), $email))
+        session_regenerate_id();
+}
+
 ?>
