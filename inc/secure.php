@@ -79,7 +79,10 @@ function do_authentication($email, $password)
     {
 // Verify password against stored hash.
         if (password_verify($password, $row['password']))
+        {
+            log_notice("Password verified for `$email`.");
             do_login($email);
+        }
         else
             throw new InvalidLoginException();
     }
