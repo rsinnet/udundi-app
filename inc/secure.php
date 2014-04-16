@@ -3,6 +3,7 @@
 
 require_once('logging.php');
 require_once('utilities.php');
+require_once('exceptions.php');
 
 function udundi_secure_sql_connect()
 {
@@ -41,5 +42,52 @@ function get_activation_token($length=128)
     }
     return $token;
 }
+
+function do_login($email)
+{
+    $con = udundi_sql_connect();
+    // Make sure the id is not a duplicate. This is unlikely. Also store in database.
+    while (!add_session_to_database($con, session_id(), $email))
+        session_regenerate_id();
+    redirect_to_home();
+}
+
+function do_authentication($email, $password)
+{
+
+// Get a session id.
+    if (session_id() == '')
+        session_start();
+
+// Connect to the database.
+    $scon = udundi_secure_sql_connect();
+
+// DO AUTHENTICATION HERE!
+// Get the hash from the database and compare.
+    $sql_command = "SELECT password FROM users_secure WHERE email=\"$email\"";
+
+    try
+    {
+        $sth = execute_query($scon, $sql_command);
+    }
+    catch (PDOException $ex)
+    {
+        log_error("Problem executing authentication query: [" . $ex->getCode() . "] " . $ex->getMessage());
+    }
+
+    if ($row = $sth->fetch(PDO::FETCH_ASSOC))
+    {
+// Verify password against stored hash.
+        if (password_verify($password, $row['password']))
+            do_login($email);
+        else
+            throw new UdundiException('Account not yet activated.', 1);
+    }
+    else
+        throw new UdundiException("User not found in database.", 2);
+
+    return true;
+}
+
 
 ?>
