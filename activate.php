@@ -17,9 +17,10 @@ if ($row = $result->fetch_array())
     {
         // TODO: Error Handling
         log_error("Unable to activate and enable user `$email` in users table. ".
-                 mysqli_errno($scon) . " " . mysqli_error($scon));
+                  mysqli_errno($scon) . " " . mysqli_error($scon));
 
         // TODO: How many records were updated? Should be one.
+        die();
     }
 
     // Remove the activation nonce from the database.
@@ -28,7 +29,8 @@ if ($row = $result->fetch_array())
     {
         // TODO: Error Handling
         log_error("Unable to delete nonce from activations table. ".
-                 mysqli_errno($scon) . " " . mysqli_error($scon));
+                  mysqli_errno($scon) . " " . mysqli_error($scon));
+        die();
     }
 }
 
@@ -37,3 +39,9 @@ $con->close();
 
 
 ?>
+
+<html>
+  <body>
+    Account <b><?php echo $email; ?></b> activated. Please <a href="login.php">login</a>.
+  </body>
+</html>
