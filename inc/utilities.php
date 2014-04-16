@@ -112,8 +112,6 @@ function account_active($email)
 
     $sql_command = "SELECT active FROM users WHERE email=\"$email\"";
     
-    if ($GLOBALS["debug_mode"])
-        log_notice("Checking if $email is active.");
     try
     {
         $sth = execute_query($scon, $sql_command);
@@ -125,11 +123,18 @@ function account_active($email)
     }
 
     if ($row = $sth->fetch(PDO::FETCH_ASSOC))
-    {
+    {    
 // Check if active
         if ($row['active'])
+        {
+            if ($GLOBALS["debug_mode"])
+                    log_notice("User $email is active.");
             return true;
+        }
     }
+
+    if ($GLOBALS["debug_mode"])
+        log_notice("User $email is inactive.");
     return false;
 }
 
