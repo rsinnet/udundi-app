@@ -31,7 +31,7 @@ function execute_query($con, $sql_command)
     {
         $st = $con->prepare($sql_command);
     }
-    catch (PDOException $ex)
+    catch (Exception $ex)
     { 
         log_error("Failed to connect: " . $ex->getMessage());       
         throw($ex); // rethrow
@@ -123,7 +123,7 @@ function account_active($email)
     }
 
     if ($row = $sth->fetch(PDO::FETCH_ASSOC))
-    {    
+    { 
 // Check if active
         if ($row['active'])
         {
