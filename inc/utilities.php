@@ -111,7 +111,9 @@ function account_active($email)
     $con = udundi_sql_connect();
 
     $sql_command = "SELECT active FROM users WHERE email=\"$email\"";
-
+    
+    if ($GLOBALS["debug"])
+        log_notice("Checking if $email is active.");
     try
     {
         $sth = execute_query($scon, $sql_command);
