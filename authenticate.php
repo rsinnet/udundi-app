@@ -20,6 +20,7 @@ else
         echo $ex->getMessage();
     }
 
+/*
     if ($authentic)
     {
         if (account_active($email))
@@ -33,6 +34,8 @@ else
             echo $ex->getMessage();
         }
     }
+*/
+    echo "hey";
 }
 
 ?>
