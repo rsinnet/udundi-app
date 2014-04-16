@@ -84,7 +84,7 @@ function add_session_to_database($con, $session_id, $email)
                    "VALUES (\"" . $session_id . "\", \"" . $email."\")";
     try
     {
-        $st = execute_query($sql_command);
+        $st = execute_query($con, $sql_command);
     }
     catch (PDOException $ex) {
 // TODO: If duplicate entry, no big deal, just return false.
