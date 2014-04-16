@@ -33,6 +33,10 @@ if ($row = $result->fetch_array())
         die();
     }
 }
+else
+{
+    die();
+}
 
 $result->close();
 $con->close();
