@@ -1,6 +1,6 @@
 <?php
 
-class UdundiException extends Exception()
+class UdundiException extends Exception
 {
     public function __construct($message, $code = 0, Exception $previous = null)
     {
