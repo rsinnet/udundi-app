@@ -27,6 +27,11 @@ function redirect_to_login()
         header('Location: http://dev.iamphilosopher.com/login.php');
 }
 
+function redirect_to_registration($email="")
+{
+    header('Location: http://dev.iamphilosopher.com/register.php');
+}
+
 function login_error()
 {
     header('Location: http://dev.iamphilosopher.com/error404.php');
