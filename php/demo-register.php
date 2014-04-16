@@ -36,7 +36,8 @@ if (isset($_POST['email']) &&
             {
                 // Duplicate entry
                 // TODO: Goto resend activation email page
-                die("Goto resend activation email page.");
+                die("Goto resend activation email page");
+            }
         }
         $scon->close();
         unset($hash);
