@@ -48,9 +48,7 @@ function conditional_redirect_from_public_area()
 
 function execute_query($con, $sql_command)
 {
-    if ($GLOBALS['debug_mode'])
-        log_notice($sql_command);
-
+    // Never log this. We don't want hashes written to a log.
     return $con->query($sql_command);
 }
 

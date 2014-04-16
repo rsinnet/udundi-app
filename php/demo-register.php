@@ -27,9 +27,17 @@ if (isset($_POST['email']) &&
         // Add user to database, but with account not activated.
         $sql_command = "INSERT INTO users_secure (email, password) VALUES (\"$email\", \"$hash\")";
         if (!execute_query($scon, $sql_command))
+        {
             log_warn("Unable to insert user with email `$email` into users_secure table. ".
                      mysqli_errno($scon) . " " . mysqli_error($scon));
-    // die here
+            
+
+            if (mysqli_errno($scon) == 1062)
+            {
+                // Duplicate entry
+                // TODO: Goto resend activation email page
+                die("Goto resend activation email page.");
+        }
         $scon->close();
         unset($hash);
         
