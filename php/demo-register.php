@@ -28,8 +28,7 @@ if (isset($_POST['email']) &&
             log_warn("Unable to insert user with email `$email` into users_secure table. ".
                      $ex->getMessage())
 // TODO: Duplicate entry
-// TODO: Need to deal with disabled accounts as well.
-                die("Check if inactive and go to resend email page if so.");
+// TODO: Need to deal with disabled accounts as well. Check if inactive and go to resend email page if so.
         }
 
         $scon->close();
@@ -44,7 +43,7 @@ if (isset($_POST['email']) &&
                      $ex->getMessage());            
 // TODO: Duplicate entry
             log_error("It seems user `$email` tried to register but his e-mail address already existed in the users_secure table but not in the users table.");
-            die("Major problem, send error through e-mail to sysadmin.");
+// TODO: Major problem, send error through e-mail to sysadmin.
         }
         
 // Generate an activation token.
@@ -59,8 +58,7 @@ if (isset($_POST['email']) &&
             log_warn("Unable to insert activation token for user `$email`. " .
                      $ex->getMessage());
             
-// TODO: Duplicate entry
-            die("Goto resend activation email page");
+// TODO: Duplicate entry. Goto resend activation email page.
         }
 
         $con->close();
