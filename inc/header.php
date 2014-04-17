@@ -26,6 +26,8 @@
 		<link rel="stylesheet" type="text/css" href="css/vendor/icomoon.css">
 		<link rel="stylesheet" type="text/css" href="css/vendor/flexslider.css">
 		<link rel="stylesheet" type="text/css" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+		<link rel="stylesheet" type="text/css" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
 
 
 		<!-- SmartAdmin RTL Support is under construction
