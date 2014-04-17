@@ -48,8 +48,8 @@ else
 	    // TODO: Need to deal with disabled accounts as well. Check if inactive and go to resend email page if so.
 	  }
 
-	echo "Account has not been activated
-	  }
+	echo "Account has not been activated.";
+      }
   }
 }
 
