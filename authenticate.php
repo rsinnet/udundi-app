@@ -39,7 +39,7 @@ else
 	      "<input type=\"hidden\" name=\"password\" value=\"$email\">".
 	      "</form>".
 	      "<p>The account $email has not been activated. Please click ".
-	      "<a href=\"javascript: document.getElementById(\\\"credentials\\\").submit();\">here</a> ".
+	      "<a href=\"javascript: document.getElementById('credentials').submit();\">here</a> ".
 	      "to send the activation e-mail again.</p>".
 	      "</body></html>";
 	    
