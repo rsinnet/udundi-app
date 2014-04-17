@@ -40,11 +40,11 @@ include("inc/nav.php");
 	<div id="content">
 
 		<div class="row">
-			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-2">
+			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-3">
 				<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i>Dashboard</h1>
 			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-9">
-				<!-- <ul id="sparks" class="">
+			<!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-9">
+				 <ul id="sparks" class="">
 					<li class="sparks-info">
 						<h5> Visits <span class="txt-color-blue"> 30,126 </span></h5>
 						 <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
