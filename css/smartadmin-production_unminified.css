@@ -19122,7 +19122,6 @@ img.away {
 #sparks li {
   display: inline-block;
   max-height: 47px;
-  overflow: hidden;
   text-align: left;
   box-sizing: content-box;
   -moz-box-sizing: content-box;
