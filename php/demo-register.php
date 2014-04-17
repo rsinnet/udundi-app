@@ -11,6 +11,10 @@ if (isset($_POST['email']) &&
     
     if ($_POST['terms'])
     {
+
+        $duplicate = false;
+        $unhandled_exception = false;
+
 	// Connect to both databases.
         $con = udundi_sql_connect();
         $scon = udundi_secure_sql_connect();
@@ -20,9 +24,9 @@ if (isset($_POST['email']) &&
         $hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
         
 	// Add user to database, but with account not activated.
-        $sql_command = "INSERT INTO users_secure (email, password) VALUES (\"$email\", \"$hash\")";
         try
         {
+            $sql_command = "INSERT INTO users_secure (email, password) VALUES (\"$email\", \"$hash\")";
             execute_query($scon, $sql_command);
         }
         catch (PDOException $ex)
@@ -31,56 +35,69 @@ if (isset($_POST['email']) &&
             // TODO: Need to deal with disabled accounts as well. Check if inactive and
             // go to resend email page if so.
 
-            if ($ex->getCode == 1062)
-            {
-                // TODO: Duplicate entry
+            if ($ex->getCode() == 1062)
                 $duplicate = true;
-            }
+            else
+                $unhandled_exception = true;
         }
 
         // Try to add the user to the database.
-        try
-        {
-            $sql_command = "INSERT INTO users (email, created) VALUES (\"$email\", NULL)";
-            execute_query($con, $sql_command);
-        } catch (PDOException $ex) {
-            log_warn("Unable to insert user with email `$email` into users_secure table. {$ex->getMessage()}");
 
-            log_error("It seems user `$email` tried to register and his e-mail address already ".
-                      "existed in the users_secure table but not in the users table.");
+        if (!$duplicate && !$unhandled_exception)
+        {
+            try
+            {
+                $sql_command = "INSERT INTO users (email, created) VALUES (\"$email\", NULL)";
+                execute_query($con, $sql_command);
+            } catch (PDOException $ex) {
+                log_warn("Unable to insert user with email `$email` into users_secure table. {$ex->getMessage()}");
+                
+                log_error("It seems user `$email` tried to register and his e-mail address already ".
+                          "existed in the users_secure table but not in the users table.");
+
+                if ($ex->getCode() == 1062)
+                    $duplicate = true;
+                else
+                    $unhandled_exception = true;
+            }
         }
 
-        // Generate an activation token.
-        $token = get_activation_token();
+        if (!$duplicate && !$unhandled_exception)
+        {
+            // Generate an activation token.
+            $token = get_activation_token();
         
-        // Add activation code to database with expiration time three days from now.
-        $sql_command = "INSERT INTO activations (email, token) VALUES (\"$email\", \"$token\")";
-        try
-        {
-            execute_query($con, $sql_command);
-        }
-        catch (PDOException $ex)
-        {
-            log_warn("Unable to insert activation token for user `$email` {$ex->getMessage()}");
-            // TODO: Duplicate entry. Goto resend activation email page.
+            // Add activation code to database with expiration time three days from now.
+            $sql_command = "INSERT INTO activations (email, token) VALUES (\"$email\", \"$token\")";
+            
+            try
+            {
+                execute_query($con, $sql_command);
+            }
+            catch (PDOException $ex)
+            {
+                log_warn("Unable to insert activation token for user `$email` {$ex->getMessage()}");
 
+                if ($ex->getCode() == 1062)
+                    $duplicate = true;
+                else
+                    $unhandled_exception = true;
+            }
         }
         
-        // TODO: Need to deal with reactivation if e-mail exists but is not active.
-        
-        // Send activation email to registrant.
         // TODO: Link to pretty, templated HTML e-mail.
-        send_activation_email($email, $token);
-        
-        // Going to need a cronjob or something to clean up the database.
-        
-        // Display thank you page.
-        echo "<html><body>Thank you for registering. An e-mail message has been sent to $email with instructions for activating your account.</body></html>";
+        if (!$duplicate and !$unhandled_exception)
+        {
+            send_activation_email($email, $token);
+            // Going to need a cronjob or something to clean up the database.
+            // Display thank you page.
+            echo "<html><body>Thank you for registering. An e-mail message has been sent to $email with instructions for activating your account.</body></html>";
+        }
     }
     else
     {
-        // Redirect to login page, preferably filling in certain values by passing
-        // POST data.
+        // User did not accept the terms.
+        // TODO: Redirect to login page, preferably filling in certain values by passing POST data.
         redirect_to_login();
     }
 }
