@@ -18,7 +18,7 @@ else
     catch (InvalidLoginException $ex)
       {
         // TODO: Redirect to login page with email field filled out.
-        echo $ex->getMessage();
+	$login_error();
       }
 
     if ($authentic)
