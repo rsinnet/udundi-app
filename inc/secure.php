@@ -1,7 +1,9 @@
 <?php
 // This page is only accessed when writing to the secure database.
 
-require_once('lib/password.php');
+$UDUNDI_APP_URL = '/home4/rsinnet/www/udundi/code_development/';
+
+require_once($UDUNDI_APP_URL.'lib/password.php');
 
 require_once('logging.php');
 require_once('utilities.php');

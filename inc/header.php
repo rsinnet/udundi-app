@@ -181,7 +181,7 @@
 
 						<!-- logout button -->
 						<div id="logout" class="btn-header transparent pull-right">
-							<span> <a href="<?php echo APP_URL; ?>/login.php" title="Sign Out" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a> </span>
+							<span> <a href="<?php echo APP_URL; ?>/logout.php" title="Sign Out" data-logout-msg="This will sign you out completely, no need to close your browser."><i class="fa fa-sign-out"></i></a> </span>
 						</div>
 						<!-- end logout button -->
 
