@@ -65,11 +65,14 @@
 							      			<a href="#" data-toggle="modal" data-target="#myModal">Terms of service</a>.
 							    		</label>
 							  		</div>
-							  		<div class="submit">
+							  		<button type="submit" class="btn btn-primary">
+										Register
+								    </button>
+							  		<!-- <div class="submit">
 							  			<a href="#" onclick="document.getElementById('smart-form-register').submit();" class="button-clear">
 								  			<span>Create my account</span>
 								  		</a>
-							  		</div>
+							  		</div> -->
 								</form>
 							</div>
 						</div>						
