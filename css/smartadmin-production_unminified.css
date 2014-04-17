@@ -15505,8 +15505,7 @@ input[type="color"]:focus,
 }
 .input-sm,
 .input-lg,
-.input-xs,
-.form-control {
+.input-xs {
   border-radius: 0px !important;
   -webkit-border-radius: 0px !important;
   -moz-border-radius: 0px !important;
@@ -16536,14 +16535,6 @@ nav ul ul > li:hover b {
   display: inline-block;
   vertical-align: middle;
   margin-top: -5px;
-}
-/*
- * FORMS
- */
-.form-control {
-  box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
 }
 .form hr {
   margin-left: -13px;
