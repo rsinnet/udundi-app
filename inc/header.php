@@ -96,7 +96,7 @@
 
 						<!-- PLACE YOUR LOGO HERE -->
 						<span id="logo"> 
-							<a href="./"><img src="<?php echo ASSETS_URL; ?>/img/logo.png" alt="Udundi - Analytics"> </a>
+							<a href="./"><h1 style="font-family: 'Ubuntu', sans-serif; font-weight: 500; font-size: 1.8em; text-shadow: none">udundi</h1> </a>
 						</span>
 						<!-- END LOGO PLACEHOLDER -->
 
