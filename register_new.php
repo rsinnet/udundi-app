@@ -66,7 +66,7 @@
 							    		</label>
 							  		</div>
 							  		<div class="submit">
-							  			<a href="#" onclick="$(this).closest('form').submit()" class="button-clear">
+							  			<a href="" onclick="$(this).closest('form').submit()" class="button-clear">
 								  			<span>Create my account</span>
 								  		</a>
 							  		</div>
