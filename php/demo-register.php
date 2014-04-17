@@ -27,13 +27,11 @@ if (isset($_POST['email']) &&
         try
         {
             $sql_command = "INSERT INTO users_secure (email, password) VALUES (\"$email\", \"$hash\")";
-            log_notice($sql_command);
             execute_query($scon, $sql_command);
-            log_notice('woa');
         }
         catch (PDOException $ex)
         {
-            log_warn("Unable to insert user with email `$email` into users_secure table. {$ex->getMessage()}");
+            log_warn("Unable to insert user with email `$email` into users_secure table. " + $ex->getMessage()});
             // TODO: Need to deal with disabled accounts as well. Check if inactive and
             // go to resend email page if so.
 
