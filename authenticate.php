@@ -1,6 +1,5 @@
 <?php
 
-require_once("lib/password.php");
 require_once("inc/utilities.php");
 require_once("inc/secure.php");
 require_once("inc/exceptions.php");
