@@ -41,35 +41,7 @@ include("inc/nav.php");
 
 		<div class="row">
 			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-3">
-				<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i>Dashboard</h1>
-			</div>
-			<!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-9">
-				 <ul id="sparks" class="">
-					<li class="sparks-info">
-						<h5> Visits <span class="txt-color-blue"> 30,126 </span></h5>
-						 <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
-							1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
-						</div> 
-					</li>
-					<li class="sparks-info">
-						<h5> Unique Visitors <span class="txt-color-blue"><i class="fa fa-arrow-circle-up"></i> 22,452 </span></h5>
-						<div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
-							110,150,300,130,400,240,220,310,220,300, 270, 210
-						</div>
-					</li>
-					<li class="sparks-info">
-						<h5> Pageviews <span class="txt-color-blue"><i class="fa fa-shopping-cart"></i> 50,672 </span></h5>
-						<div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
-							110,150,300,130,400,240,220,310,220,300, 270, 210
-						</div>
-					</li>
-					<li class="sparks-info">
-						<h5> Pages / Visit <span class="txt-color-blue"><i class="fa fa-shopping-cart"></i> 1.66 </span></h5>
-						<div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
-							110,150,300,130,400,240,220,310,220,300, 270, 210
-						</div>
-					</li>
-				</ul> -->
+				<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i>Account Settings</h1>
 			</div>
 		</div>
 		<!-- widget grid -->

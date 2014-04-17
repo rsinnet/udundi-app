@@ -69,8 +69,8 @@ include("inc/nav.php");
 							110,150,300,130,400,240,220,310,220,300, 270, 210
 						</div>
 					</li>
-				</ul> -->
-			</div>
+				</ul>
+			</div> -->
 		</div>
 		<!-- widget grid -->
 		<section id="widget-grid" class="">
