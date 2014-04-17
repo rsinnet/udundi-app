@@ -20,14 +20,14 @@
   //Note: all css files are inside css/ folder
   // $page_css[] = "your_style.css";
   $no_main_header = true;
-  // $page_body_prop = array("id"=>"login");
+  $page_body_prop = array("id"=>"signup");
   include("inc/header.php");
   
 ?>
 <!-- ==========================CONTENT STARTS HERE ========================== -->
 <!-- possible classes: minified, no-right-panel, fixed-ribbon, fixed-header, fixed-width-->
 
-<body id="signup">
+
 	<div class="container">
 		<div class="row header">
 			<div class="col-md-12">
@@ -65,14 +65,14 @@
 							      			<a href="#" data-toggle="modal" data-target="#myModal">Terms of service</a>.
 							    		</label>
 							  		</div>
-							  		<button type="submit" class="btn btn-primary">
+							  		<!-- <button type="submit" class="btn btn-primary">
 										Register
-								    </button>
-							  		<!-- <div class="submit">
+								    </button> -->
+							  		<div class="submit">
 							  			<a href="#" onclick="document.getElementById('smart-form-register').submit();" class="button-clear">
 								  			<span>Create my account</span>
 								  		</a>
-							  		</div> -->
+							  		</div>
 								</form>
 							</div>
 						</div>						
