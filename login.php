@@ -20,12 +20,12 @@ $page_title = "Login";
 //Note: all css files are inside css/ folder
 // $page_css[] = "your_style.css";
 $no_main_header = true;
-// $page_body_prop = array("id"=>"login", "class"=>"animated fadeInDown");
+$page_body_prop = array("id"=>"signup", "class"=>"animated fadeInDown");
 include("inc/header.php");
 
 ?>
 
-<body id="signup" style="min-height: 629px">
+<body id="signup">
 	<div class="container">
 		<div class="row header">
 			<div class="col-md-12">
