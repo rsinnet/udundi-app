@@ -27,7 +27,9 @@ if (isset($_POST['email']) &&
         try
         {
             $sql_command = "INSERT INTO users_secure (email, password) VALUES (\"$email\", \"$hash\")";
+            log_notice($sql_command);
             execute_query($scon, $sql_command);
+            log_notice('woa');
         }
         catch (PDOException $ex)
         {
@@ -86,7 +88,7 @@ if (isset($_POST['email']) &&
         }
         
         // TODO: Link to pretty, templated HTML e-mail.
-        if (!$duplicate and !$unhandled_exception)
+        if (!$duplicate && !$unhandled_exception)
         {
             send_activation_email($email, $token);
             // Going to need a cronjob or something to clean up the database.
