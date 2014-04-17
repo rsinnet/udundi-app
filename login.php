@@ -19,7 +19,7 @@ E.G. $page_title = "Custom Title" */
 //you can add your custom css in $page_css array.
 //Note: all css files are inside css/ folder
 // $page_css[] = "your_style.css";
-// $no_main_header = true;
+$no_main_header = true;
 // $page_body_prop = array("id"=>"login", "class"=>"animated fadeInDown");
 include("inc/header.php");
 
