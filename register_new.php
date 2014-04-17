@@ -84,7 +84,7 @@
 	</div>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -287,10 +287,10 @@
 	<button type="button" class="btn btn-danger pull-left" id="print">
 	  <i class="fa fa-print"></i> Print
 	</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+      </div> -->
+ <!--   </div><!-- /.modal-content -->
+  <!-- </div><!-- /.modal-dialog -->
+<!-- </div><!-- /.modal -->
 
 
 
@@ -299,7 +299,7 @@
 
 <?php 
   //include required scripts
-                           include("inc/scripts.php"); 
+	include("inc/scripts.php"); 
 ?>
 
 <!-- PAGE RELATED PLUGIN(S) 
