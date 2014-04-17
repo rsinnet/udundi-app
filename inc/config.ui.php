@@ -36,6 +36,11 @@ $page_nav = array(
 		"url" => APP_URL."/twitter.php",
 		"icon" => "fa-twitter"
 	),
+	"account settings" => array(
+		"title" => "Account Settings",
+		"url" => APP_URL."/account-settings.php",
+		"icon" => "fa-gear"
+	),
 );
 	// "inbox" => array(
 	// 	"title" => "Inbox",
