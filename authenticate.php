@@ -34,7 +34,7 @@ else
             // TODO: Redirect to resend e-mail page.
 	    // TODO: If we send the password and use POST
 	    echo "<html><body>".
-	      "<form method=\"POST\" action=\"resend_activation.php\" name=\"credentials\">".
+	      "<form method=\"POST\" action=\"resend_activation.php\" id=\"credentials\">".
 	      "<input type=\"hidden\" name=\"email\" value=\"$email\">".
 	      "<input type=\"hidden\" name=\"password\" value=\"$email\">".
 	      "</form>".
