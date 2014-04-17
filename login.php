@@ -52,7 +52,7 @@ include("inc/header.php");
 							  		</div>
 							  		<div class="checkbox">
 							    		<label>
-							      			<input type="checkbox"> Remember me
+							      			<input type="checkbox" name="remember" checked="">Remember me
 							    		</label>
 							  		</div>
 							  		<div class="submit">
