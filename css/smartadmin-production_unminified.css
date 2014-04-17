@@ -15796,13 +15796,7 @@ aside {
   position: relative;
   margin: 0;
   padding: 0 13px 0 0;
-  background-color: #f3f3f3;
-  background-image: -moz-linear-gradient(top, #f3f3f3, #e2e2e2);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f3f3f3), to(#e2e2e2));
-  background-image: -webkit-linear-gradient(top, #f3f3f3, #e2e2e2);
-  background-image: -o-linear-gradient(top, #f3f3f3, #e2e2e2);
-  background-image: linear-gradient(to bottom, #f3f3f3, #e2e2e2);
-  background-repeat: repeat-x;
+  background: #2b333b;
 }
 #header > div {
   display: inline-block;
@@ -16015,6 +16009,7 @@ aside {
   top: 49px;
   left: 0px;
   z-index: 1002;
+  background: #3d454d;
 }
 #main {
   display: block;
@@ -16027,8 +16022,8 @@ aside {
  */
 #ribbon {
   min-height: 40px;
-  background: #474544;
-  padding: 0 13px;
+  background: #3d454d;
+  padding-left: 10px;
   position: relative;
 }
 #ribbon .breadcrumb {
@@ -17536,17 +17531,11 @@ button {
  * Login info
  */
 .login-info {
-  border-bottom: 1px solid #D8D4D4;
+  height: 38px;
   display: block;
-  font-size: 12px;
-  height: 39px;
-  color: #ffffff;
-  border: solid transparent;
-  border-width: 1px 0px 1px 0px;
-  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-  width: 100%;
-  margin: 0px !important;
-  border-bottom: 1px solid #525151;
+  padding: 0 10px;
+  background: #3d454d;
+  margin-top: 3px;
 }
 .login-info a {
   text-decoration: none !important;
