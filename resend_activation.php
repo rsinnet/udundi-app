@@ -42,6 +42,7 @@ else
 	      {
 		// TODO: Might consider authenticating the user before sending him an e-mail...
 		send_activation_email($email, $token);
+		echo "Activation e-mail sent again!";
 	      }
 	  }
       }
