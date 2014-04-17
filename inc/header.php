@@ -18,18 +18,6 @@
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo ASSETS_URL; ?>/css/smartadmin-production_unminified.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo ASSETS_URL; ?>/css/smartadmin-skins.css">
 
-		<!-- stylesheets -->
-		<link rel="stylesheet" type="text/css" href="css/compiled/theme.css">
-		<link rel="stylesheet" type="text/css" href="css/vendor/brankic.css">
-		<link rel="stylesheet" type="text/css" href="css/vendor/animate.css">
-		<link rel="stylesheet" type="text/css" href="css/vendor/font-awesome.css">
-		<link rel="stylesheet" type="text/css" href="css/vendor/icomoon.css">
-		<link rel="stylesheet" type="text/css" href="css/vendor/flexslider.css">
-		<link rel="stylesheet" type="text/css" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
-		<link rel="stylesheet" type="text/css" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
-		<link href='http://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
-
-
 		<!-- SmartAdmin RTL Support is under construction
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo ASSETS_URL; ?>/css/smartadmin-rtl.css"> -->
 
@@ -72,6 +60,17 @@
 		<link rel="apple-touch-startup-image" href="<?php echo ASSETS_URL; ?>/img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
 		<link rel="apple-touch-startup-image" href="<?php echo ASSETS_URL; ?>/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
 		<link rel="apple-touch-startup-image" href="<?php echo ASSETS_URL; ?>/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+
+		<!-- stylesheets -->
+		<link rel="stylesheet" type="text/css" href="css/compiled/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/vendor/brankic.css">
+		<link rel="stylesheet" type="text/css" href="css/vendor/animate.css">
+		<link rel="stylesheet" type="text/css" href="css/vendor/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="css/vendor/icomoon.css">
+		<link rel="stylesheet" type="text/css" href="css/vendor/flexslider.css">
+		<link rel="stylesheet" type="text/css" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+		<link rel="stylesheet" type="text/css" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
 
 	</head>
 	<body 
