@@ -18,139 +18,70 @@
   //include header
   //you can add your custom css in $page_css array.
   //Note: all css files are inside css/ folder
-  $page_css[] = "your_style.css";
+  // $page_css[] = "your_style.css";
   $no_main_header = true;
-  $page_body_prop = array("id"=>"login");
+  // $page_body_prop = array("id"=>"login");
   include("inc/header.php");
   
 ?>
 <!-- ==========================CONTENT STARTS HERE ========================== -->
 <!-- possible classes: minified, no-right-panel, fixed-ribbon, fixed-header, fixed-width-->
-<header id="header">
-  <!--<span id="logo"></span>-->
-  
-  <div id="logo-group">
-    <span id="logo"> <img src="<?php echo ASSETS_URL; ?>/img/logo.png" alt="SmartAdmin"> </span>
-    
-    <!-- END AJAX-DROPDOWN -->
-  </div>
-  
-  <span id="login-header-space"> <span class="hidden-mobile">Already registered?</span> <a href="<?php echo APP_URL; ?>/login.php" class="btn btn-danger">Sign In</a> </span>
-  
-</header>
 
-<div id="main" role="main">
-  
-  <!-- MAIN CONTENT -->
-  <div id="content" class="container">
-    
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 hidden-xs hidden-sm">
-	<h1 class="txt-color-red login-header-big">SmartAdmin</h1>
-	<div class="hero">
-	  
-	  <div class="pull-left login-desc-box-l">
-	    <h4 class="paragraph-header">It's Okay to be Smart. Experience the simplicity of SmartAdmin, everywhere you go!</h4>
-	    <div class="login-app-icons">
-	      <a href="javascript:void(0);" class="btn btn-danger btn-sm">Frontend Template</a>
-	      <a href="javascript:void(0);" class="btn btn-danger btn-sm">Find out more</a>
-	    </div>
-	  </div>
-	  
-	  <img src="<?php echo ASSETS_URL; ?>/img/demo/iphoneview.png" alt="" class="pull-right display-image" style="width:210px">
-	  
+<body id="signup">
+	<div class="container">
+		<div class="row header">
+			<div class="col-md-12">
+				<h3 class="logo">
+					<a href="./" style="font-family: 'Ubuntu', sans-serif; font-weight: 500; font-size: 1.8em; text-shadow: none">udundi</a>
+				</h3>
+				<h4>Set up your new account today.</h4>
+				<p>
+					30-day money-back guarantee that starts after your first payment.
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="wrapper clearfix">
+					<div class="formy">
+						<div class="row">
+							<div class="col-md-12">
+								<form action="php/demo-register.php" method="POST" id="smart-form-register" role="form">
+							  		<div class="form-group">
+							    		<label for="email">Email address</label>
+							    		<input type="email" name="email" class="form-control" id="email" />
+							  		</div>
+							  		<div class="form-group">
+							    		<label for="password">Password</label>
+							    		<input type="password" name="password" class="form-control" id="password" />
+							  		</div>
+							  		<div class="form-group">
+							    		<label for="password">Confirm Password</label>
+							    		<input type="password" name="passwordConfirm" class="form-control" id="password" />
+							  		</div>
+							  		<div class="checkbox">
+							    		<label>
+							      			<input type="checkbox"> You have read & agree to the 
+							      			<a href="#" data-toggle="modal" data-target="#myModal">Terms of service</a>.
+							    		</label>
+							  		</div>
+							  		<div class="submit">
+							  			<a href="#" onclick="document.getElementById('smart-form-register').submit();" class="button-clear">
+								  			<span>Create my account</span>
+								  		</a>
+							  		</div>
+								</form>
+							</div>
+						</div>						
+					</div>
+				</div>
+				<div class="already-account">
+					Already have an account?
+					<a href="login.php" data-toggle="popover" data-placement="top" data-content="Go to sign in!" data-trigger="manual">Sign in here</a>
+				</div>
+			</div>
+		</div>
 	</div>
-	
-	<div class="row">
-	  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-	    <h5 class="about-heading">About SmartAdmin - Are you up to date?</h5>
-	    <p>
-	      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.
-	    </p>
-	  </div>
-	  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-	    <h5 class="about-heading">Not just your average template!</h5>
-	    <p>
-	      Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi voluptatem accusantium!
-	    </p>
-	  </div>
-	</div>
-	
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-	<div class="well no-padding">
-	  
-	  <form action="php/demo-register.php" method="POST" id="smart-form-register" class="smart-form client-form">
-	    <header>
-	      Registration is FREE*
-	    </header>
-	    
-	    <fieldset>
-	      <section>
-		<label class="input"> <i class="icon-append fa fa-envelope"></i>
-		  <input type="email" name="email" placeholder="Email address">
-		  <b class="tooltip tooltip-bottom-right">Needed to verify your account</b> </label>
-	      </section>
-	      
-	      <section>
-		<label class="input"> <i class="icon-append fa fa-lock"></i>
-		  <input type="password" name="password" placeholder="Password" id="password">
-		  <b class="tooltip tooltip-bottom-right">Don't forget your password</b> </label>
-	      </section>
-	      
-	      <section>
-		<label class="input"> <i class="icon-append fa fa-lock"></i>
-		  <input type="password" name="passwordConfirm" placeholder="Confirm password">
-		  <b class="tooltip tooltip-bottom-right">Don't forget your password</b> </label>
-	      </section>
-	    </fieldset>
-	    
-	    <fieldset>
-	      <section>
-		<label class="checkbox">
-		  <input type="checkbox" name="subscription" id="subscription">
-		  <i></i>I want to receive news and special offers</label>
-		<label class="checkbox">
-		  <input type="checkbox" name="terms" id="terms">
-		  <i></i>I agree with the <a href="#" data-toggle="modal" data-target="#myModal"> Terms and Conditions </a></label>
-	      </section>
-	    </fieldset>
-	    <footer>
-	      <button type="submit" class="btn btn-primary">
-		Register
-	      </button>
-	    </footer>
-	    
-	    <div class="message">
-	      <i class="fa fa-check"></i>
-	      <p>
-		Thank you for your registration!
-	      </p>
-	    </div>
-	  </form>
-	  
-	</div>
-	<p class="note text-center">*FREE Registration ends on October 2015.</p>
-	<h5 class="text-center">- Or sign in using -</h5>
-	<ul class="list-inline text-center">
-	  <li>
-	    <a href="javascript:void(0);" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
-	  </li>
-	  <li>
-	    <a href="javascript:void(0);" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
-	  </li>
-	  <li>
-	    <a href="javascript:void(0);" class="btn btn-warning btn-circle"><i class="fa fa-google-plus"></i></a>
-	  </li>
-	  <li>
-	    <a href="javascript:void(0);" class="btn btn-danger btn-circle"><i class="fa fa-linkedin"></i></a>
-	  </li>
-	</ul>
-      </div>
-    </div>
-  </div>
-  
-</div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -361,11 +292,14 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+
+
+
 <!-- ==========================CONTENT ENDS HERE ========================== -->
 
 <?php 
   //include required scripts
-                           include("inc/scripts.php"); 
+	include("inc/scripts.php"); 
 ?>
 
 <!-- PAGE RELATED PLUGIN(S) 
