@@ -36,7 +36,7 @@
 				</h3>
 				<h4>Set up your new account today.</h4>
 				<p>
-					30-day money-back guarantee that starts after your first payment.
+					<!-- 30-day money-back guarantee that starts after your first payment. -->
 				</p>
 			</div>
 		</div>
