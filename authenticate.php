@@ -47,8 +47,10 @@ else
 	    // TODO: Duplicate entry
 	    // TODO: Need to deal with disabled accounts as well. Check if inactive and go to resend email page if so.
 	  }
-
-	echo "Account has not been activated.";
+      }
+    else
+      {
+	echo "Account cannot be verified!"
       }
   }
 
