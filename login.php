@@ -67,7 +67,7 @@ include("inc/header.php");
 				</div>
 				<div class="already-account">
 					Don't have an account?
-					<a href="signup.php">Create one here</a>
+					<a href="register.php">Create one here</a>
 				</div>
 			</div>
 		</div>
