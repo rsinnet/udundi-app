@@ -51,6 +51,6 @@ else
 	echo "Account has not been activated.";
       }
   }
-}
+
 
 ?>
