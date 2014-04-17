@@ -19,7 +19,8 @@ catch (PDOException $ex)
 {
   // TODO: Error Handling
   // Can't think of any problems here. If the session id is not in the database, no big deal, redirect to login.
-  redirect_to_login();
 }
+
+  redirect_to_login();
 
 ?>
