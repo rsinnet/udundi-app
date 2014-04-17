@@ -11,16 +11,16 @@ require_once("inc/config.ui.php");
 YOU CAN SET CONFIGURATION VARIABLES HERE BEFORE IT GOES TO NAV, RIBBON, ETC.
 E.G. $page_title = "Custom Title" */
 
-$page_title = "Login";
+// $page_title = "Login";
 
 /* ---------------- END PHP Custom Scripts ------------- */
 
 //include header
 //you can add your custom css in $page_css array.
 //Note: all css files are inside css/ folder
-$page_css[] = "your_style.css";
-$no_main_header = true;
-$page_body_prop = array("id"=>"login", "class"=>"animated fadeInDown");
+// $page_css[] = "your_style.css";
+// $no_main_header = true;
+// $page_body_prop = array("id"=>"login", "class"=>"animated fadeInDown");
 include("inc/header.php");
 
 ?>
