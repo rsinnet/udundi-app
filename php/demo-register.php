@@ -31,11 +31,11 @@ if (isset($_POST['email']) &&
         }
         catch (PDOException $ex)
         {
-            log_warn("Unable to insert user with email `$email` into users_secure table. " + $ex->getMessage());
+            log_warn("Unable to insert user with email `$email` into users_secure table. {$ex->getMessage()}");
             // TODO: Need to deal with disabled accounts as well. Check if inactive and
             // go to resend email page if so.
 
-            if ($ex->getCode() == 1062)
+            if ($ex->getCode() == "23000")
                 $duplicate = true;
             else
                 $unhandled_exception = true;
@@ -55,7 +55,7 @@ if (isset($_POST['email']) &&
                 log_error("It seems user `$email` tried to register and his e-mail address already ".
                           "existed in the users_secure table but not in the users table.");
 
-                if ($ex->getCode() == 1062)
+                if ($ex->getCode() == "23000")
                     $duplicate = true;
                 else
                     $unhandled_exception = true;
@@ -78,7 +78,7 @@ if (isset($_POST['email']) &&
             {
                 log_warn("Unable to insert activation token for user `$email` {$ex->getMessage()}");
 
-                if ($ex->getCode() == 1062)
+                if ($ex->getCode() == "23000")
                     $duplicate = true;
                 else
                     $unhandled_exception = true;
