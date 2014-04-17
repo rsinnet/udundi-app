@@ -49,7 +49,8 @@ else
       }
     else
       {
-	echo "Account cannot be verified!";
+	// TODO: Redirect to login and populate email field.
+	login_error();
       }
   }
 
