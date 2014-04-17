@@ -96,7 +96,7 @@
 
 						<!-- PLACE YOUR LOGO HERE -->
 						<span id="logo"> 
-							<a href="./"><h1 style="font-family: 'Ubuntu', sans-serif; font-weight: 500; font-size: 1.8em; text-shadow: none">udundi</h1> </a>
+							<a href="./"><h1 style="font-family: 'Ubuntu', sans-serif; font-weight: 500; font-size: 36px; text-shadow: none; margin-top: 0px;">udundi</h1> </a>
 						</span>
 						<!-- END LOGO PLACEHOLDER -->
 
