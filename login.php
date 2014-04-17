@@ -56,7 +56,7 @@ include("inc/header.php");
 							    		</label>
 							  		</div>
 							  		<div class="submit">
-							  			<a href="#" onclick="$(this).closest('form').submit()" class="button-clear">
+							  			<a href="#" onclick="document.getElementById('login-form').submit();" class="button-clear">
 								  			<span>Sign in</span>
 								  		</a>
 							  		</div>

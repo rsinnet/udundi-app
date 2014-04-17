@@ -66,8 +66,8 @@
 							    		</label>
 							  		</div>
 							  		<div class="submit">
-							  			<a href="#" onclick="$(this).closest('form').submit()" class="button-clear">
-								  			Create my account
+							  			<a href="#" onclick="document.getElementById('smart-form-register').submit();" class="button-clear">
+								  			<span>Create my account</span>
 								  		</a>
 							  		</div>
 								</form>
