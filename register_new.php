@@ -61,7 +61,7 @@
 							  		</div>
 							  		<div class="checkbox">
 							    		<label>
-							      			<input type="checkbox"> You have read & agree to the 
+							      			<input type="checkbox" name="terms" id="terms"> You have read & agree to the 
 							      			<a href="#" data-toggle="modal" data-target="#myModal">Terms of service</a>.
 							    		</label>
 							  		</div>
