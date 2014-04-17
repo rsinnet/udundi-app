@@ -50,7 +50,7 @@ else
       }
     else
       {
-	echo "Account cannot be verified!"
+	echo "Account cannot be verified!";
       }
   }
 
