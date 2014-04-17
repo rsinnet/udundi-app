@@ -46,7 +46,7 @@
 					<div class="formy">
 						<div class="row">
 							<div class="col-md-12">
-								<form action="php/demo-register.php" method="POST" id="smart-form-register" class="smart-form client-form" role="form">
+								<form action="php/demo-register.php" method="POST" id="smart-form-register" role="form">
 							  		<div class="form-group">
 							    		<label for="email">Email address</label>
 							    		<input type="email" name="email" class="form-control" id="email" />
