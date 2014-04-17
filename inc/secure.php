@@ -1,7 +1,7 @@
 <?php
 // This page is only accessed when writing to the secure database.
 
-require_once('lib/password.php');
+require_once('../lib/password.php');
 
 require_once('logging.php');
 require_once('utilities.php');
