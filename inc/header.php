@@ -18,6 +18,16 @@
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo ASSETS_URL; ?>/css/smartadmin-production_unminified.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo ASSETS_URL; ?>/css/smartadmin-skins.css">
 
+		<!-- stylesheets -->
+		<link rel="stylesheet" type="text/css" href="css/compiled/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/vendor/brankic.css">
+		<link rel="stylesheet" type="text/css" href="css/vendor/animate.css">
+		<link rel="stylesheet" type="text/css" href="css/vendor/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="css/vendor/icomoon.css">
+		<link rel="stylesheet" type="text/css" href="css/vendor/flexslider.css">
+		<link rel="stylesheet" type="text/css" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+
+
 		<!-- SmartAdmin RTL Support is under construction
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo ASSETS_URL; ?>/css/smartadmin-rtl.css"> -->
 

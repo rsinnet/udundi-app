@@ -78,3 +78,9 @@
 			})
 
 		</script>
+
+				<!-- javascript -->
+		<script src="js/vendor/jquery.flexslider.min.js"></script>
+		<script src="js/theme.js"></script>
+		<link rel="stylesheet" type="text/css" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
