@@ -31,7 +31,7 @@ if (isset($_POST['email']) &&
         }
         catch (PDOException $ex)
         {
-            log_warn("Unable to insert user with email `$email` into users_secure table. " + $ex->getMessage()});
+            log_warn("Unable to insert user with email `$email` into users_secure table. " + $ex->getMessage());
             // TODO: Need to deal with disabled accounts as well. Check if inactive and
             // go to resend email page if so.
 
