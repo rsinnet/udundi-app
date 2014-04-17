@@ -25,7 +25,7 @@ include("inc/header.php");
 
 ?>
 
-<body id="signup">
+<body>
 	<div class="container">
 		<div class="row header">
 			<div class="col-md-12">
