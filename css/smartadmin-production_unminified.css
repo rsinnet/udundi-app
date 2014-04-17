@@ -16731,10 +16731,10 @@ input[type="text"]:focus + .input-group-addon {
   right: auto;
   left: 24px;
 }
-.input-icon-right .form-control {
+.input-icon-right {
   padding-right: 27px;
 }
-.input-icon-left .form-control {
+.input-icon-left {
   padding-left: 29px;
 }
 input[type="text"].ui-autocomplete-loading,
@@ -19648,7 +19648,7 @@ img.away {
 /*
  * FORMS: INPUT WITH ICONS
  */
-.input-group .icon-addon .form-control {
+.input-group .icon-addon {
   border-radius: 0;
 }
 .icon-addon {
@@ -19677,7 +19677,7 @@ img.away {
   padding: 10px 0;
   top: 1px;
 }
-.icon-addon.addon-lg .form-control {
+.icon-addon.addon-lg {
   line-height: 1.33;
   height: 46px;
   font-size: 18px;
@@ -19686,7 +19686,7 @@ img.away {
 .input-group-lg .icon-addon.addon-lg + .input-group-btn > .btn {
   height: 46px;
 }
-.icon-addon.addon-sm .form-control {
+.icon-addon.addon-sm {
   height: 30px;
   padding: 5px 10px 5px 28px;
   font-size: 12px;
@@ -19699,8 +19699,8 @@ img.away {
   left: 11px;
   top: 4px;
 }
-.icon-addon.addon-md .form-control,
-.icon-addon .form-control {
+.icon-addon.addon-md,
+.icon-addon {
   padding-left: 30px;
   float: left;
   font-weight: normal;
@@ -19712,9 +19712,9 @@ img.away {
   left: 5px;
   top: -1px;
 }
-.icon-addon .form-control:focus + .glyphicon,
+.icon-addon:focus + .glyphicon,
 .icon-addon:hover .glyphicon,
-.icon-addon .form-control:focus + .fa,
+.icon-addon:focus + .fa,
 .icon-addon:hover .fa {
   color: #2580db;
 }
