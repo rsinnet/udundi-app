@@ -35,7 +35,7 @@ else
 	    echo "<html><body>".
 	      "<form method=\"POST\" action=\"resend_activation.php\" id=\"credentials\">".
 	      "<input type=\"hidden\" name=\"email\" value=\"$email\">".
-	      "<input type=\"hidden\" name=\"password\" value=\"$email\">".
+	      "<input type=\"hidden\" name=\"password\" value=\"$password\">".
 	      "</form>".
 	      "<p>The account $email has not been activated. Please click ".
 	      "<a href=\"javascript: document.getElementById('credentials').submit();\">here</a> ".
