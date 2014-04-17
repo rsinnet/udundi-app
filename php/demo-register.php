@@ -91,7 +91,16 @@ if (isset($_POST['email']) &&
             send_activation_email($email, $token);
             // Going to need a cronjob or something to clean up the database.
             // Display thank you page.
-            echo "<html><body>Thank you for registering. An e-mail message has been sent to $email with instructions for activating your account.</body></html>";
+            echo "<html><body><p>Thank you for registering. An e-mail message has been sent to $email with instructions for activating your account.</p></body></html>";
+        }
+        elseif (!$unhandled_exception && $duplicate)
+        {
+            // Duplicate
+            echo "<html><body><p>An account already exists for $email! Click <a href=\"login.php\"> here to login.</p></body></html>";
+        }
+        else
+        {
+            log_error("An unhandled exception cropped up. This is bad, mmm'kay.");
         }
     }
     else
