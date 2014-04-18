@@ -64,6 +64,11 @@ include("inc/nav.php");
 					<i class="fa fa-google-plus"></i> Sign in with Google
 				</a>
         	</div>
+        	<div class="col-sm-4">
+	            <a class="btn btn-block btn-social btn-facebook btn-lg">
+					<i class="fa fa-facebook"></i> <i class="fa fa-check"></i>
+				</a>
+        	</div>
 
 
 
