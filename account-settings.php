@@ -49,7 +49,9 @@ include("inc/nav.php");
 
 
 			<!-- row -->
-			
+			<div class="col-sm-4">
+            <a class="btn btn-block btn-social btn-lg btn-flickr"><i class="fa fa-flickr"></i>Sign in with Flickr</a>
+        </div>
 
 
 
