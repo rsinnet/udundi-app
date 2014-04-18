@@ -54,13 +54,11 @@ include("inc/nav.php");
 					<i class="fa fa-facebook"></i> Sign in with Facebook
 				</a>
         	</div>
-        	<br />
 			<div class="col-sm-4">
 	            <a class="btn btn-block btn-social btn-twitter btn-lg">
 					<i class="fa fa-twitter"></i> Sign in with Twitter
 				</a>
         	</div>
-        	<br />
         	<div class="col-sm-4">
 	            <a class="btn btn-block btn-social btn-google-plus btn-lg">
 					<i class="fa fa-google-plus"></i> Sign in with Twitter
