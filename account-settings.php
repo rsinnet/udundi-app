@@ -61,7 +61,7 @@ include("inc/nav.php");
         	</div>
         	<div class="col-sm-4">
 	            <a class="btn btn-block btn-social btn-google-plus btn-lg">
-					<i class="fa fa-google-plus"></i> Sign in with Twitter
+					<i class="fa fa-google-plus"></i> Sign in with Google
 				</a>
         	</div>
 
