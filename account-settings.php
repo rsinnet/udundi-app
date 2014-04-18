@@ -50,8 +50,10 @@ include("inc/nav.php");
 
 			<!-- row -->
 			<div class="col-sm-4">
-            <a class="btn btn-block btn-social btn-lg btn-flickr"><i class="fa fa-flickr"></i>Sign in with Flickr</a>
-        </div>
+	            <a class="btn btn-block btn-social btn-twitter">
+					<i class="fa fa-twitter"></i> Sign in with Twitter
+				</a>
+        	</div>
 
 
 
