@@ -41,7 +41,7 @@ include("inc/nav.php");
 
 		<div class="row">
 			<div class="col-xs-12 col-sm-9 col-md-9 col-lg-6">
-				<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i>Account Settings</h1>
+				<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-gear"></i>Account Settings</h1>
 			</div>
 		</div>
 		<!-- widget grid -->
