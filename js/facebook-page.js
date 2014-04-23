@@ -34,6 +34,7 @@ FSM.prototype.go = function() {
 	loadPanelConfig();
 
     if (this.state['docReady'] &&
+	this.state['facebookConnected'] &&
 	!this.state['pagesLoaded'])
 	loadFacebookPages();
 
