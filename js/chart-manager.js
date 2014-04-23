@@ -56,10 +56,10 @@ ChartPanel.prototype.parse = function(msg)
 {
     //if (msg.name == "page_fans_online")
     //{
-	data = _.values(msg.values[0].value);
-	labels = _.keys(msg.values[0].value);
+    //data = _.values(msg.values[0].value);
+    //labels = _.keys(msg.values[0].value);
 
-	return _.map(_.range(data.length), function(index) { return [labels[index], data[index]]; });
+    //return _.map(_.range(data.length), function(index) { return [labels[index], data[index]]; });
     //}
     //else
     //{
@@ -72,7 +72,7 @@ ChartPanel.prototype.parse = function(msg)
 	labels = _.sortBy(labels, function(label) { return label.getTime(); });
 
 	// Structure the data for the Jarvis Widget charts.
-	return _.map(_.range(data.length), function(index) { return [labels[index].getTime(), data[index]]; });   //}
+	return _.map(_.range(data.length), function(index) { return [labels[index].getTime(), data[index]]; });   }
 }
 
 ChartPanel.prototype.populate = function(msg)
