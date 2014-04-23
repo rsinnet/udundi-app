@@ -71,6 +71,7 @@
 		<link rel="stylesheet" type="text/css" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
 		<link href='http://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-social.css">
+		<link rel="stylesheet" type="text/css" href="css/datepicker.css">
 
 	</head>
 	<body 

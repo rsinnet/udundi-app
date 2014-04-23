@@ -81,4 +81,5 @@
 
 				<!-- javascript -->
 		<script src="js/theme.js"></script>
+		<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
 		
