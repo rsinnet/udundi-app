@@ -23,7 +23,7 @@ graph = G(access_token)
 
 accounts = graph.get('me/accounts')
 for d in accounts:
-    if d['id'] != page_id
+    if d['id'] != page_id:
         continue
     graph.set_access_token(d['access_token'])
 
