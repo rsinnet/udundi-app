@@ -48,7 +48,7 @@
       </div>
     </div>
 
-    <div class"row">
+    <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <!-- <fb:login-button data-scope="manage_pages,read_insights" data-show-faces="true" width="200" max-rows="1"></fb:login-button> -->
         
@@ -60,13 +60,15 @@
           </section>
         </form>
 
-        <div class="input-daterange input-group col-xs-12 col-sm-6 col-md-6 col-lg-4" id="datepicker">
-          <input type="text" class="input-sm form-control" id="since_date" placeholder="4/23/2014"/>
-          <span class="input-group-addon">to</span>
-          <input type="text" class="input-sm form-control" id="until_date" placeholder="4/24/2014" />
+	<form>
+	  <div class="input-daterange input-group col-xs-12 col-sm-6 col-md-6 col-lg-4" id="datepicker">
+	    <input type="text" class="input-sm form-control" id="since_date" placeholder="4/23/2014"/>
+	    <span class="input-group-addon">to</span>
+	    <input type="text" class="input-sm form-control" id="until_date" placeholder="4/24/2014" />
+	  </div>
+
 	  <input type="button" class="input-sm form-control" id="update_button" value="Go!" />
-        </div>
-      
+	</form>
       </div>
     </div>
     
