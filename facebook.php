@@ -54,14 +54,6 @@
       </div>
 
       <div class="row">
-        <table class="table">
-        <thead>
-          <tr>
-            <th>Check in: <input type="text" class="span2" value="" id="dpd1"></th>
-            <th>Check out: <input type="text" class="span2" value="" id="dpd2"></th>
-          </tr>
-        </thead>
-      </table>
 
     <!-- NEW WIDGET START -->
     <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
@@ -235,7 +227,6 @@
 <script src="js/chart-manager.js"></script>
 
 <script src="js/facebook-page.js"></script>
-
 
 <?php 
   //include footer
