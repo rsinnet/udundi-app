@@ -43,16 +43,19 @@
   <!-- MAIN CONTENT -->
   <div id="content">
     <div class="row">
-      <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-      <h1 class="page-title txt-color-blueDark"><i class="fa fa-bar-chart-o fa-facebook "></i> Facebook </h1>
-      <fb:login-button data-scope="manage_pages,read_insights" data-show-faces="true" width="200" max-rows="1"></fb:login-button>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1 class="page-title txt-color-blueDark"><i class="fa fa-bar-chart-o fa-facebook "></i> Facebook </h1>
       </div>
+    </div>
 
-      <span>start:</span>
-        <input class="span2" type="text" name="start" value="" id="dpd1" placeholder="" required>
-      <span>end:</span>
-        <input class="span2" type="text" name="end" value="" id="dpd2" placeholder="" required>
-
+    <div class"row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <fb:login-button data-scope="manage_pages,read_insights" data-show-faces="true" width="200" max-rows="1"></fb:login-button>
+        <span>start:</span>
+          <input class="span2" type="text" name="start" value="" id="dpd1" placeholder="" required>
+        <span>end:</span>
+          <input class="span2" type="text" name="end" value="" id="dpd2" placeholder="" required>
+      </div>
     </div>
     
     <section id="widget-grid" class="">
