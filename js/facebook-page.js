@@ -65,7 +65,7 @@ FSM.prototype.go = function() {
 window.fsm = new FSM();
 
 $(document).ready(function() {
-    $('#update_button').val('Loading...').attr('disabled', 'true');
+    $('#update_button').text('Loading...').attr('disabled', 'true');
     window.fsm.setState('docReady');
     window.fsm.go();
 });
@@ -115,7 +115,7 @@ function loadFacebookPages()
 	$('#update_button').click(function() {
 	    // TODO CHECK FOR DATE CORRECTNESS.
 	    window.fsm.clearState('chartDataLoading');
-	    $('#update_button').val('Loading...').attr('disabled', true);
+	    $('#update_button').text('Loading...').attr('disabled', true);
 	    window.fsm.go();
 	});
 
@@ -164,7 +164,7 @@ function loadChartData()
 	    
 	    if (window.fsm.counters['dataLoading'] == 0)
 	    {
-		$('#update_button').val('Go!').attr('disabled', false);
+		$('#update_button').text('Go!').attr('disabled', false);
 		window.fsm.clearState['chartDataLoading'];
 	    }
 	}).fail(function(msg) {
