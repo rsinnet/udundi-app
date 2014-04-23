@@ -94,6 +94,11 @@ function loadFacebookPages()
 {
     FB.api('/me/accounts', function(response) {
 	console.log(response);
+	
+	_.forEach(response.data, function(datum) {
+	    $('facebook_pages').append('<option>' + datum["name"] + '</option>');	    
+	});
+
 	window.fsm.setState('pagesLoaded');
 	window.fsm.go();
     });
