@@ -35,7 +35,7 @@ while graph.paginated() and new_data:
     current_data = graph.previous()[0]['values']
     for j in range(len(current_data)):
         item_date = iso8601.parse_date(current_data[j]['end_time']).replace(tzinfo=None)
-        if item_date > since:
+        if item_date > since and item_date < until:
             data['values'] += [current_data[j]]
             new_data = True
         elif item_date > until:
