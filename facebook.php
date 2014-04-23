@@ -280,25 +280,25 @@
         var nowTemp = new Date();
         var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
-        var checkin = $('#dpd1').datepicker({
+        var start = $('#dpd1').datepicker({
           onRender: function(date) {
             return date.valueOf() < now.valueOf() ? 'disabled' : '';
           }
         }).on('changeDate', function(ev) {
-          if (ev.date.valueOf() > checkout.date.valueOf()) {
+          if (ev.date.valueOf() > end.date.valueOf()) {
             var newDate = new Date(ev.date)
             newDate.setDate(newDate.getDate() + 1);
-            checkout.setValue(newDate);
+            end.setValue(newDate);
           }
-          checkin.hide();
+          start.hide();
           $('#dpd2')[0].focus();
         }).data('datepicker');
-        var checkout = $('#dpd2').datepicker({
+        var end = $('#dpd2').datepicker({
           onRender: function(date) {
-            return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+            return date.valueOf() <= start.date.valueOf() ? 'disabled' : '';
           }
         }).on('changeDate', function(ev) {
-          checkout.hide();
+          end.hide();
         }).data('datepicker');
     });
 </script>
