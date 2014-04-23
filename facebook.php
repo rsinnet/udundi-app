@@ -48,8 +48,10 @@
       <fb:login-button data-scope="manage_pages,read_insights" data-show-faces="true" width="200" max-rows="1"></fb:login-button>
       </div>
 
-      <input class="span2" style="height: 34px; font-size: 18px; margin-right: 15px;" type="text" name="check_in" value="" id="dpd1" placeholder="Check In" required>
-      <input class="span2" style="height: 34px; font-size: 18px;" type="text" name="check_out" value="" id="dpd2" placeholder="Check Out" required>
+      <p>start:</p>
+        <input class="span2" type="text" name="start" value="" id="dpd1" placeholder="" required>
+      <p>end:</p>
+        <input class="span2" type="text" name="end" value="" id="dpd2" placeholder="" required>
 
     </div>
     
