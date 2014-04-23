@@ -1,4 +1,4 @@
-$('#sandbox-container .input-daterange').datepicker({
+$('.input-daterange').datepicker({
     autoclose: true,
     todayHighlight: true
 });
