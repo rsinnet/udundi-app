@@ -104,7 +104,8 @@ function loadFacebookPages()
 	    $('#facebook_pages').append('<option value="' + datum['id'] + '">' + datum['name'] + '</option>');
 	});
 
-	$('#facebook_pages').change(function() {
+	$('#update_button').click(function() {
+	    // TODO CHECK FOR DATE CORRECTNESS.
 	    window.fsm.clearState('chartDataLoading');
 	    console.log($(this).children('option:selected').text());
 	    window.fsm.go();
