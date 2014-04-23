@@ -16,6 +16,7 @@ page_id = data.getvalue('page_id');
 
 edge = data.getvalue('edge');
 period = data.getvalue('period');
+
 since = datetime.datetime.strptime(data.getvalue('since'), '%m/%d/%Y')
 until = datetime.datetime.strptime(data.getvalue('until'), '%m/%d/%Y')
 
@@ -32,7 +33,7 @@ new_data = True
 
 def add_item(datum):
     item_date = iso8601.parse_date(datum['end_time']).replace(tzinfo=None);
-    if item_date => since and item_date <= until:
+    if item_date >= since and item_date <= until:
         data['values'] += [datum]
         new_data = True;
     elif item_date => until:
