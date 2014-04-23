@@ -62,13 +62,13 @@
 
         <section class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
           <label class="input">
-            <input style="height: 32px;" type="text" name="start" value="" id="dpd1" placeholder="4/23/14" required>
+            <input style="height: 32px;" type="text" name="start" id="dpd1" value="" placeholder="4/23/14">
           </label>
         </section>
 
         <section class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
           <label class="input">
-            <input style="height: 32px;" type="text" name="end" value="" id="dpd2" placeholder="4/24/14" required>
+            <input style="height: 32px;" type="text" name="end" id="dpd2" value="" placeholder="4/24/14">
           </label>
         </section>
       
