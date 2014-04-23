@@ -236,7 +236,6 @@
 
 <script src="js/facebook-page.js"></script>
 <script>
-  <script>
   if (top.location != location) {
     top.location.href = document.location.href ;
   }
@@ -302,7 +301,6 @@
           checkout.hide();
         }).data('datepicker');
     });
-  </script>
 </script>
 
 <?php 
