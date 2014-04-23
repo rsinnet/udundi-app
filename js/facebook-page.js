@@ -22,6 +22,7 @@ function FSM() {
 	configLoaded: false,
 	jarvisWidgetLoaded: false,
 	facebookConnected: false,
+	pagesLoading: false,
 	pagesLoaded: false
     };
 }
@@ -35,6 +36,7 @@ FSM.prototype.go = function() {
 
     if (this.state['docReady'] &&
 	this.state['facebookConnected'] &&
+	!this.state['pagesLoading'])
 	!this.state['pagesLoaded'])
 	loadFacebookPages();
 
@@ -92,10 +94,12 @@ function loadJarvisWidget() {
 
 function loadFacebookPages()
 {
+    window.fsm.setState('pagesLoading');
+    window.fsm.go();
     FB.api('/me/accounts', function(response) {
 	_.forEach(response.data, function(datum) {
 	    $('#facebook_pages').append('<option>' + datum["name"] + '</option>');
-	    console.log(datum['name']);
+	    cons ole.log(datum['name']);
 	});
 
 	window.fsm.setState('pagesLoaded');
