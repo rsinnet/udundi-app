@@ -58,9 +58,8 @@ FSM.prototype.go = function() {
 window.fsm = new FSM();
 
 $(document).ready(function() {
-#('#update_button').val('Loading...').attr('disabled', 'true');
-
-	window.fsm.setState('docReady');
+    $('#update_button').val('Loading...').attr('disabled', 'true');
+    window.fsm.setState('docReady');
     window.fsm.go();
 });
 
