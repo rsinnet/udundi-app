@@ -105,9 +105,8 @@ function loadFacebookPages()
 	});
 
 	$('#facebook_pages').change(function() {
-	    window.fsm.clearState['chartDataLoading'];
+	    window.fsm.clearState('chartDataLoading');
 	    console.log($(this).children('option:selected').text());
-	    console.log(window.fsm.state);
 	    window.fsm.go();
 	});
 
