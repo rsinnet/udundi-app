@@ -107,7 +107,7 @@ function loadFacebookPages()
 	$('#update_button').click(function() {
 	    // TODO CHECK FOR DATE CORRECTNESS.
 	    window.fsm.clearState('chartDataLoading');
-	    console.log($(this).children('option:selected').text());
+	    $('#update_button').attr('disabled', false);
 	    window.fsm.go();
 	});
 
