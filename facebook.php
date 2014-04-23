@@ -48,9 +48,9 @@
       <fb:login-button data-scope="manage_pages,read_insights" data-show-faces="true" width="200" max-rows="1"></fb:login-button>
       </div>
 
-      <p>start:</p>
+      <span>start:</span>
         <input class="span2" type="text" name="start" value="" id="dpd1" placeholder="" required>
-      <p style="margin-top: 8px;">end:</p>
+      <span>end:</span>
         <input class="span2" type="text" name="end" value="" id="dpd2" placeholder="" required>
 
     </div>
