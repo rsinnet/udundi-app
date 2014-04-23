@@ -102,16 +102,15 @@ function loadFacebookPages()
     FB.api('/me/accounts', function(response) {
 	console.log(response);
 	_.forEach(response.data, function(datum) {
-	    $('#facebook_pages').append('<option>' + datum["name"] + '</option>');
+	    $('#facebook_pages').append('<option value="' + datum['id'] + '">' + datum['name'] + '</option>');
 	});
-
-	window.fsm.setState('pagesLoaded');
-	window.fsm.go();
 
 	$('#facebook_pages').change(function() {
 	    console.log($(this).children('option:selected').text());
 	});
 
+	window.fsm.setState('pagesLoaded');
+	window.fsm.go()
     });
 
     window.fsm.go();    
