@@ -36,7 +36,7 @@ FSM.prototype.go = function() {
 
     if (this.state['docReady'] &&
 	this.state['facebookConnected'] &&
-	!this.state['pagesLoading'])
+	!this.state['pagesLoading'] &&
 	!this.state['pagesLoaded'])
 	loadFacebookPages();
 
