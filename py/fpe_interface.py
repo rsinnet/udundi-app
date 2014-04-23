@@ -19,6 +19,8 @@ period = data.getvalue('period');
 since = datetime.datetime.strptime(data.getvalue('since'), '%Y-%m-%d')
 until = datetime.datetime.strptime(data.getvalue('until'), '%Y-%m-%d')
 
+since.setTimeZone(
+
 graph = G(access_token)
 
 accounts = graph.get('me/accounts')
@@ -35,7 +37,7 @@ while graph.paginated() and new_data:
     new_data = False;
     current_data = graph.previous()[0]['values']
     for j in range(len(current_data)):
-        item_date = iso8601.parse_date(current_data[j]['end_time'])
+        item_date = iso8601.parse_date(current_data[j]['end_time']).replace(tzinfo=None)
         if item_date > since:
             data['values'] += current_data[j]
             new_data = True
