@@ -30,16 +30,33 @@ for d in accounts:
 data = graph.get(page_id + '/insights/' + edge, {'period': period})[0]
 new_data = True
 
+def add_item(datum):
+    item_date = iso8601.parse_date(datum['end_time']).replace(tzinfo=None);
+    if item_date => since and item_date <= until:
+        data['values'] += [datum]
+        new_data = True;
+    elif item_date => until:
+        new_data = True
+    else:
+        new_data = False
+        
+    return new_data
+
+
+dvals = data['values']
+data['values'] = [];
+
+# Add the data from the first result...
+for i in dvals:
+    new_data = add_item(i)
+
+# ...and then page through the rest of the results.
 while graph.paginated() and new_data:
     new_data = False;
     current_data = graph.previous()[0]['values']
-    for j in range(len(current_data)):
-        item_date = iso8601.parse_date(current_data[j]['end_time']).replace(tzinfo=None)
-        if item_date > since and item_date < until:
-            data['values'] += [current_data[j]]
-            new_data = True
-        elif item_date > until:
-            new_data = True
+    for i in range(len(current_data)):
+        new_data = add_item(current_data[i])
+
 
 # Print out the content of the message.
 print 'Content-Type: text/json'
