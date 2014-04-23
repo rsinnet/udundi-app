@@ -109,7 +109,7 @@ function loadFacebookPages()
 	window.fsm.go();
 
 	$('#facebook_pages').change(function() {
-	    console.log('Changed to ' + this);
+	    console.log('Changed to ' + $(this).text());
 	});
 
     });
