@@ -36,7 +36,7 @@ def add_item(datum):
     if item_date >= since and item_date <= until:
         data['values'] += [datum]
         new_data = True;
-    elif item_date => until:
+    elif item_date >= until:
         new_data = True
     else:
         new_data = False
