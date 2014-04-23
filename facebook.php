@@ -51,6 +51,7 @@
     <div class"row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <!-- <fb:login-button data-scope="manage_pages,read_insights" data-show-faces="true" width="200" max-rows="1"></fb:login-button> -->
+        
         <form action="" class="col-xs-12 col-sm-3 col-md-3 col-lg-3 smart-form">
           <section>
             <label class="select">
@@ -63,10 +64,19 @@
               </select> <i></i> </label>
           </section>
         </form>
-        <span>start:</span>
-          <input class="col col-2" type="text" name="start" value="" id="dpd1" placeholder="" required>
-        <span>end:</span>
-          <input class="col col-2" type="text" name="end" value="" id="dpd2" placeholder="" required>
+
+        <section class="col col-2">
+          <label class="input">
+            <input type="text" name="start" value="" id="dpd1" placeholder="" required>
+          </label>
+        </section>
+
+        <section class="col col-2">
+          <label class="input">
+            <input type="text" name="end" value="" id="dpd2" placeholder="" required>
+          </label>
+        </section>
+      
       </div>
     </div>
     
