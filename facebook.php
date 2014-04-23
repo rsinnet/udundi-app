@@ -48,16 +48,8 @@
       <fb:login-button data-scope="manage_pages,read_insights" data-show-faces="true" width="200" max-rows="1"></fb:login-button>
       </div>
     
-
-          <div class="row">
-        <table class="table">
-        <thead>
-          <tr>
-            <th>Check in: <input type="text" class="span2" value="" id="dpd1"></th>
-            <th>Check out: <input type="text" class="span2" value="" id="dpd2"></th>
-          </tr>
-        </thead>
-      </table>
+            <th>Begin <input type="text" class="span2" value="" id="dpd1"></th>
+            <th>End <input type="text" class="span2" value="" id="dpd2"></th>
     </div>
     
     <section id="widget-grid" class="">
