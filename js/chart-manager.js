@@ -54,16 +54,25 @@ ChartPanel.prototype.refresh = function()
 // Parses the returned message containing chart data for the Jarvis Widget chart.
 ChartPanel.prototype.parse = function(msg)
 {
-    // Extract the data from the message.
-    data = _.map(msg.values, function(val) { return val.value; });
-    labels = _.map(msg.values, function(val) { return new Date(Date.parse(val.end_time)); });
+    if (msg.name == "page_fans_online")
+    {
+	data = _.values(msg.values[0].value);
+	labels = _.keys(msg.values[0].value);
 
-    // Sort the data in chronological order.
-    data = _.sortBy(data, function(datum, index) { return labels[index].getTime(); });
-    labels = _.sortBy(labels, function(label) { return label.getTime(); });
+	return _.map(_.range(data.length), function(index) { return [labels[index], data[index]]; });
+    }
+    else
+    {
+	// Extract the data from the message.
+	data = _.map(msg.values, function(val) { return val.value; });
+	labels = _.map(msg.values, function(val, index) { return new Date(Date.parse(val.end_time)); });
 
-    // Structure the data for the Jarvis Widget charts.
-    return _.map(_.range(data.length), function(index) { return [labels[index].getTime(), data[index]]; });   
+	// Sort the data in chronological order.
+	data = _.sortBy(data, function(datum, index) { return labels[index].getTime(); });
+	labels = _.sortBy(labels, function(label) { return label.getTime(); });
+
+	// Structure the data for the Jarvis Widget charts.
+	return _.map(_.range(data.length), function(index) { return [labels[index].getTime(), data[index]]; });   }
 }
 
 ChartPanel.prototype.populate = function(msg)
