@@ -47,13 +47,9 @@
       <h1 class="page-title txt-color-blueDark"><i class="fa fa-bar-chart-o fa-facebook "></i> Facebook </h1>
       <fb:login-button data-scope="manage_pages,read_insights" data-show-faces="true" width="200" max-rows="1"></fb:login-button>
       </div>
-    </div>
     
-    <section id="widget-grid" class="">
-      <div class="row" id="charts_container">	
-      </div>
 
-      <div class="row">
+          <div class="row">
         <table class="table">
         <thead>
           <tr>
@@ -62,6 +58,11 @@
           </tr>
         </thead>
       </table>
+    </div>
+    
+    <section id="widget-grid" class="">
+      <div class="row" id="charts_container">	
+      </div>
 
     <!-- NEW WIDGET START -->
     <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
