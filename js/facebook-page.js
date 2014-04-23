@@ -134,7 +134,8 @@ function loadChartData()
 		edge: window.charts[key].getDatum('name'),
 		period: window.charts[key].getDatum('period'),
 		since: '2014-04-10',
-		until: '2014-04-22'
+		until: '2014-04-22',
+		page_id: $('#facebook_pages option:selected').text()
 	    }
 	}).done(function(msg) {
 	    console.log(msg);

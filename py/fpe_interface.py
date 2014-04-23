@@ -12,7 +12,7 @@ cgitb.enable()
 data = cgi.FieldStorage()
 
 access_token = data.getvalue('user_access_token')
-#page_id = data.getvalue('pageid');
+page_id = data.getvalue('page_id');
 
 edge = data.getvalue('edge');
 period = data.getvalue('period');
@@ -23,10 +23,9 @@ graph = G(access_token)
 
 accounts = graph.get('me/accounts')
 for d in accounts:
-    if d['name'] == 'I Am Philosopher':
+    if d['id'] != page_id
         continue
     graph.set_access_token(d['access_token'])
-    page_id = d['id']
 
 data = graph.get(page_id + '/insights/' + edge, {'period': period})[0]
 new_data = True
