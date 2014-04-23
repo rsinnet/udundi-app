@@ -22,6 +22,7 @@ function FSM() {
 	configLoaded: false,
 	jarvisWidgetLoaded: false,
 	facebookConnected: false,
+	chartDataLoading: false,
 	pagesLoading: false,
 	pagesLoaded: false
     };
@@ -41,15 +42,16 @@ FSM.prototype.go = function() {
 	loadFacebookPages();
 
     if (this.state['docReady'] &&
-	     this.state['configLoaded'] &&
-	     !this.state['jarvisWidgetLoaded'])
+	this.state['configLoaded'] &&
+	!this.state['jarvisWidgetLoaded'])
 	loadJarvisWidget();
 
     if (this.state['docReady'] &&
-	     this.state['configLoaded'] &&
-	     this.state['jarvisWidgetLoaded'] &&
-	     this.state['facebookConnected'] &&
-	     this.state['pagesLoaded'])
+	this.state['configLoaded'] &&
+	this.state['jarvisWidgetLoaded'] &&
+	this.state['facebookConnected'] &&
+	this.state['pagesLoaded'] &&
+	!this.state['chartDataLoading'])
 	loadChartData();
 };
 
@@ -95,7 +97,6 @@ function loadJarvisWidget() {
 function loadFacebookPages()
 {
     window.fsm.setState('pagesLoading');
-    window.fsm.go();
 
     FB.api('/me/accounts', function(response) {
 	console.log(response);
@@ -106,10 +107,14 @@ function loadFacebookPages()
 	window.fsm.setState('pagesLoaded');
 	window.fsm.go();
     });
+
+    window.fsm.go();    
 }
 
 function loadChartData()
 {
+    window.fsm.setState('chartDataLoading');
+
     var authResponse = FB.getAuthResponse();
     var accessToken = authResponse.accessToken;
 
@@ -134,6 +139,8 @@ function loadChartData()
 	    console.log(msg);
 	});
     });
+
+    window.fsm.go();
 }
 
 
