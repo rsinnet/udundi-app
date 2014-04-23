@@ -18930,7 +18930,7 @@ img.away {
 .selected {
   border: 1px solid #0091d9 !important;
 }
-.selected:before {
+/*.selected:before {
   display: block;
   position: absolute;
   content: "\f00c";
@@ -18938,8 +18938,8 @@ img.away {
   right: 4px;
   font-family: FontAwesome;
   z-index: 2;
-}
-.selected:after {
+}*/
+/*.selected:after {
   width: 0;
   height: 0;
   border-top: 35px solid #0091d9;
@@ -18950,7 +18950,7 @@ img.away {
   content: ".";
   top: 0;
   z-index: 1;
-}
+}*/
 /*
  * SHORT CUT
  */
