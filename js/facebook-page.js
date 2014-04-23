@@ -26,10 +26,17 @@ function FSM() {
 	pagesLoading: false,
 	pagesLoaded: false
     };
+
+    this.counters = {
+	dataLoading: 0
+    };
 }
 FSM.prototype.setState = function(state) { this.state[state] = true; };
 FSM.prototype.clearState = function(state) { this.state[state] = false; };
 FSM.prototype.toString = function() { return this.state.toString(); };
+FSM.prototype.incrementCounter = function(counter) { ++this.counters[counter]; };
+FSM.prototype.decrementCounter = function(counter) { --this.counters[counter]; };
+
 FSM.prototype.go = function() {
     if (this.state['docReady'] &&
 	!this.state['configLoaded'])
@@ -108,7 +115,7 @@ function loadFacebookPages()
 	$('#update_button').click(function() {
 	    // TODO CHECK FOR DATE CORRECTNESS.
 	    window.fsm.clearState('chartDataLoading');
-	    $('#update_button').val('Go!').attr('disabled', true);
+	    $('#update_button').val('Loading...').attr('disabled', true);
 	    window.fsm.go();
 	});
 
@@ -138,6 +145,7 @@ function loadChartData()
 	until_date = "04/22/2014";
 
     _.each(Object.keys(window.charts), function(key) {
+	window.fsm.incrementCounter('dataLoading');
 	$.ajax({
 	    type: "POST",
 	    url: "py/fpe_interface.py",
@@ -152,7 +160,13 @@ function loadChartData()
 	}).done(function(msg) {
 	    console.log(msg);
 	    window.charts[key].populate(msg);
-	    $('#update_button').attr('disabled', false);
+	    window.fsm.decrementCounter('dataLoading');
+	    
+	    if (window.fsm.counters['dataLoading'] == 0)
+	    {
+		$('#update_button').val('Go!').attr('disabled', false);
+		window.fsm.clearState['chartDataLoading'];
+	    }
 	}).fail(function(msg) {
 	    console.log('Could not access Facebook--Python interface.');
 	    console.log(msg);
