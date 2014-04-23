@@ -3,7 +3,7 @@
 /* chart colors default */
 var $chrt_border_color = "#efefef";
 var $chrt_grid_color = "#DDD"
-var $chrt_main = "#E24913";
+var $chrt_main = "#E24913";    else
 /* red       */
 var $chrt_second = "#6595b4";
 /* blue      */
@@ -21,7 +21,8 @@ function FSM() {
 	docReady: false,
 	configLoaded: false,
 	jarvisWidgetLoaded: false,
-	facebookConnected: false
+	facebookConnected: false,
+	pagesLoaded: false
     };
 }
 FSM.prototype.setState = function(state) { this.state[state] = true; };
@@ -31,14 +32,21 @@ FSM.prototype.go = function() {
     if (this.state['docReady'] &&
 	!this.state['configLoaded'])
 	loadPanelConfig();
-    else if (this.state['docReady'] &&
+
+    if (this.state['docReady'] &&
+	!this.state['pagesLoaded'])
+	loadFacebookPages();
+
+    if (this.state['docReady'] &&
 	     this.state['configLoaded'] &&
 	     !this.state['jarvisWidgetLoaded'])
 	loadJarvisWidget();
-    else if (this.state['docReady'] &&
+
+    if (this.state['docReady'] &&
 	     this.state['configLoaded'] &&
 	     this.state['jarvisWidgetLoaded'] &&
-	     this.state['facebookConnected'])
+	     this.state['facebookConnected'] &&
+	     this.state['pagesLoaded'])
 	loadChartData();
 };
 
@@ -77,6 +85,15 @@ function loadJarvisWidget() {
 	pageSetUp();
 	
 	window.fsm.setState('jarvisWidgetLoaded');
+	window.fsm.go();
+    });
+}
+
+function loadFacebookPages()
+{
+    FB.api('/me/accounts', function(response) {
+	console.log(response);
+	window.fsm.setState('pagesLoaded');
 	window.fsm.go();
     });
 }

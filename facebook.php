@@ -55,12 +55,7 @@
         <form action="" class="col-xs-12 col-sm-3 col-md-3 col-lg-3 smart-form">
           <section>
             <label class="select">
-              <select>
-                <option value="0">Choose Page</option>
-                <option value="1">Alexandra</option>
-                <option value="2">Alice</option>
-                <option value="3">Anastasia</option>
-                <option value="4">Avelina</option>
+              <select id='facebook_pages'/>
               </select> <i></i> </label>
           </section>
         </form>
