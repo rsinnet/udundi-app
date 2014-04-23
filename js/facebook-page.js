@@ -43,12 +43,6 @@ FSM.prototype.go = function() {
 	loadFacebookPages();
 
     if (this.state['docReady'] &&
-	this.state['facebookConnected'] &&
-	this.state['pagesLoaded'])
-	setupPageChangeHandler();
-
-
-    if (this.state['docReady'] &&
 	this.state['configLoaded'] &&
 	!this.state['jarvisWidgetLoaded'])
 	loadJarvisWidget();
