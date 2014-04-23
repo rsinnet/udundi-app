@@ -94,7 +94,7 @@ function loadFacebookPages()
 {
     FB.api('/me/accounts', function(response) {
 	_.forEach(response.data, function(datum) {
-	    $('facebook_pages').append('<option>' + datum["name"] + '</option>');
+	    $('#facebook_pages').append('<option>' + datum["name"] + '</option>');
 	    console.log(datum['name']);
 	});
 
