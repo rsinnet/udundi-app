@@ -47,14 +47,21 @@
       <h1 class="page-title txt-color-blueDark"><i class="fa fa-bar-chart-o fa-facebook "></i> Facebook </h1>
       <fb:login-button data-scope="manage_pages,read_insights" data-show-faces="true" width="200" max-rows="1"></fb:login-button>
       </div>
-    
-            <th>Begin <input type="text" class="span2" value="" id="dpd1"></th>
-            <th>End <input type="text" class="span2" value="" id="dpd2"></th>
     </div>
     
     <section id="widget-grid" class="">
       <div class="row" id="charts_container">	
       </div>
+
+      <div class="row">
+        <table class="table">
+        <thead>
+          <tr>
+            <th>Check in: <input type="text" class="span2" value="" id="dpd1"></th>
+            <th>Check out: <input type="text" class="span2" value="" id="dpd2"></th>
+          </tr>
+        </thead>
+      </table>
 
     <!-- NEW WIDGET START -->
     <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
@@ -273,25 +280,25 @@
         var nowTemp = new Date();
         var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
-        var start = $('#dpd1').datepicker({
+        var checkin = $('#dpd1').datepicker({
           onRender: function(date) {
             return date.valueOf() < now.valueOf() ? 'disabled' : '';
           }
         }).on('changeDate', function(ev) {
-          if (ev.date.valueOf() > end.date.valueOf()) {
+          if (ev.date.valueOf() > checkout.date.valueOf()) {
             var newDate = new Date(ev.date)
             newDate.setDate(newDate.getDate() + 1);
-            end.setValue(newDate);
+            checkout.setValue(newDate);
           }
-          start.hide();
+          checkin.hide();
           $('#dpd2')[0].focus();
         }).data('datepicker');
-        var end = $('#dpd2').datepicker({
+        var checkout = $('#dpd2').datepicker({
           onRender: function(date) {
-            return date.valueOf() <= start.date.valueOf() ? 'disabled' : '';
+            return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
           }
         }).on('changeDate', function(ev) {
-          end.hide();
+          checkout.hide();
         }).data('datepicker');
     });
 </script>
