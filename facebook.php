@@ -60,17 +60,11 @@
           </section>
         </form>
 
-        <section class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-          <label class="input">
-            <input style="height: 32px;" type="text" name="start" id="dpd1" value="" placeholder="4/23/14">
-          </label>
-        </section>
-
-        <section class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-          <label class="input">
-            <input style="height: 32px;" type="text" name="end" id="dpd2" value="" placeholder="4/24/14">
-          </label>
-        </section>
+        <div class="input-daterange input-group" id="datepicker">
+          <input type="text" class="input-sm form-control" name="since" id="since_date" />
+          <span class="input-group-addon">to</span>
+          <input type="text" class="input-sm form-control" name="until" id="until_date" />
+        </div>
       
       </div>
     </div>
@@ -253,6 +247,12 @@
 <script src="js/chart-manager.js"></script>
 
 <script src="js/facebook-page.js"></script>
+<script>
+$('#sandbox-container .input-daterange').datepicker({
+    autoclose: true,
+    todayHighlight: true
+});
+</script>
 
 <?php 
   //include footer
