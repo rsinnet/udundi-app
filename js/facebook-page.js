@@ -107,6 +107,8 @@ function loadFacebookPages()
 	$('#facebook_pages').change(function() {
 	    window.fsm.clearState('chartDataLoading');
 	    console.log($(this).children('option:selected').text());
+	    console.log($('#start_date').val());
+	    console.log($('#until_date').val());
 	    window.fsm.go();
 	});
 
