@@ -54,7 +54,7 @@
         <form action="" class="smart-form">
           <section>
             <label class="label">Select Page</label>
-            <label class="select">
+            <label class="span2 select">
               <select>
                 <option value="0">Choose name</option>
                 <option value="1">Alexandra</option>
