@@ -95,7 +95,9 @@ function loadChartData()
 	    data: {
 		user_access_token: accessToken,
 		edge: window.charts[key].getDatum('name'),
-		period: window.charts[key].getDatum('period')
+		period: window.charts[key].getDatum('period'),
+		since: '2014-04-10',
+		until: '2014-04-22'
 	    }
 	}).done(function(msg) {
 	    console.log(msg);
