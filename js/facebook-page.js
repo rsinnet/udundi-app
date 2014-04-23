@@ -98,9 +98,9 @@ function loadFacebookPages()
     window.fsm.go();
 
     FB.api('/me/accounts', function(response) {
+	console.log(response);
 	_.forEach(response.data, function(datum) {
 	    $('#facebook_pages').append('<option>' + datum["name"] + '</option>');
-	    console.log(datum['name']);
 	});
 
 	window.fsm.setState('pagesLoaded');
