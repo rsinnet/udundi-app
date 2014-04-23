@@ -51,10 +51,10 @@
     <div class"row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <!-- <fb:login-button data-scope="manage_pages,read_insights" data-show-faces="true" width="200" max-rows="1"></fb:login-button> -->
-        <form action="" class="smart-form">
+        <form action="" class="col col-2 smart-form">
           <section>
             <label class="label">Select Page</label>
-            <label class="col col-2 select">
+            <label class="select">
               <select>
                 <option value="0">Choose name</option>
                 <option value="1">Alexandra</option>
