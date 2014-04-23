@@ -16,8 +16,8 @@ page_id = data.getvalue('page_id');
 
 edge = data.getvalue('edge');
 period = data.getvalue('period');
-since = datetime.datetime.strptime(data.getvalue('since'), '%Y-%m-%d')
-until = datetime.datetime.strptime(data.getvalue('until'), '%Y-%m-%d')
+since = datetime.datetime.strptime(data.getvalue('since'), '%m/%d/%Y')
+until = datetime.datetime.strptime(data.getvalue('until'), '%m/%d/%Y')
 
 graph = G(access_token)
 
