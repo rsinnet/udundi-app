@@ -23,6 +23,7 @@ function FSM() {
 	jarvisWidgetLoaded: false,
 	facebookConnected: false,
 	chartDataLoading: false,
+	chartDataLoaded: false,
 	pagesLoading: false,
 	pagesLoaded: false
     };
@@ -40,6 +41,12 @@ FSM.prototype.go = function() {
 	!this.state['pagesLoading'] &&
 	!this.state['pagesLoaded'])
 	loadFacebookPages();
+
+    if (this.state['docReady'] &&
+	this.state['facebookConnected'] &&
+	this.state['pagesLoaded'])
+	setupPageChangeHandler();
+
 
     if (this.state['docReady'] &&
 	this.state['configLoaded'] &&
@@ -106,6 +113,11 @@ function loadFacebookPages()
 
 	window.fsm.setState('pagesLoaded');
 	window.fsm.go();
+
+	$('#facebook_pages').change(function() {
+	    console.log('Changed to ' + this);
+	});
+
     });
 
     window.fsm.go();    
@@ -134,6 +146,9 @@ function loadChartData()
 	}).done(function(msg) {
 	    console.log(msg);
 	    window.charts[key].populate(msg);
+
+	    window.fsm.setState('chartDataLoaded');
+	    window.fsm.go();
 	}).fail(function(msg) {
 	    console.log('Could not access Facebook--Python interface.');
 	    console.log(msg);
