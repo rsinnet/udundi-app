@@ -30,6 +30,12 @@
 	    "name": "page_posts_impressions",
 	    "description": "The number of impressions that came from all of your posts",
 	    "period": "day"
-	}	
+	},
+	{
+	    "fullName": "Hourly Fans Online",
+	    "name": "page_fans_online",
+	    "description": "The number of your fans who saw any posts on Facebook on a given day",
+	    "period": "day"
+	}		
     ]	
 }
