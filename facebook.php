@@ -60,7 +60,7 @@
           </section>
         </form>
 
-        <div class="input-daterange input-group" id="datepicker">
+        <div class="input-daterange input-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="datepicker">
           <input type="text" class="input-sm form-control" name="since" id="since_date" />
           <span class="input-group-addon">to</span>
           <input type="text" class="input-sm form-control" name="until" id="until_date" />
