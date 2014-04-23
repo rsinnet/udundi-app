@@ -130,10 +130,10 @@ function loadChartData()
     var until_date = $('#until_date').val();
 
     if (since_date == "")
-	since_date = "2014-04-01";
+	since_date = "04/01/2014";
 
     if (until_date == "")
-	until_date = "2014-04-22";
+	until_date = "04/22/2014";
 
     _.each(Object.keys(window.charts), function(key) {
 	$.ajax({
