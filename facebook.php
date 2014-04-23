@@ -54,7 +54,7 @@
         <form action="" class="smart-form">
           <section>
             <label class="label">Select Page</label>
-            <label class="span2 select">
+            <label class="col col-2 select">
               <select>
                 <option value="0">Choose name</option>
                 <option value="1">Alexandra</option>
@@ -65,9 +65,9 @@
           </section>
         </form>
         <span>start:</span>
-          <input class="span2" type="text" name="start" value="" id="dpd1" placeholder="" required>
+          <input class="col col-2" type="text" name="start" value="" id="dpd1" placeholder="" required>
         <span>end:</span>
-          <input class="span2" type="text" name="end" value="" id="dpd2" placeholder="" required>
+          <input class="col col-2" type="text" name="end" value="" id="dpd2" placeholder="" required>
       </div>
     </div>
     
