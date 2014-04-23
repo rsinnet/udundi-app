@@ -67,7 +67,7 @@ function redirect_to_registration($email="")
 
 function login_error()
 {
-// TODO: Login error page.
+    // TODO: Login error page.
     $error_page = "error404.php";
     if (!(basename($_SERVER['REQUEST_URI']) == $error_page))
         header("Location: http://dev.iamphilosopher.com/$error_page");
@@ -75,7 +75,7 @@ function login_error()
 
 function activation_error()
 {
-// TODO: Custom error page.
+    // TODO: Custom error page.
     login_error();
 }
 
@@ -86,15 +86,12 @@ function sql_connect_error()
 
 function add_session_to_database($con, $session_id, $email)
 {
-    $sql_command = "INSERT INTO sessions (id, email) ".
-                   "VALUES (\"$session_id\", \"$email\")";
     try
     {
+        $sql_command = "INSERT INTO sessions (id, email) VALUES (\"$session_id\", \"$email\")";
         $st = execute_query($con, $sql_command);
     }
     catch (PDOException $ex) {
-// TODO: If duplicate entry, no big deal, just return false.
-// TODO: Other problems should write to the error log.
         log_warn("Couldn't add session to database: {$ex->getMessage()}");
         return false;
     }
@@ -110,7 +107,7 @@ function conditional_redirect_from_public_area()
 
 function account_active($email)
 {
-// Connect to the database.
+    // Connect to the database.
     $con = udundi_sql_connect();
 
     $sql_command = "SELECT active FROM users WHERE email=\"$email\"";
@@ -120,17 +117,17 @@ function account_active($email)
     }
     catch (PDOException $ex)
     {
-// TODO: Error handling. Send the user to an error page.
+        // TODO: Error handling. Send the user to an error page.
         log_error("Problem executing activation status query: {$ex->getMessage()}");
     }
 
     if ($row = $sth->fetch(PDO::FETCH_ASSOC))
     { 
-// Check if active
+        // Check if active
         if ($row['active'])
         {
             if ($GLOBALS["debug_mode"])
-                    log_notice("User $email is active.");
+                log_notice("User $email is active.");
             return true;
         }
     }
@@ -142,7 +139,6 @@ function account_active($email)
 
 function do_login($email)
 {
-// TODO: Maximum number of retries.
     $max_retries = 3;
     $retries_left = $max_retries;
 
