@@ -19,8 +19,6 @@ period = data.getvalue('period');
 since = datetime.datetime.strptime(data.getvalue('since'), '%Y-%m-%d')
 until = datetime.datetime.strptime(data.getvalue('until'), '%Y-%m-%d')
 
-since.setTimeZone(
-
 graph = G(access_token)
 
 accounts = graph.get('me/accounts')
@@ -32,7 +30,7 @@ for d in accounts:
 
 data = graph.get(page_id + '/insights/' + edge, {'period': period})[0]
 new_data = True
-""""
+
 while graph.paginated() and new_data:
     new_data = False;
     current_data = graph.previous()[0]['values']
@@ -43,7 +41,7 @@ while graph.paginated() and new_data:
             new_data = True
         elif item_date > until:
             new_data = True
-"""
+
 # Print out the content of the message.
 print 'Content-Type: text/json'
 print
