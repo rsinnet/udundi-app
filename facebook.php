@@ -51,17 +51,19 @@
     <div class"row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <!-- <fb:login-button data-scope="manage_pages,read_insights" data-show-faces="true" width="200" max-rows="1"></fb:login-button> -->
-        <section>
-          <label class="label">Select Page</label>
-          <label class="select">
-            <select>
-              <option value="0">Choose name</option>
-              <option value="1">Alexandra</option>
-              <option value="2">Alice</option>
-              <option value="3">Anastasia</option>
-              <option value="4">Avelina</option>
-            </select> <i></i> </label>
-        </section>
+        <form action="" class="smart-form">
+          <section>
+            <label class="label">Select Page</label>
+            <label class="select">
+              <select>
+                <option value="0">Choose name</option>
+                <option value="1">Alexandra</option>
+                <option value="2">Alice</option>
+                <option value="3">Anastasia</option>
+                <option value="4">Avelina</option>
+              </select> <i></i> </label>
+          </section>
+        </form>
         <span>start:</span>
           <input class="span2" type="text" name="start" value="" id="dpd1" placeholder="" required>
         <span>end:</span>
