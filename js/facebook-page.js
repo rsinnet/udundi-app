@@ -96,7 +96,8 @@ function loadFacebookPages()
 	console.log(response);
 	
 	_.forEach(response.data, function(datum) {
-	    $('facebook_pages').append('<option>' + datum["name"] + '</option>');	    
+	    $('facebook_pages').append('<option>' + datum["name"] + '</option>');
+	    console.log(datum['name']);
 	});
 
 	window.fsm.setState('pagesLoaded');
