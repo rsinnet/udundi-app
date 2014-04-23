@@ -107,8 +107,6 @@ function loadFacebookPages()
 	$('#facebook_pages').change(function() {
 	    window.fsm.clearState('chartDataLoading');
 	    console.log($(this).children('option:selected').text());
-	    console.log($('#since_date').val());
-	    console.log($('#until_date').val());
 	    window.fsm.go();
 	});
 
@@ -130,14 +128,24 @@ function loadChartData()
 
     _.each(Object.keys(window.charts), function(key) {
 	$.ajax({
+
+	    since_date = $('#since_date').val();
+	    until_date = $('#since_date').val();
+
+	    if (since_date == "")
+		since_date = "2014-04-01";
+
+	    if (until_date == "")
+		until_date = "2014-04-22";
+
 	    type: "POST",
 	    url: "py/fpe_interface.py",
 	    data: {
 		user_access_token: accessToken,
 		edge: window.charts[key].getDatum('name'),
 		period: window.charts[key].getDatum('period'),
-		since: '2014-04-10',
-		until: '2014-04-22',
+		since: since_date,
+		until: until_date,
 		page_id: $('#facebook_pages').val()
 	    }
 	}).done(function(msg) {
