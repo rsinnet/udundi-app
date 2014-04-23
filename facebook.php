@@ -47,6 +47,12 @@
       <h1 class="page-title txt-color-blueDark"><i class="fa fa-bar-chart-o fa-facebook "></i> Facebook </h1>
       <fb:login-button data-scope="manage_pages,read_insights" data-show-faces="true" width="200" max-rows="1"></fb:login-button>
       </div>
+
+      <span>start:</span>
+        <input class="span2" type="text" name="start" value="" id="dpd1" placeholder="" required>
+      <span>end:</span>
+        <input class="span2" type="text" name="end" value="" id="dpd2" placeholder="" required>
+
     </div>
     
     <section id="widget-grid" class="">
@@ -54,14 +60,6 @@
       </div>
 
       <div class="row">
-        <table class="table">
-        <thead>
-          <tr>
-            <th>Check in: <input type="text" class="span2" value="" id="dpd1"></th>
-            <th>Check out: <input type="text" class="span2" value="" id="dpd2"></th>
-          </tr>
-        </thead>
-      </table>
 
     <!-- NEW WIDGET START -->
     <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
@@ -235,10 +233,8 @@
 <script src="js/chart-manager.js"></script>
 
 <script src="js/facebook-page.js"></script>
+
 <script>
-  if (top.location != location) {
-    top.location.href = document.location.href ;
-  }
     $(function(){
       window.prettyPrint && prettyPrint();
       $('#dp1').datepicker({
@@ -301,7 +297,7 @@
           checkout.hide();
         }).data('datepicker');
     });
-</script>
+  </script>
 
 <?php 
   //include footer
