@@ -16,8 +16,8 @@ access_token = data.getvalue('user_access_token')
 
 edge = data.getvalue('edge');
 period = data.getvalue('period');
-since = time.strptime(data.getvalue('since'), '%Y-%m-%d')
-until = time.strptime(data.getvalue('until'), '%Y-%m-%d')
+since = datetime.datetime.strptime(data.getvalue('since'), '%Y-%m-%d')
+until = datetime.datetime.strptime(data.getvalue('until'), '%Y-%m-%d')
 
 graph = G(access_token)
 
