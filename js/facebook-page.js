@@ -23,7 +23,6 @@ function FSM() {
 	jarvisWidgetLoaded: false,
 	facebookConnected: false,
 	chartDataLoading: false,
-	chartDataLoaded: false,
 	pagesLoading: false,
 	pagesLoaded: false
     };
@@ -143,9 +142,6 @@ function loadChartData()
 	}).done(function(msg) {
 	    console.log(msg);
 	    window.charts[key].populate(msg);
-
-	    window.fsm.setState('chartDataLoaded');
-	    window.fsm.go();
 	}).fail(function(msg) {
 	    console.log('Could not access Facebook--Python interface.');
 	    console.log(msg);
