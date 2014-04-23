@@ -235,6 +235,9 @@
 <script src="js/chart-manager.js"></script>
 
 <script src="js/facebook-page.js"></script>
+<script>
+$('.datepicker').datepicker()
+</script>
 
 <?php 
   //include footer
