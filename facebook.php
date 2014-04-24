@@ -60,7 +60,6 @@
 	  </section>
 	</form>
 	
-	<form>
 	  <div class="input-daterange input-group col-xs-12 col-sm-6 col-md-6 col-lg-4" id="datepicker">
 	    <input type="text" class="input-sm form-control" id="since_date" placeholder="4/23/2014"/>
 	    <span class="input-group-addon">to</span>
@@ -70,7 +69,6 @@
 	  <span class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
 	    <button type="button" class="input-sm form-control" id="update_button">Go!</button>
 	  </span>
-	</form>
       </div>
     </div>
     
