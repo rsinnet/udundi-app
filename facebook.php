@@ -52,13 +52,11 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <!-- <fb:login-button data-scope="manage_pages,read_insights" data-show-faces="true" width="200" max-rows="1"></fb:login-button> -->
         
-	<form class="col-xs-12 col-sm-3 col-md-3 col-lg-3 smart-form">
-	  <section>
+	<section  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 smart-form">
 	    <label class="select">
 	      <select id="facebook_pages"> </select> <i> </i>
 	    </label>
 	  </section>
-	</form>
 	
 	  <div class="input-daterange input-group col-xs-12 col-sm-6 col-md-6 col-lg-4" id="datepicker">
 	    <input type="text" class="input-sm form-control" id="since_date" placeholder="4/23/2014"/>
