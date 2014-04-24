@@ -55,7 +55,7 @@
 	<form class="col-xs-12 col-sm-3 col-md-3 col-lg-3 smart-form">
 	  <section>
 	    <label class="select">
-	      <select id="facebook_pages"/> <i> </i>
+	      <select id="facebook_pages"> </select> <i> </i>
 	    </label>
 	  </section>
 	</form>
