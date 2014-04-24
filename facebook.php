@@ -66,10 +66,7 @@
 	    <span class="input-group-addon">to</span>
 	    <input type="text" class="input-sm form-control" id="until_date" placeholder="4/24/2014" />
 	  </div>
-
-	  <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
-	    <button type="button" class="input-sm form-control" id="update_button" value="Go!" />
-	  </div>
+	  <button type="button" class="input-sm form-control" id="update_button" value="Go!" />
 	</form>
       </div>
     </div>
