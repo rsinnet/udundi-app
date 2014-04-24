@@ -164,7 +164,7 @@ function loadChartData()
 	    
 	    if (window.fsm.counters['dataLoading'] == 0)
 	    {
-		$('#update_button').text('Go!').attr('disabled', false);
+		$('#update_button').text('Update').attr('disabled', false);
 		window.fsm.clearState['chartDataLoading'];
 	    }
 	}).fail(function(msg) {
