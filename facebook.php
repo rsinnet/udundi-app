@@ -50,19 +50,19 @@
 
     <!-- START CHART CONTROLS -->
     <div class="row">      
-      <section class="col-xs-12 col-sm-6 col-md-4 col-lg-2 smart-form">
+      <section class="col-xs-12 col-sm-6 col-md-4 col-lg-4 smart-form">
 	<label class="select">
 	  <select id="facebook_pages"> </select> <i> </i>
 	</label>
       </section>
       
-      <div class="input-daterange input-group col-xs-12 col-sm-6 col-md-6 col-lg-2" id="datepicker">
+      <div class="input-daterange input-group col-xs-12 col-sm-6 col-md-6 col-lg-4" id="datepicker">
 	<input type="text" class="input-sm form-control" id="since_date" placeholder="4/23/2014"/>
 	<span class="input-group-addon">to</span>
 	<input type="text" class="input-sm form-control" id="until_date" placeholder="4/24/2014" />
       </div>
       
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 	<button type="button" class="input-sm form-control" id="update_button">Go!</button>
       </div>
     </div>
