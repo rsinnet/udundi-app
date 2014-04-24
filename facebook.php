@@ -64,8 +64,8 @@
       </div>
     </section>
       
-      <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
-	<button type="button" class="btn btn-primary" id="update_button">Update</button>
+      <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2" style="margin-top: -1px;">
+	     <button type="button" class="btn btn-primary" id="update_button">Update</button>
       </div>
     </div>
     <!-- END CHART CONTROLS -->
