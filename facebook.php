@@ -67,7 +67,7 @@
 	    <input type="text" class="input-sm form-control" id="until_date" placeholder="4/24/2014" />
 	  </div>
 	  
-	  <button type="button" class="col-xs-12 col-sm-3 col-md-3 col-lg-3 input-sm form-control" id="update_button" value="Go!" />
+	  <button type="button" class="col-xs-12 col-sm-3 col-md-3 col-lg-3 input-sm form-control" id="update_button">Go!</button>
 	</form>
       </div>
     </div>
