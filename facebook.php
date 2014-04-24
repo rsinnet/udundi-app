@@ -52,10 +52,10 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <!-- <fb:login-button data-scope="manage_pages,read_insights" data-show-faces="true" width="200" max-rows="1"></fb:login-button> -->
         
-	<form class="smart-form">
+	<form class="col-xs-12 col-sm-3 col-md-3 col-lg-3 smart-form">
 	  <section>
 	    <label class="select">
-	      <select id="facebook_pages" class="col-xs-12 col-sm-3 col-md-3 col-lg-3"/> <i> </i>
+	      <select id="facebook_pages"/> <i> </i>
 	    </label>
 	  </section>
 	</form>
