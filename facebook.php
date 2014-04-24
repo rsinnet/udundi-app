@@ -62,7 +62,9 @@
 	<input type="text" class="input-sm form-control" id="until_date" placeholder="4/24/2014" />
       </div>
       
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 	<button type="button" class="btn btn-primary" id="update_button">Update</button>
+      </div>
     </div>
     <!-- END CHART CONTROLS -->
     
