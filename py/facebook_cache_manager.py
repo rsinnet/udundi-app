@@ -132,8 +132,8 @@ class UdundiUser():
                            format(self.userid, insight_subsql) for d in data[0]['values']])
         sql_args = tuple(itertools.chain.from_iterable(\
                 [[insight,
-                  data[0]['period'][:-5],
-                  d['end_time'],
+                  data[0]['period'],
+                  d['end_time'][:-5],
                   d['value']] for d in data[0]['values']]))
 
         print sql_statement % sql_args
