@@ -121,12 +121,12 @@ class UdundiUser():
         insight_subsql = '(SELECT id FROM facebook_insights_names WHERE insight_name="{0}")'.format(insight)
         sql_command = 'REPLACE INTO facebook_insights_basic ' + \
             '(userid, insightid, period, end_time, value) VALUES ' + \
-            ', '.join(['({}, {}, "{}", "{}", {})'.format(\
+            ', '.join(['({0}, {1}, "{2}", "{3}", {4})'.format(\
                     self.userid, insight_subsql, data[0]['period'], d['end_time'], d['value']) \
                            for d in data[0]['values']])
         sql_statement = 'REPLACE INTO facebook_insights_basic ' + \
             '(userid, insightid, period, end_time, value) VALUES ' + \
-            ', '.join(['({}, {}, "%s", "%s", %s)'. \
+            ', '.join(['({0}, {1}, "%s", "%s", %s)'. \
                            format(self.userid, insight_subsql) for d in data[0]['values']])
         #sql_args = tuple(itertools.chain.from_iterable(\
         #        [[insight, data[0]['period'], d['end_time'], d['value']] for d in data[0]['values']]))
