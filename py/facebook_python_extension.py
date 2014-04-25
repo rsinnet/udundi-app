@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from facebook import GraphAPI
+from facebook import GraphAPI, GraphAPIError
 
 import urlparse
 
@@ -11,6 +11,7 @@ class GraphApiExtension(GraphAPI):
         if 'access_token' not in paging_args:
             paging_args.update({'access_token': self.current_access_token})
 
+        
         data = super(GraphApiExtension, self).request(endpoint, paging_args)
 
         try:
