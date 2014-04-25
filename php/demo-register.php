@@ -104,7 +104,7 @@ if (isset($_POST['email']) &&
         // TODO: Link to pretty, templated HTML e-mail.
         if (!$duplicate && !$unhandled_exception)
         {
-            send_activation_email($userid, $token);
+            send_activation_email($email, $token);
             // Going to need a cronjob or something to clean up the database.
             // Display thank you page.
             echo "<html><body><p>Thank you for registering. An e-mail message has been sent to $email with instructions for activating your account.</p></body></html>";
