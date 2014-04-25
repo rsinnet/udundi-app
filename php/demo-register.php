@@ -23,26 +23,8 @@ if (isset($_POST['email']) &&
         require_once('../lib/password.php');
         $hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
         
+
 	// Add user to database, but with account not activated.
-        try
-        {
-            $sql_command = "INSERT INTO users_secure (email, password) VALUES (\"$email\", \"$hash\")";
-            execute_query($scon, $sql_command);
-        }
-        catch (PDOException $ex)
-        {
-            log_warn("Unable to insert user with email `$email` into users_secure table. {$ex->getMessage()}");
-            // TODO: Need to deal with disabled accounts as well. Check if inactive and
-            // go to resend email page if so.
-
-            if ($ex->getCode() == "23000")
-                $duplicate = true;
-            else
-                $unhandled_exception = true;
-        }
-
-        // Try to add the user to the database.
-
         if (!$duplicate && !$unhandled_exception)
         {
             try
@@ -50,11 +32,41 @@ if (isset($_POST['email']) &&
                 $sql_command = "INSERT INTO users (email, created) VALUES (\"$email\", NULL)";
                 execute_query($con, $sql_command);
             } catch (PDOException $ex) {
-                log_warn("Unable to insert user with email `$email` into users_secure table. {$ex->getMessage()}");
+                log_warn("Unable to insert user with email `$email` into users table. {$ex->getMessage()}");
                 
                 log_error("It seems user `$email` tried to register and his e-mail address already ".
                           "existed in the users_secure table but not in the users table.");
 
+                if ($ex->getCode() == "23000")
+                    $duplicate = true;
+                else
+                    $unhandled_exception = true;
+            }
+        }
+        
+        // Get the userid.
+        if (!$duplicate && !$unhandled_exception)
+        {
+            try
+                $userid = get_userid_from_email($email);
+            catch (PDOException $ex)
+                $unhandled_exception = true;
+        }
+
+        // Add the user password hash to the secure database.
+        if (!$duplicate && !$unhandled_exception)
+        {
+            try
+            {
+                $sql_command = "INSERT INTO users_secure (id, password) VALUES ($userid, \"$hash\")";
+                execute_query($scon, $sql_command);
+            }
+            catch (PDOException $ex)
+            {
+                log_warn("Unable to insert user with email `$email` into users_secure table. {$ex->getMessage()}");
+                // TODO: Need to deal with disabled accounts as well. Check if inactive and
+                // go to resend email page if so.
+                
                 if ($ex->getCode() == "23000")
                     $duplicate = true;
                 else
@@ -66,9 +78,9 @@ if (isset($_POST['email']) &&
         {
             // Generate an activation token.
             $token = get_activation_token();
-        
+            
             // Add activation code to database with expiration time three days from now.
-            $sql_command = "INSERT INTO activations (email, token) VALUES (\"$email\", \"$token\")";
+            $sql_command = "INSERT INTO activations (userid, token) VALUES (\"$userid\", \"$token\")";
             
             try
             {
@@ -88,7 +100,7 @@ if (isset($_POST['email']) &&
         // TODO: Link to pretty, templated HTML e-mail.
         if (!$duplicate && !$unhandled_exception)
         {
-            send_activation_email($email, $token);
+            send_activation_email($userid, $token);
             // Going to need a cronjob or something to clean up the database.
             // Display thank you page.
             echo "<html><body><p>Thank you for registering. An e-mail message has been sent to $email with instructions for activating your account.</p></body></html>";
@@ -113,7 +125,7 @@ if (isset($_POST['email']) &&
 else
 {
     // TODO: Not all required entries were present, this should not really happen with POST, but go to the register page with the user's e-mail if it is present.
-    redirect_to_registration($_POST['email']);
+    redirect_to_registration($email);
 }
 
 ?>

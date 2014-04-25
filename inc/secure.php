@@ -47,7 +47,7 @@ function get_activation_token($length=128)
     return $token;
 }
 
-function do_authentication($email, $password)
+function do_authentication($userid, $password)
 {
 
 // Get a session id.
@@ -59,7 +59,7 @@ function do_authentication($email, $password)
 
 // DO AUTHENTICATION HERE!
 // Get the hash from the database and compare.
-    $sql_command = "SELECT password FROM users_secure WHERE email=\"$email\"";
+    $sql_command = "SELECT password FROM users_secure WHERE userid=\"$userid\"";
 
     try
     {
@@ -67,7 +67,7 @@ function do_authentication($email, $password)
     }
     catch (PDOException $ex)
     {
-        log_error("Problem executing authentication query: [" . $ex->getCode() . "] " . $ex->getMessage());
+        log_error("Problem executing authentication query: {$ex->getMessage()}");
     }
 
     if ($row = $sth->fetch(PDO::FETCH_ASSOC))
@@ -75,7 +75,7 @@ function do_authentication($email, $password)
 // Verify password against stored hash.
         if (password_verify($password, $row['password']))
         {
-            log_notice("Password verified for `$email`.");
+            log_notice("Password verified for user `$userid`.");
         }
         else
             throw new InvalidLoginException();
@@ -86,6 +86,5 @@ function do_authentication($email, $password)
 
     return true;
 }
-
 
 ?>

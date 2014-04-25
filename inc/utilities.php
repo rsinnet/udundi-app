@@ -1,7 +1,12 @@
 <?php
 require_once('logging.php');
+require_once('exceptions.php');
 
-$GLOBALS['public_space'] = array("login.php", "register.php", "error404.php", "error500.php", "demo-register.php", "register_new.php");
+$GLOBALS['public_space'] = array("login.php",
+                                 "register.php",
+                                 "error404.php",
+                                 "error500.php",
+                                 "demo-register.php");
 
 function udundi_connect($dbname, $dbuser, $dbpass)
 {
@@ -12,8 +17,9 @@ function udundi_connect($dbname, $dbuser, $dbpass)
     }
     catch (PDOException $ex)
     {
-        log_error("Failed to connect: [" . $ex->getCode() . "] " . $ex->getMessage());
+        log_error("Failed to connect: {$ex->getMessage()}");
         // redirect to error page.
+        // Need to rethrow
     }
     
     return $con;
@@ -33,7 +39,7 @@ function execute_query($con, $sql_command)
     }
     catch (PDOException $ex)
     { 
-        log_error("Failed to connect: " . $ex->getMessage());       
+        log_error("Failed to prepare statement: {$ex->getMessage()}");
         throw($ex); // rethrow
     }
 
@@ -43,7 +49,7 @@ function execute_query($con, $sql_command)
     }
     catch (PDOException $ex)
     {
-        log_warn("Failed to execute query: [" . $ex->getCode() . "] " . $ex->getMessage());
+        log_warn("Failed to execute query: {$ex->getMessage()}");
         throw($ex); // rethrow
     }
     return $st;
@@ -84,11 +90,11 @@ function sql_connect_error()
     login_error();
 }
 
-function add_session_to_database($con, $session_id, $email)
+function add_session_to_database($con, $session_id, $userid)
 {
     try
     {
-        $sql_command = "INSERT INTO sessions (id, email) VALUES (\"$session_id\", \"$email\")";
+        $sql_command = "INSERT INTO sessions (id, userid) VALUES (\"$session_id\", \"$userid\")";
         $st = execute_query($con, $sql_command);
     }
     catch (PDOException $ex) {
@@ -105,12 +111,12 @@ function conditional_redirect_from_public_area()
         redirect_to_home();
 }
 
-function account_active($email)
+function account_active($userid)
 {
     // Connect to the database.
     $con = udundi_sql_connect();
 
-    $sql_command = "SELECT active FROM users WHERE email=\"$email\"";
+    $sql_command = "SELECT active FROM users WHERE id=\"$userid\"";
     try
     {
         $sth = execute_query($con, $sql_command);
@@ -127,17 +133,17 @@ function account_active($email)
         if ($row['active'])
         {
             if ($GLOBALS["debug_mode"])
-                log_notice("User $email is active.");
+                log_notice("User `$userid` is active.");
             return true;
         }
     }
 
     if ($GLOBALS["debug_mode"])
-        log_notice("User $email is inactive.");
+        log_notice("User `$userid` is inactive.");
     return false;
 }
 
-function do_login($email)
+function do_login($userid)
 {
     $max_retries = 3;
     $retries_left = $max_retries;
@@ -145,7 +151,7 @@ function do_login($email)
     $con = udundi_sql_connect();
 
     // Make sure the id is not a duplicate. This is unlikely. Also store in database.
-    while (($retries_left-- > 0) && (!add_session_to_database($con, session_id(), $email)))
+    while (($retries_left-- > 0) && (!add_session_to_database($con, session_id(), $userid)))
     {
         session_regenerate_id();
     }
@@ -157,6 +163,23 @@ function send_activation_email($email, $token)
          "Activate Your Udundi Analytics Account",
          "Please visit http://dev.iamphilosopher.com/activate.php?token=$token to activate your account. The purpose of this step is to deter malicious users from trying to overload our databases.", "From: support@udundi.com");
     log_notice("An activation e-mail has been sent to $email.");
+}
+
+function get_userid_from_email($email)
+{
+    $con = udundi_sql_connect();
+
+    try
+    {
+        $sql_command = "SELECT id FROM users WHERE email=\"$email\"";
+        $st = execute_query($con, $sql_command);
+    }
+    catch (PDOException $ex) {
+        log_warn("Couldn't get user id from database: {$ex->getMessage()}");
+        throw($ex);
+    }
+
+    return $userid;
 }
 
 ?>
