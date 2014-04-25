@@ -172,12 +172,17 @@ function get_userid_from_email($email)
     try
     {
         $sql_command = "SELECT id FROM users WHERE email=\"$email\"";
-        $st = execute_query($con, $sql_command);
+        $sth = execute_query($con, $sql_command);
     }
     catch (PDOException $ex) {
         log_warn("Couldn't get user id from database: {$ex->getMessage()}");
         throw($ex);
     }
+
+    if ($row = $sth->fetch(PDO::FETCH_ASSOC))
+        $userid = $row['id'];
+    else
+        throw new InvalidUserException();
 
     return $userid;
 }
