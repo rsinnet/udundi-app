@@ -35,7 +35,7 @@ if (isset($_POST['email']) &&
                 log_warn("Unable to insert user with email `$email` into users table. {$ex->getMessage()}");
                 
                 log_error("It seems user `$email` tried to register and his e-mail address already ".
-                          "existed in the users_secure table but not in the users table.");
+                          "existed in the users.");
 
                 if ($ex->getCode() == "23000")
                     $duplicate = true;
