@@ -32,6 +32,8 @@ class FacebookCacheInterface():
             print e
             sys.exit(1)
 
+        self.query('SET time_zone="+00:00"')
+
     def __del__(self):
         if self.con:
             self.con.close()
@@ -131,7 +133,7 @@ class UdundiUser():
         sql_args = tuple(itertools.chain.from_iterable(\
                 [[insight, data[0]['period'], d['end_time'], d['value']] for d in data[0]['values']]))
 
-        #print sql_statement % sql_args
+        print sql_statement % sql_args
 
         fci = FacebookCacheInterface()
 
