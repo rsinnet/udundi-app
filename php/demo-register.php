@@ -63,6 +63,7 @@ if (isset($_POST['email']) &&
             try
             {
                 $sql_command = "INSERT INTO users_secure (id, password) VALUES ($userid, \"$hash\")";
+                log_notice($sql_command);
                 execute_query($scon, $sql_command);
             }
             catch (PDOException $ex)
