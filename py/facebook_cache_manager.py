@@ -13,7 +13,7 @@ import facebook
 from facebook_python_extension import GraphApiExtension as G, GraphAPIError
 
 import sys
-import datetime, iso8601, time
+import datetime, iso8601, time, calendar
 import MySQLdb
 import itertools
 
@@ -131,7 +131,10 @@ class UdundiUser():
             ', '.join(['({0}, {1}, "%s", "%s", %s)'. \
                            format(self.userid, insight_subsql) for d in data[0]['values']])
         sql_args = tuple(itertools.chain.from_iterable(\
-                [[insight, data[0]['period'], d['end_time'], d['value']] for d in data[0]['values']]))
+                [[insight,
+                  data[0]['period'],
+                  calendar.timegm(iso8601.parse_date(d['end_time']).utctimetuple()),
+                  d['value']] for d in data[0]['values']]))
 
         print sql_statement % sql_args
 
