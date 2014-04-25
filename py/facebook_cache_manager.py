@@ -119,11 +119,11 @@ class UdundiUser():
         # 2. Put it in the database
         insight_subsql = '(SELECT id FROM facebook_insights_names WHERE insight_name="%s")'
         insight_subsql = '(SELECT id FROM facebook_insights_names WHERE insight_name="{0}")'.format(insight)
-        sql_command = 'REPLACE INTO facebook_insights_basic ' + \
-            '(userid, insightid, period, end_time, value) VALUES ' + \
-            ', '.join(['({0}, {1}, "{2}", "{3}", {4})'.format(\
-                    self.userid, insight_subsql, data[0]['period'], d['end_time'], d['value']) \
-                           for d in data[0]['values']])
+        #sql_command = 'REPLACE INTO facebook_insights_basic ' + \
+        #    '(userid, insightid, period, end_time, value) VALUES ' + \
+        #    ', '.join(['({0}, {1}, "{2}", "{3}", {4})'.format(\
+        #            self.userid, insight_subsql, data[0]['period'], d['end_time'], d['value']) \
+        #                   for d in data[0]['values']])
         sql_statement = 'REPLACE INTO facebook_insights_basic ' + \
             '(userid, insightid, period, end_time, value) VALUES ' + \
             ', '.join(['({0}, {1}, "%s", "%s", %s)'. \
