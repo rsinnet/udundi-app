@@ -8,7 +8,7 @@
       
       <a href="#">
 	<!--<img src="<?php echo ASSETS_URL; ?>/img/avatars/sunny.png" alt="me" class="online" /> -->
-	<span>
+	<span style="text-transform: none;">
 	  <?php echo $udundi_user_email; ?>
 	</span>
       </a> 
