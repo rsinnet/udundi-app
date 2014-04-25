@@ -136,7 +136,7 @@ class UdundiUser():
                   d['end_time'][:-5],
                   d['value']] for d in data[0]['values']]))
 
-        print sql_statement %s sql_args
+        print sql_statement % sql_args
 
         fci = FacebookCacheInterface()
 
