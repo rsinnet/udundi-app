@@ -129,7 +129,7 @@ class UdundiUser():
         sql_statement = 'REPLACE INTO facebook_insights_basic ' + \
             '(userid, insightid, period, end_time, value) VALUES ' + \
             ', '.join(['({0}, {1}, "%s", "%s", %s)'. \
-                           format(self.userid, insight_subsql) for d in data[0]['values']])
+                           format(self.userid, 1) for d in data[0]['values']])
         sql_args = tuple(itertools.chain.from_iterable(\
                 [[insight,
                   data[0]['period'],
