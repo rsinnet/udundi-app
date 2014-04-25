@@ -22,8 +22,9 @@ class FacebookCacheInterface():
     """
 
     def __init__(self):
+        self.con = None
         try:
-            self.con = MySQLdb.connect('localhost', 'rsinnet_dbuser', "V3)>H#!_ecJE6zC", 'rsinnet_udundi')
+            self.con = MySQLdb.connect('localhost', 'rsinnet_dbuser', "D5J5{w6!{#%vpxw", 'rsinnet_udundi')
 
             self.cur = self.con.cursor()
             
