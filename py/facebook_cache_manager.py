@@ -133,7 +133,7 @@ class UdundiUser():
         sql_args = tuple(itertools.chain.from_iterable(\
                 [[insight,
                   data[0]['period'],
-                  calendar.timegm(iso8601.parse_date(d['end_time']).utctimetuple()),
+                  d['end_time'],
                   d['value']] for d in data[0]['values']]))
 
         print sql_statement % sql_args
