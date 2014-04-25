@@ -12,9 +12,13 @@ else
     $password = $_POST["password"];
 
     try
+    {
         $userid = get_userid_from_email($email);
+    }
     catch (PDOException $ex)
+    {
         login_error();
+    }
 
     try
     {

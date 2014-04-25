@@ -48,9 +48,13 @@ if (isset($_POST['email']) &&
         if (!$duplicate && !$unhandled_exception)
         {
             try
+            {
                 $userid = get_userid_from_email($email);
+            }
             catch (PDOException $ex)
+            {
                 $unhandled_exception = true;
+            }
         }
 
         // Add the user password hash to the secure database.
