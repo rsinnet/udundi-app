@@ -28,6 +28,7 @@ else
     catch (InvalidLoginException $ex)
     {
         // TODO: Redirect to login page with email field filled out.
+        log_warn("Couldn't authenticate user `$email`.");
 	login_error();
     }
 
