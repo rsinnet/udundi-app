@@ -112,7 +112,7 @@ if (isset($_POST['email']) &&
         elseif (!$unhandled_exception && $duplicate)
         {
             // Duplicate
-            echo "<html><body><p>An account already exists for $email! Click <a href=\"login.php\"> here to login.</p></body></html>";
+            echo "<html><body><p>An account already exists for $email! Click <a href=\"".APP_URL."/login.php\"> here to login.</p></body></html>";
         }
         else
         {
