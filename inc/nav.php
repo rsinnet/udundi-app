@@ -9,7 +9,7 @@
       <a href="#">
 	<!--<img src="<?php echo ASSETS_URL; ?>/img/avatars/sunny.png" alt="me" class="online" /> -->
 	<span style="text-transform: none;">
-	  <i class="fa fa-user" ></i><?php echo $udundi_user_email; ?>
+	  <i class="fa fa-user" ></i> <?php echo $udundi_user_email; ?>
 	</span>
       </a> 
       
