@@ -140,7 +140,7 @@ class UdundiUser():
 
         fci = FacebookCacheInterface()
 
-        fci.query(sql_statement, sql_args)
+        fci.query(sql_statement % sql_args)
 
         
 
