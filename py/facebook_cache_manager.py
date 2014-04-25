@@ -128,15 +128,15 @@ class UdundiUser():
             '(userid, insightid, period, end_time, value) VALUES ' + \
             ', '.join(['({0}, {1}, "%s", "%s", %s)'. \
                            format(self.userid, insight_subsql) for d in data[0]['values']])
-        #sql_args = tuple(itertools.chain.from_iterable(\
-        #        [[insight, data[0]['period'], d['end_time'], d['value']] for d in data[0]['values']]))
-        #print sql_statement
-        #print sql_args
-        print sql_command
+        sql_args = tuple(itertools.chain.from_iterable(\
+                [[insight, data[0]['period'], d['end_time'], d['value']] for d in data[0]['values']]))
+
+        print sql_statement
+        print sql_args
 
         fci = FacebookCacheInterface()
 
-        fci.query(sql_command)
+        fci.query(sql_statement, sql_args)
 
         
 
