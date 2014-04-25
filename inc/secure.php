@@ -59,7 +59,7 @@ function do_authentication($userid, $password)
 
 // DO AUTHENTICATION HERE!
 // Get the hash from the database and compare.
-    $sql_command = "SELECT password FROM users_secure WHERE userid=\"$userid\"";
+    $sql_command = "SELECT password FROM users_secure WHERE id=\"$userid\"";
 
     try
     {
