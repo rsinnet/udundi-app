@@ -130,7 +130,7 @@ class UdundiUser():
             '(userid, insightid, period, end_time, value) VALUES ' + \
             ', '.join(['({0}, {1}, "%s", "%s", %s)'. \
                            format(self.userid, 1) for d in data[0]['values']])
-        sql_args = tuple(itertools.chain.from_iterable(\
+        sql_args = list(itertools.chain.from_iterable(\
                 [[data[0]['period'],
                   d['end_time'][:-5],
                   d['value']] for d in data[0]['values']]))
