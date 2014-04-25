@@ -50,15 +50,15 @@ function get_activation_token($length=128)
 function do_authentication($userid, $password)
 {
 
-// Get a session id.
+    // Get a session id.
     if (session_id() == '')
         session_start();
 
-// Connect to the database.
+    // Connect to the database.
     $scon = udundi_secure_sql_connect();
 
-// DO AUTHENTICATION HERE!
-// Get the hash from the database and compare.
+    // DO AUTHENTICATION HERE!
+    // Get the hash from the database and compare.
     $sql_command = "SELECT password FROM users_secure WHERE id=\"$userid\"";
 
     try
@@ -72,7 +72,7 @@ function do_authentication($userid, $password)
 
     if ($row = $sth->fetch(PDO::FETCH_ASSOC))
     {
-// Verify password against stored hash.
+        // Verify password against stored hash.
         if (password_verify($password, $row['password']))
         {
             log_notice("Password verified for user `$userid`.");

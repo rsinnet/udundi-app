@@ -17,6 +17,7 @@ else
     }
     catch (PDOException $ex)
     {
+        log_warn("Couldn't get userid from `$email`.");
         login_error();
     }
 
