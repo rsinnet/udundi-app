@@ -45,7 +45,7 @@ results = fci.cursor().fetchall()
 
 for row in results:
     datum = {
-        'end_time' : datetime.datetime.strptime(row[0], '%Y-%m-%d %H:%M:%S').isoformat(),
+        'end_time' : row[0].isoformat(),
         'value': row[1]}
     data['values'] += [datum]
 
