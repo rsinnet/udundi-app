@@ -30,8 +30,8 @@ until = datetime.datetime.strptime(data.getvalue('until'), '%m/%d/%Y')
 
 graph = G(access_token)
 
-since_iso = since.isoformat()
-until_iso = until.isoformat()
+since_iso = time.mktime(since.utctimetuple())
+until_iso = time.mktime(until.utctimetuple())
 
 #TODO CONVERT TIME ZONES
 
@@ -48,7 +48,7 @@ for d in accounts:
     graph.set_access_token(d['access_token'])
 
 data = graph.get('{0}/insights/{1}/{2}'.format(page_id, edge, period),
-                 { 'since': since_iso, 'until': until_iso })
+                 { 'since': since_iso, 'until': until_iso })[0]
 new_data = True
 
 def add_item(datum):
