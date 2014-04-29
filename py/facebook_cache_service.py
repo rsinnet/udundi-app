@@ -46,6 +46,7 @@ results = fci.cursor().fetchall()
 for row in results:
     print row[0]
     print row[1]
+    print { 'end_time' : row[0], 'value': row[1]}
     print
     data['values'] += { 'end_time' : row[0], 'value': row[1]}
 
