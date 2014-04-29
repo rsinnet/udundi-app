@@ -133,7 +133,7 @@ class UdundiUser():
         insight_subsql = '(SELECT id FROM facebook_insights_names ' + \
             'WHERE insight_name="%s")'
         #insight_subsql = '(SELECT id FROM facebook_insights_names ' + \
-            'WHERE insight_name="{0}")'.format(insight)
+        #   'WHERE insight_name="{0}")'.format(insight)
         #sql_command = 'REPLACE INTO facebook_insights_basic ' + \
         #    '(userid, insightid, period, end_time, value) VALUES ' + \
         #    ', '.join(['({0}, {1}, "{2}", "{3}", {4})'.format(\
