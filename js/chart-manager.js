@@ -106,7 +106,7 @@ ChartPanel.prototype.populate = function(msg)
 	    tooltip : true,
 	    tooltipOpts : {
 		content : "Your Likes for <b>%x</b> were <span>%y</span>",
-		dateFormat : "%y-%0m-%0d",
+		dateFormat : "%mmm %d, %y",
 		defaultTheme : false
 	    },
 	    colors : [$chrt_second]
