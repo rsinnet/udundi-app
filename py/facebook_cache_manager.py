@@ -27,17 +27,3 @@ pageid = '116485406912'
 udundi_user = UdundiUser(userid, access_token)
 udundi_user.set_pageid(pageid);
 udundi_user.backfill_cache('page_fans')
-
-'''
-def process_item(datum):
-    item_date = iso8601.parse_date(datum['end_time']).replace(tzinfo=None);
-    if item_date >= since and item_date <= until:
-        data['values'] += [datum]
-        new_data = True;
-    elif item_date >= until:
-        new_data = True
-    else:
-        new_data = False
-
-    return new_data
-'''

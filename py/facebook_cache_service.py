@@ -1,5 +1,14 @@
 #!/usr/bin/python
 
+"""
+.. module:: facebook_cache_service
+   :platform Unix
+   :synopsis: Provides a service for accessing the facebook cache.
+
+.. moduleauthor:: R. W. Sinnet (ryan@udundi.com)
+
+"""
+
 import facebook
 from facebook_python_extension import GraphApiExtension as G
 from facebook_cache_interface import FacebookCacheInterface as FCIface
@@ -7,37 +16,31 @@ from facebook_cache_interface import FacebookCacheInterface as FCIface
 import datetime, iso8601, time
 
 import json
-#import cgi, cgitb
-#cgitb.enable()
+import cgi, cgitb
+cgitb.enable()
 
-#data = cgi.FieldStorage()
+data = cgi.FieldStorage()
 
-#page_id = data.getvalue('page_id');
-page_id = ''
+access_token = data.getvalue('user_access_token')
+page_id = data.getvalue('page_id');
 
-#edge = data.getvalue('edge');
-#period = data.getvalue('period');
+edge = data.getvalue('edge');
+period = data.getvalue('period');
 
-edge = 'page_fans'
-period = 'lifetime'
-
-#since = datetime.datetime.strptime(data.getvalue('since'), '%m/%d/%Y')
-#until = datetime.datetime.strptime(data.getvalue('until'), '%m/%d/%Y')
+[since until] = map(lambda x: datetime.datetime.strptime(data.getvalue(x), '%m/%d/%Y').strftime('%Y%m%d'),
+                    ['since', 'until'])
 
 since = '2014-04-21'
 until = '2014-04-27'
 
-if edge == 'page_fans':
-    sql_statement = 'SELECT end_time, value FROM facebook_insights_basic AS fib ' + \
-        'WHERE fib.period="' + period + '" ' + \
-        'AND fib.end_time>="' + since + '" ' + \
-        'AND fib.end_time<="' + until + '" ' + \
-        'AND fib.insightid=' + \
-        '(SELECT id FROM facebook_insights_names AS fin WHERE fin.insight_name="' + edge + '")'
+sql_statement = 'SELECT end_time, value FROM facebook_insights_basic AS fib ' + \
+    'WHERE fib.period="' + period + '" ' + \
+    'AND fib.end_time>="' + since + '" ' + \
+    'AND fib.end_time<="' + until + '" ' + \
+    'AND fib.insightid=' + \
+    '(SELECT id FROM facebook_insights_names AS fin WHERE fin.insight_name="' + edge + '")'
 
-data = {
-    'values': []
-}
+data = {'values': []}
 
 fci = FCIface()
 fci.query(sql_statement)
