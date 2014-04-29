@@ -47,7 +47,7 @@ for d in accounts:
         continue
     graph.set_access_token(d['access_token'])
 
-data = graph.get('{0}/insights/{1}/{2}'.format(pageid, edge, period),
+data = graph.get('{0}/insights/{1}/{2}'.format(page_id, edge, period),
                  { 'since': since_iso, 'until': until_iso })
 new_data = True
 
