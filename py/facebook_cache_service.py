@@ -32,7 +32,7 @@ if edge == 'page_fans':
         'WHERE fib.period="' + period + '" ' + \
         'AND fib.end_time>="' + since + '" ' + \
         'AND fib.end_time<="' + until + '" ' + \
-        'AND fib.insight_id=' + \
+        'AND fib.insightid=' + \
         '(SELECT insight_name FROM facebook_insights_names AS fin WHERE fin.id=fib.insightid)'
     print sql_statement
 
