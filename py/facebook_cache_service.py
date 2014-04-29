@@ -41,7 +41,7 @@ data = {
 }
 
 fci = FCIface()
-fci.query(sql_statement % sql_args)
+fci.query(sql_statement)
 cur = fci.cursor()
 
 
