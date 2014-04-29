@@ -28,7 +28,7 @@ since = '2014-04-21'
 until = '2014-04-27'
 
 if edge == 'page_fans':
-    sql_statement = 'SELECT * FROM facebook_insights_basic AS fib ' + \
+    sql_statement = 'SELECT end_time, value FROM facebook_insights_basic AS fib ' + \
         'WHERE fib.period="' + period + '" ' + \
         'AND fib.end_time>="' + since + '" ' + \
         'AND fib.end_time<="' + until + '" ' + \
@@ -44,8 +44,7 @@ fci.query(sql_statement)
 results = fci.cursor().fetchall()
 
 for row in results:
-    print row
-    print
+    data['values'] += { 'end_time' : row['end_time'], 'value': row['value']}
 
 
 # Print out the content of the message.
@@ -53,5 +52,3 @@ print 'Content-Type: text/json'
 print
 
 print json.dumps(data)
-
-
