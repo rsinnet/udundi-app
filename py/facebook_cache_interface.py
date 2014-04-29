@@ -7,6 +7,8 @@
 
 .. moduleauthor:: R. W. Sinnet (ryan@udundi.com)
 
+Whenever a user requests data, the user's access token is added to the database. Next time the supervisor runs, it will look for new tokens and use them to update user data.
+
 """
 
 import facebook
@@ -80,6 +82,13 @@ class UdundiUser():
 
         # The current page id.
         self.pageid = ''
+
+        self.update_access_token()
+
+    def update_access_token(self):
+        sql_statement = 'REPLACE INTO facebook_access_tokens ' + \
+            '(userid, access_token) VALUES ({0}, "{1}")'.format(\
+            self.userid, access_token)
 
     def set_pageid(self, pageid):
         """Sets the ID of the current page being acted on.
