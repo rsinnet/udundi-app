@@ -44,8 +44,9 @@ fci.query(sql_statement)
 results = fci.cursor().fetchall()
 
 for row in results:
-    datum = { 'end_time' : datetime.datetime.strptime(row[0],
-                                                      '%Y-%m-%d %H:%M:%S').isoformat(),value': row[1]}
+    datum = {
+        'end_time' : datetime.datetime.strptime(row[0], '%Y-%m-%d %H:%M:%S').isoformat(),
+        'value': row[1]}
     data['values'] += [datum]
 
 print data
