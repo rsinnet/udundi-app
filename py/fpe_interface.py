@@ -20,26 +20,25 @@ cgitb.enable()
 data = cgi.FieldStorage()
 
 access_token = data.getvalue('user_access_token')
-page_id = data.getvalue('page_id');
+page_id = data.getvalue('page_id')
 
-edge = data.getvalue('edge');
-period = data.getvalue('period');
+edge = data.getvalue('edge')
+period = data.getvalue('period')
 
-since = datetime.datetime.strptime(data.getvalue('since'), '%m/%d/%Y').
+since = datetime.datetime.strptime(data.getvalue('since'), '%m/%d/%Y')
 until = datetime.datetime.strptime(data.getvalue('until'), '%m/%d/%Y')
 
-graph = G(access_token)
+#TODO CONVERT TIME ZONES
 
 since_iso = time.mktime(since.utctimetuple())
 until_iso = time.mktime(until.utctimetuple())
-
-#TODO CONVERT TIME ZONES
 
 #Facebook will return up to 93 days of data at once. We will paginate using 90 days.
 # 90 * 86400
 if until_iso - since_iso > 7776000:
     since_iso = until_iso - 7776000
 
+graph = G(access_token)
 
 accounts = graph.get('me/accounts')
 for d in accounts:
