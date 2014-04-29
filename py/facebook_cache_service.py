@@ -41,10 +41,10 @@ data = {
 
 fci = FCIface()
 fci.query(sql_statement)
-results = fci.cursor().fetchall()
+results = fci.cursor().fetchall()it
 
 for row in results:
-    data['values'] += { 'end_time' : row['end_time'], 'value': row['value']}
+    data['values'] += { 'end_time' : row[0], 'value': row[1]}
 
 
 # Print out the content of the message.
