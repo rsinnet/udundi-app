@@ -33,7 +33,7 @@ if edge == 'page_fans':
         'AND fib.end_time>="' + since + '" ' + \
         'AND fib.end_time<="' + until + '" ' + \
         'AND fib.insightid=' + \
-        '(SELECT insight_name FROM facebook_insights_names AS fin WHERE fin.id=fib.insightid)'
+        '(SELECT id FROM facebook_insights_names AS fin WHERE fin.insight_name="' + edge + '")'
 
 data = {
     'values': []
