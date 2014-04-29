@@ -22,12 +22,16 @@ class FacebookCacheInterface():
     """
 
     def __init__(self):
+        """Obtains a connection to the database and stores a reference to the
+        cursor.
+        """
         self.con = None
         try:
-            self.con = MySQLdb.connect('localhost', 'rsinnet_dbuser', "D5J5{w6!{#%vpxw", 'rsinnet_udundi')
+            self.con = MySQLdb.connect('localhost', 'rsinnet_dbuser',
+                                       "D5J5{w6!{#%vpxw", 'rsinnet_udundi')
 
             self.cur = self.con.cursor()
-            
+
         except MySQLdb.Error as e:
             print e
             sys.exit(1)
@@ -35,10 +39,15 @@ class FacebookCacheInterface():
         self.query('SET time_zone="+00:00"')
 
     def __del__(self):
+        """Closes the connection to the database.
+        """
         if self.con:
             self.con.close()
 
     def query(self, sql_statement, args=None):
+        """Performs the specified query on the database. This function
+        implements protections against SQL injection attacks.
+        """
         try:
             if args:
                 self.cur.execute(sql_statement, args)
@@ -47,7 +56,7 @@ class FacebookCacheInterface():
         except MySQLdb.Error as e:
             print e
             sys.exit(1)
-        
+
 
 class UdundiUser():
     """This class provides an interface between the Facebook Graph and the local
@@ -116,11 +125,15 @@ class UdundiUser():
             #print graph.previous()[0]['values']
             #print
 
+            # TODO end condition
+
         # TODO error handling.
 
         # 2. Put it in the database
-        insight_subsql = '(SELECT id FROM facebook_insights_names WHERE insight_name="%s")'
-        #insight_subsql = '(SELECT id FROM facebook_insights_names WHERE insight_name="{0}")'.format(insight)
+        insight_subsql = '(SELECT id FROM facebook_insights_names ' + \
+            'WHERE insight_name="%s")'
+        #insight_subsql = '(SELECT id FROM facebook_insights_names ' + \
+            'WHERE insight_name="{0}")'.format(insight)
         #sql_command = 'REPLACE INTO facebook_insights_basic ' + \
         #    '(userid, insightid, period, end_time, value) VALUES ' + \
         #    ', '.join(['({0}, {1}, "{2}", "{3}", {4})'.format(\
@@ -136,17 +149,12 @@ class UdundiUser():
                   d['end_time'][:-5],
                   d['value']] for d in data[0]['values']]))
 
-        print sql_statement % sql_args
-
         fci = FacebookCacheInterface()
-
         fci.query(sql_statement % sql_args)
 
-        
-
 userid = 1;
-#access_token = 'CAADuUkhGbnIBALROZAlwxYZBVk0Eqc755tfF2BExlyrdISrNH4UfX0iKC7ivjm5mZCrQK8itcr8EKZCzstpcfymxGOu8N9ltTEBTmmfuhpcp86164ZBPzVFzHNwRmfBKWBBAEZBN89Jg3h8djqYnZCfJUNTfQVyIiM6iylFEs0zsHNj9KFr6IywWcSZAZBPsSRbsZD'
 access_token = 'CAADuUkhGbnIBAEkdOCOsNJ5yFiRhDgbZCYCYAPa2uhTiujZAH0cgg23mZAZBmcB6WvibvuvN3CFQYesGhyaKqq5tgDwSsS6bNNgjBYvpwhR1QEnYiJJ3d31xVSGgAMXNbfSKpGBlvXMFCAOpMkgUARPVXuBe1sFqPWfezIinZCEPiITHdEXF5J0UWvg3WEnkZD'
+access_token = 'CAADuUkhGbnIBAGCzq0LzVqC7UESZC9nYfSnZBg8ygm9Pg5E0vLDQCNJ0uO5mP7n5djpIuTPAZC3wyHg4zAucsVOChbI3Ma5ArfewMpbBbcyZAZAdo970ZC3Derm6yDZAywtCE3ZCMguPaGf2ol2NmDk0XGdQJe9FTVx4gLBqDSenQ5YEcwF0gUrHmtj4by96DtYZD'
 pageid = '116485406912'
 
 udundi_user = UdundiUser(userid, access_token)
