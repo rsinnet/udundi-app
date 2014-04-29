@@ -41,7 +41,7 @@ data = {
 
 fci = FCIface()
 fci.query(sql_statement)
-results = fci.cursor().fetchall()it
+results = fci.cursor().fetchall()
 
 for row in results:
     data['values'] += { 'end_time' : row[0], 'value': row[1]}
