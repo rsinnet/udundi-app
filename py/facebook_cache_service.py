@@ -1,0 +1,55 @@
+#!/usr/bin/python
+
+import facebook
+from facebook_python_extension import GraphApiExtension as G
+from facebook_cache_interface import FacebookCacheInteface as FCIface
+
+import datetime, iso8601, time
+
+import json
+#import cgi, cgitb
+#cgitb.enable()
+
+#data = cgi.FieldStorage()
+
+#page_id = data.getvalue('page_id');
+page_id = ''
+
+#edge = data.getvalue('edge');
+#period = data.getvalue('period');
+
+edge = 'page_fans'
+period = 'lifetime'
+
+#since = datetime.datetime.strptime(data.getvalue('since'), '%m/%d/%Y')
+#until = datetime.datetime.strptime(data.getvalue('until'), '%m/%d/%Y')
+
+since = '2014-04-21'
+until = '2014-04-27'
+
+if edge == 'page_fans':
+    sql_command = 'SELECT * FROM facebook_insights_basic AS fib' + \
+        'WHERE fib.period="' + period + '" ' + \
+        'AND fib.end_time>="' + since + '" ' + \
+        'AND fib.end_time<="' + until + '" ' + \
+        'AND fib.insight_id=' + \
+        '(SELECT insight_name FROM facebook_insights_names AS fin WHERE fin.id=fib.insightid)'
+    
+
+data = {
+    'values': []
+}
+
+fci = FCIface()
+fci.query(sql_statement % sql_args)
+cur = fci.cursor()
+
+
+
+# Print out the content of the message.
+print 'Content-Type: text/json'
+print
+
+print json.dumps(data)
+
+
