@@ -28,7 +28,7 @@ since = '2014-04-21'
 until = '2014-04-27'
 
 if edge == 'page_fans':
-    sql_command = 'SELECT * FROM facebook_insights_basic AS fib' + \
+    sql_statement = 'SELECT * FROM facebook_insights_basic AS fib' + \
         'WHERE fib.period="' + period + '" ' + \
         'AND fib.end_time>="' + since + '" ' + \
         'AND fib.end_time<="' + until + '" ' + \
