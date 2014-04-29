@@ -34,7 +34,6 @@ if edge == 'page_fans':
         'AND fib.end_time<="' + until + '" ' + \
         'AND fib.insightid=' + \
         '(SELECT insight_name FROM facebook_insights_names AS fin WHERE fin.id=fib.insightid)'
-    print sql_statement
 
 data = {
     'values': []
@@ -42,8 +41,11 @@ data = {
 
 fci = FCIface()
 fci.query(sql_statement)
-cur = fci.cursor()
+results = fci.cursor().fetchall()
 
+for row in results:
+    print row
+    print
 
 
 # Print out the content of the message.
