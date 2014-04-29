@@ -62,6 +62,21 @@ class FacebookCacheInterface():
     def cursor(self):
         return self.cur;
 
+    def update_facebook_page(self):
+        """Updates the cached data for the specified page.
+        """
+        pass
+
+    def update_facebook_insight(self, pageid, insightid, period):
+        """Updates the cached data for the specified page, insight, and period.
+        """
+        sql_statement = 'SELECT end_time FROM facebook_insights_basic ' + \
+            'WHERE pageid={0} AND insightid={1} AND period="{2}" '.format(\
+            pageid, insightid, period) + \
+            'ORDER BY end_time DESC LIMIT 1'
+
+        # The end_time should be used as since when backfilling.
+
 
 class UdundiUser():
     """This class provides an interface between the Facebook Graph and the local

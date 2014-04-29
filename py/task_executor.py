@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/python
 
 
 """
@@ -15,7 +15,7 @@ Questions:
    - Do we need atomic access?
 """
 
-import argparse 
+import argparse
 from facebook_cache_interface import FacebookCacheInterface as FCIface
 
 
@@ -27,4 +27,15 @@ parser.add_argument('--pageid')
 userid = vars(parser.parse_args())['userid']
 pageid = vars(parser.parse_args())['pageid']
 
-fci = FCIface()
+if userid:
+    pass
+elif pageid:
+    update_page_data(pageid)
+
+
+
+def update_facebook_insight(pageid, insightid, period):
+    """Updates the cached data for the specified page, insight, and period.
+    """
+
+def check_for_old
