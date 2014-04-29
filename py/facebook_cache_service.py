@@ -2,7 +2,7 @@
 
 import facebook
 from facebook_python_extension import GraphApiExtension as G
-from facebook_cache_interface import FacebookCacheInteface as FCIface
+from facebook_cache_interface import FacebookCacheInterface as FCIface
 
 import datetime, iso8601, time
 
