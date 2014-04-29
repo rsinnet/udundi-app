@@ -44,12 +44,10 @@ fci.query(sql_statement)
 results = fci.cursor().fetchall()
 
 for row in results:
-    print row[0]
-    print row[1]
-    print { 'end_time' : row[0], 'value': row[1]}
-    print
-    data['values'] += { 'end_time' : row[0], 'value': row[1]}
+    datum = { 'end_time' : datetime.datetime(row[0]), 'value': row[1]}
+    data['values'] += [datum]
 
+print data
 
 # Print out the content of the message.
 print 'Content-Type: text/json'
