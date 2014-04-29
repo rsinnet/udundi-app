@@ -49,8 +49,6 @@ for row in results:
         'value': row[1]}
     data['values'] += [datum]
 
-print data
-
 # Print out the content of the message.
 print 'Content-Type: text/json'
 print
