@@ -182,7 +182,17 @@ window.fbAsyncInit = function() {
 	appId      : '262037167304306',
 	status     : true, // check login status
 	cookie     : true, // enable cookies to allow the server to access the session
-	xfbml      : true  // parse XFBML
+	xfbml      : true, // parse XFBML
+	version    : 'v2.0'
+    });
+
+    FB.getLoginStatus(function(response) {
+	if (response.status === 'connected') {
+	    console.log('Logged in.');
+	}
+	else {
+	    FB.login();
+	}
     });
     
     // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
