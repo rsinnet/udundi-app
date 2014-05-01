@@ -191,7 +191,8 @@ window.fbAsyncInit = function() {
 	    console.log('Logged in.');
 	}
 	else {
-	    FB.login();
+	    FB.login(function(){}, {scope: 'manage_pages'});
+	    window.fsm.clearState('facebookConnected');
 	}
     });
     
